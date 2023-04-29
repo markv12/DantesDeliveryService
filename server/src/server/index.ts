@@ -45,7 +45,7 @@ app.use(apiPrefix + '/score', scoresRoutes)
 
 export function init() {
   serverRunningSince = new Date()
-  const port = parseInt(process.env.PORT || '') || 3053
+  const port = parseInt(process.env.PORT || '') || 5053
   app.listen(port, '0.0.0.0', () => {
     c.log(`Server is running on 0.0.0.0:${port}`)
   })
