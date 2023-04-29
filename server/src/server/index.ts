@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import helmet from 'helmet'
 
-import scoresRoutes from './routes/scores'
+import scoresRoutes from './routes/score'
 import adminRoutes from './routes/admin'
 
 export let serverRunningSince
@@ -31,6 +31,13 @@ app.use(
 )
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.get('/', (req, res) => {
+  res.json({ ok: true })
+})
+app.get('/api', (req, res) => {
+  res.json({ ok: true })
+})
 
 const apiPrefix = `/api`
 app.use(apiPrefix + '/admin', adminRoutes)
