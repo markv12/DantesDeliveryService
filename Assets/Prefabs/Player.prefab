@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7ccf150beec754db10225952172526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 25
   rectT: {fileID: 468150722240617359}
   raycastT: {fileID: 8513072604476314260}
   smokeImage: {fileID: 1707764679280231986}

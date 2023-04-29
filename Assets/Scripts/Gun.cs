@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Gun : MonoBehaviour {
+    public int damage;
     public RectTransform rectT;
     public Transform raycastT;
     public Image smokeImage;
@@ -29,7 +30,12 @@ public class Gun : MonoBehaviour {
 
         Kickback();
         if (Physics.Raycast(raycastT.position, raycastT.forward, out RaycastHit hit, RAYCAST_DISTANCE, hitLayerMask)) {
-            if (hit.transform.gameObject.layer != enemyLayer) {
+            if (hit.transform.gameObject.layer == enemyLayer) {
+                GroundEnemy ge = hit.transform.parent.GetComponent<GroundEnemy>();
+                if(ge != null) {
+                    ge.Hurt(damage);
+                }
+            } else {
                 CreateSplat(hit);
             }
         }
@@ -92,16 +98,24 @@ public class Gun : MonoBehaviour {
 
     private void CreateSplat(RaycastHit hit) {
         GameObject newSplat = new GameObject("Splat");
+        Transform splatT = newSplat.transform;
         Vector3 pos = hit.point + (hit.normal * 0.02f);
-        newSplat.transform.position = pos;
-        newSplat.transform.rotation = Quaternion.LookRotation(hit.normal);
-        newSplat.transform.RotateAround(pos, newSplat.transform.forward, Random.Range(0f, 360f));
-        newSplat.transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
+        splatT.position = pos;
+        splatT.rotation = Quaternion.LookRotation(hit.normal);
+        splatT.RotateAround(pos, splatT.forward, Random.Range(0f, 360f));
+        splatT.localScale = new Vector3(1.35f, 1.35f, 1.35f);
         SpriteRenderer splatRenderer = newSplat.AddComponent<SpriteRenderer>();
         splatRenderer.sprite = splatSprites[Random.Range(0, splatSprites.Length)];
         splatRenderer.sortingOrder = 1;
         newSplat.layer = defaultLayer;
-        Destroy(newSplat, 5f);
+
+        Vector3 startScale = splatT.localScale;
+        Vector3 endScale = Vector3.zero;
+        Player.instance.CreateAnimationRoutine(7f, (float progress) => {
+            splatT.localScale = Vector3.Lerp(startScale, endScale, progress);
+        }, () => {
+            Destroy(newSplat);
+        });
     }
 
     private Coroutine equipRoutine;
