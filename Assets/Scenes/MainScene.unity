@@ -192,6 +192,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1262360970984567542, guid: 35dde42c9781b0540a3512d169fbc588, type: 3}
+      propertyPath: minimapCamera
+      value: 
+      objectReference: {fileID: 1711202021}
+    - target: {fileID: 6437751377651947277, guid: 35dde42c9781b0540a3512d169fbc588, type: 3}
+      propertyPath: cameraT
+      value: 
+      objectReference: {fileID: 1711202020}
     - target: {fileID: 8513072604476314262, guid: 35dde42c9781b0540a3512d169fbc588, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1005,6 +1013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1711202020}
   - component: {fileID: 1711202019}
+  - component: {fileID: 1711202021}
   m_Layer: 0
   m_Name: MinimapCamera
   m_TagString: Untagged
@@ -1071,13 +1080,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711202017}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 335, z: 0}
+  m_LocalPosition: {x: 0, y: 300, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1711202021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711202017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a081e7f573b8e7841aed9e904726e6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraT: {fileID: 1711202020}
+  mainCamera: {fileID: 1711202019}
 --- !u!1 &1970228593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,6 +1250,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 396399809104642143, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 10683ede3eef4d142b57f1fc087b5407, type: 2}
     - target: {fileID: 4413819325201380856, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1304,6 +1331,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 540527221190376544, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8098460782479989791, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8731750426966511966, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 16b248af088c1434bbafc218f28e96da, type: 3}

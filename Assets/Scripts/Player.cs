@@ -91,7 +91,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void SetFPSControllerActive(bool isActive) {
+    public void SetFPSControllerActive(bool isActive) {
         enabled = isActive;
         characterController.enabled = isActive;
         firstPersonController.enabled = isActive;
