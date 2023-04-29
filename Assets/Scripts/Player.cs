@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     public FirstPersonController firstPersonController;
 
     public PlayerUI playerUI;
+    public Transform directionArrow;
     public PaintGun paintGun;
 
     public Vector3 FaceDirection => mainCameraTransform.forward;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour {
         mainCameraTransform = mainCamera.transform;
         playerStartPos = t.position;
         playerStartRotation = t.rotation;
+        directionArrow.gameObject.SetActive(false);
     }
 
     private float throwStrength = 0;
@@ -54,20 +56,28 @@ public class Player : MonoBehaviour {
             }
         }
         if(currentDO != null) {
+            Vector3 lookDir = currentDO.destination.transform.position - directionArrow.position;
+            directionArrow.rotation = Quaternion.LookRotation(lookDir);
+
             if (InputUtil.LeftMouseButtonIsPressed) {
                 ThrowStrength = Mathf.Min(1f, throwStrength + (Time.deltaTime * 0.5f));
             }
             if (InputUtil.LeftMouseButtonUp) {
                 if(throwStrength > 0.05f) {
-                    lastThrowTime = Time.time;
-                    currentDO.mainT.SetParent(null, true);
-                    currentDO.mainRigidbody.isKinematic = false;
-                    currentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1200 * throwStrength);
-                    currentDO = null;
+                    ThrowDeliveryObject();
                 }
                 ThrowStrength = 0;
             }
         }
+    }
+
+    private void ThrowDeliveryObject() {
+        lastThrowTime = Time.time;
+        currentDO.mainT.SetParent(null, true);
+        currentDO.mainRigidbody.isKinematic = false;
+        currentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1200 * throwStrength);
+        currentDO = null;
+        directionArrow.gameObject.SetActive(false);
     }
 
     private bool paintGunEquipped = false;
@@ -94,16 +104,22 @@ public class Player : MonoBehaviour {
         if (other.gameObject.CompareTag("DeliveryObject")) {
             if(Time.time - lastThrowTime > 0.5f) {
                 currentDO = other.gameObject.GetComponent<DeliveryObject>();
-                currentDO.mainRigidbody.isKinematic = true;
-                currentDO.mainT.SetParent(mainCameraTransform, false);
-                currentDO.mainT.localPosition = new Vector3(0, -0.55f, 2f);
+                PickUpDeliveryObject();
             }
-        } else if (other.gameObject.CompareTag("Destination")) {
+        } else if (currentDO != null && other.gameObject.CompareTag("Destination")) {
             Destination destination = other.gameObject.GetComponent<Destination>();
-            if(destination != null && currentDO != null && currentDO.destination == destination) {
+            if(destination != null && currentDO.destination == destination) {
                 Destroy(currentDO.gameObject);
                 currentDO = null;
+                directionArrow.gameObject.SetActive(false);
             }
         }
+    }
+
+    private void PickUpDeliveryObject() {
+        currentDO.mainRigidbody.isKinematic = true;
+        currentDO.mainT.SetParent(mainCameraTransform, false);
+        currentDO.mainT.localPosition = new Vector3(0, -0.55f, 2f);
+        directionArrow.gameObject.SetActive(true);
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8204239052779835821}
   - component: {fileID: 4402504973416914800}
   - component: {fileID: 6540099702272716068}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PaintGunCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 6025360182057579537}
   - component: {fileID: 2059350042838056307}
   - component: {fileID: 6610048413415168216}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,6 +237,90 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &1501940958660253650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5166571351571405506}
+  - component: {fileID: 7987635379302211904}
+  m_Layer: 0
+  m_Name: DirectionArrowSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5166571351571405506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501940958660253650}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 131186723733069784}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!212 &7987635379302211904
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501940958660253650}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e5b4cc7454b5f1c4b903ea3689d5783e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2098820346411912705
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +332,7 @@ GameObject:
   - component: {fileID: 6884216069066394643}
   - component: {fileID: 8073634413777951039}
   - component: {fileID: 4409537716445617425}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ThrowMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +408,7 @@ GameObject:
   - component: {fileID: 6314989070370999218}
   - component: {fileID: 6693564669565977399}
   - component: {fileID: 1707764679280231986}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PaintGunSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +484,7 @@ GameObject:
   - component: {fileID: 5599684662848842113}
   - component: {fileID: 8886651970658197139}
   - component: {fileID: 3230769858264754819}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PaintGunBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +560,7 @@ GameObject:
   - component: {fileID: 6580646346363485594}
   - component: {fileID: 1922584999146950360}
   - component: {fileID: 1585467690252583489}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,6 +622,38 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!1 &3752739387883597387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 131186723733069784}
+  m_Layer: 0
+  m_Name: DirectionArrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &131186723733069784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3752739387883597387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.35, z: 3.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5166571351571405506}
+  m_Father: {fileID: 8513072604476314260}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4639326030055674080
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +665,7 @@ GameObject:
   - component: {fileID: 4103091240840034363}
   - component: {fileID: 4785393022091464484}
   - component: {fileID: 5222424585016305385}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PaintGunColorWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 468150722240617359}
   - component: {fileID: 551175886063747830}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PaintGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +789,7 @@ GameObject:
   - component: {fileID: 5856671627251788019}
   - component: {fileID: 3704308074883472444}
   - component: {fileID: 4015554719882092426}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ThrowMeterBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +866,7 @@ GameObject:
   - component: {fileID: 3497299468619289110}
   - component: {fileID: 3962382017623030104}
   - component: {fileID: 7427858841533814549}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ReticleX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +942,7 @@ GameObject:
   - component: {fileID: 8513072604476314260}
   - component: {fileID: 8513072604476804246}
   - component: {fileID: 8513072604470710454}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -845,6 +961,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 131186723733069784}
   - {fileID: 8399522483022039609}
   m_Father: {fileID: 8513072604476314262}
   m_RootOrder: 0
@@ -921,7 +1038,7 @@ GameObject:
   - component: {fileID: 8513072604464528246}
   - component: {fileID: 8513072604465101654}
   - component: {fileID: 8513072604473454038}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -963,6 +1080,7 @@ MonoBehaviour:
   characterController: {fileID: 8513072604464528246}
   firstPersonController: {fileID: 8513072604465101654}
   playerUI: {fileID: 1262360970984567542}
+  directionArrow: {fileID: 131186723733069784}
   paintGun: {fileID: 8204239052779835821}
 --- !u!143 &8513072604464528246
 CharacterController:
@@ -1205,7 +1323,7 @@ GameObject:
   - component: {fileID: 4428094619930267348}
   - component: {fileID: 3771959906382187283}
   - component: {fileID: 8482923894453330843}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ReticleY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
