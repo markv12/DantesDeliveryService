@@ -33,10 +33,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-  res.json({ ok: true })
+  res.json({ ok: true, serverRunningSince })
 })
 app.get('/api', (req, res) => {
-  res.json({ ok: true })
+  res.json({ ok: true, serverRunningSince })
 })
 
 const apiPrefix = `/api`
@@ -45,8 +45,8 @@ app.use(apiPrefix + '/score', scoresRoutes)
 
 export function init() {
   serverRunningSince = new Date()
-  const port = process.env.PORT || 3053
-  app.listen(port, () => {
-    c.log(`Server is running on port ${port}`)
+  const port = parseInt(process.env.PORT || '') || 3053
+  app.listen(port, '0.0.0.0', () => {
+    c.log(`Server is running on 0.0.0.0:${port}`)
   })
 }
