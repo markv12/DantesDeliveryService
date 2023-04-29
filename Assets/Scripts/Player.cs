@@ -61,4 +61,19 @@ public class Player : MonoBehaviour {
         Cursor.lockState = isActive ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !isActive;
     }
+
+    private DeliveryObject currentDeliveryObject;
+    public void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("DeliveryObject")) {
+            currentDeliveryObject = other.gameObject.GetComponent<DeliveryObject>();
+            currentDeliveryObject.mainT.SetParent(mainCameraTransform, false);
+            currentDeliveryObject.mainT.localPosition = new Vector3(0, -0.55f, 2f);
+        } else if (other.gameObject.CompareTag("Destination")) {
+            Destination destination = other.gameObject.GetComponent<Destination>();
+            if(destination != null && currentDeliveryObject != null && currentDeliveryObject.destination == destination) {
+                Destroy(currentDeliveryObject.gameObject);
+                currentDeliveryObject = null;
+            }
+        }
+    }
 }
