@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class DayNightManager : MonoBehaviour {
 
     public Color daySkyboxColor;
     public Color nightSkyboxColor;
+    public NightStartUI nightStartUI;
+    public DayStartUI dayStartUI;
 
     public static DayNightManager instance;
     private readonly List<DayNightSpriteSwap> spriteSwaps = new List<DayNightSpriteSwap>(64);
@@ -45,6 +48,10 @@ public class DayNightManager : MonoBehaviour {
     private void Update() {
         if (!changing) {
             currentTime += Time.deltaTime;
+            float totalTime = isNight ? dayLength + currentTime : currentTime;
+            float currTimeX = (totalTime / totalLength) * timeBarWidth;
+            currentTimeIndicator.anchoredPosition = new Vector2(currTimeX, 0);
+
             if (isNight) {
                 if (currentTime >= nightLength) {
                     ChangeToDay();
@@ -54,25 +61,45 @@ public class DayNightManager : MonoBehaviour {
                     ChangeToNight();
                 }
             }
-            float totalTime = isNight ? dayLength + currentTime : currentTime;
-            float currTimeX = (totalTime / totalLength) * timeBarWidth;
-            currentTimeIndicator.anchoredPosition = new Vector2(currTimeX, 0);
         }
-
     }
 
     private void ChangeToNight() {
-        changing = true;
-        FadeSkyboxColor(nightSkyboxColor);
-        IsNight = true;
-        currentTime = 0;
+        StartCoroutine(ChangeRoutine());
+
+        IEnumerator ChangeRoutine() {
+            changing = true;
+            FadeSkyboxColor(nightSkyboxColor);
+            currentTime = 0;
+
+            yield return WaitUtil.GetWait(2);
+            nightStartUI.Show(() => {
+                IsNight = true;
+                Player.instance.SetFPSControllerActive(false);
+            }, () => {
+                Player.instance.SetFPSControllerActive(true);
+                changing = false;
+            });
+        }
     }
 
     private void ChangeToDay() {
-        changing = true;
-        FadeSkyboxColor(daySkyboxColor);
-        IsNight = false;
-        currentTime = 0;
+        StartCoroutine(DayChangeRoutine());
+
+        IEnumerator DayChangeRoutine() {
+            changing = true;
+            FadeSkyboxColor(daySkyboxColor);
+            currentTime = 0;
+
+            yield return WaitUtil.GetWait(2);
+            dayStartUI.Show(() => {
+                IsNight = false;
+                Player.instance.SetFPSControllerActive(false);
+            }, () => {
+                Player.instance.SetFPSControllerActive(true);
+                changing = false;
+            });
+        }
     }
 
     private void FadeSkyboxColor(Color color) {
