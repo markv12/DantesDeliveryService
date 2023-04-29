@@ -4,10 +4,19 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import helmet from 'helmet'
 
-import getRoutes from './routes/get'
+import scoresRoutes from './routes/scores'
 import adminRoutes from './routes/admin'
 
 export let serverRunningSince
+
+declare global {
+  namespace Express {
+    export interface Request {
+      ip?: string
+      location?: LocationData
+    }
+  }
+}
 
 const app = express()
 app.use(cors())
@@ -23,18 +32,9 @@ app.use(
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use(async (req, res, next) => {
-  const ip = req.headers['x-forwarded-for'] || req.ip
-  const location = await c.getLocationFromIp(
-    Array.isArray(ip) ? ip[0] : ip,
-  )
-  c.log('gray', `${req.method} ${req.path} ${ip}`, location)
-  next()
-})
-
 const apiPrefix = `/api`
-app.use(apiPrefix + '/get', getRoutes)
 app.use(apiPrefix + '/admin', adminRoutes)
+app.use(apiPrefix + '/score', scoresRoutes)
 
 export function init() {
   serverRunningSince = new Date()
