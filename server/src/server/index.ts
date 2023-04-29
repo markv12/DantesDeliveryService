@@ -19,6 +19,10 @@ declare global {
 }
 
 const app = express()
+app.use((req, res, next) => {
+  c.log('gray', `${req.method} ${req.path}`)
+  next()
+})
 app.use(cors())
 app.use(
   helmet({
@@ -46,7 +50,7 @@ app.use(apiPrefix + '/score', scoresRoutes)
 export function init() {
   serverRunningSince = new Date()
   const port = parseInt(process.env.PORT || '') || 5053
-  app.listen(port, '0.0.0.0', () => {
-    c.log(`Server is running on 0.0.0.0:${port}`)
+  app.listen(port, '127.0.0.1', () => {
+    c.log(`Server is running on 127.0.0.1:${port}`)
   })
 }
