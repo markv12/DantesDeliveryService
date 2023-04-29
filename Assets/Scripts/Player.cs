@@ -116,6 +116,7 @@ public class Player : MonoBehaviour {
 
     public void DOHitDestination(DeliveryObject deliveryObject) {
         if(deliveryObject == currentDO) {
+            ThrowStrength = 0;
             currentDO = null;
             directionArrow.gameObject.SetActive(false);
         }

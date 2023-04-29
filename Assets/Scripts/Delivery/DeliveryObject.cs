@@ -22,7 +22,7 @@ public class DeliveryObject : MonoBehaviour {
         if(destination != null) {
             Vector3 posDiff = (mainT.position - destination.mainT.position).SetY(0);
             float length = (posDiff.magnitude/2f) - 1f;
-            Vector3 midPoint = ((mainT.position + destination.mainT.position) / 2f).SetY(10);
+            Vector3 midPoint = ((mainT.position + destination.mainT.position) / 2f).SetY(100);
             arrowT.position = midPoint;
 
             float angle = -AngleUtil.CartesianToAngle(new Vector2(posDiff.x, posDiff.z));

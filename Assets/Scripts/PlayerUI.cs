@@ -19,7 +19,7 @@ public class PlayerUI : MonoBehaviour {
                 SetPauseMapOpen(false);
             }
         } else {
-            if (InputUtil.GetKeyDown(Key.M)) {
+            if (InputUtil.GetKeyDown(Key.M) || InputUtil.GetKeyDown(Key.Escape)) {
                 SetPauseMapOpen(true);
             }
         }
