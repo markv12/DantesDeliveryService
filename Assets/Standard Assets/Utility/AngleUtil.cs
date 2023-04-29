@@ -3,6 +3,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public static class AngleUtil {
+    public const float RADIANS_TO_DEGREES = 57.2958f;
+
     public static Vector2 PolarToCartesian(double angle, double radius) {
         double angleRad = (Math.PI / 180.0) * (angle - 90);
         double x = radius * Math.Cos(angleRad);
@@ -34,6 +36,22 @@ public static class AngleUtil {
         var rxSq = Mathf.Pow(width, 2);
         var rySq = Mathf.Pow(height, 2);
         return (Mathf.Pow(point.x - h, 2) / rxSq + Mathf.Pow(point.y - k, 2) / rySq) <= 1;
+    }
+
+    public static float CartesianToAngle(Vector2 v) {
+        return (Mathf.Atan2(v.y, v.x) * RADIANS_TO_DEGREES) + 90f;
+    }
+
+    public static float SignedAngle(Vector2 a, Vector2 b) {
+        var s = a.y * b.x - a.x * b.y;
+        var c = a.x * b.x + a.y * b.y;
+        return Mathf.Atan2(s, c);
+    }
+
+    public static Vector2 Rotate(Vector2 v, float angle) {
+        float s = Mathf.Sin(angle);
+        float c = Mathf.Cos(angle);
+        return new Vector2(v.x * c - v.y * s, v.y * c + v.x * s);
     }
 
     #region draw gizmo 
