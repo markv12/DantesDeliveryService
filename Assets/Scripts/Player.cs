@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityStandardAssets.Characters.FirstPerson;
@@ -13,6 +12,7 @@ public class Player : MonoBehaviour {
     public CharacterController characterController;
     public FirstPersonController firstPersonController;
 
+    public PlayerUI playerUI;
     public PaintGun paintGun;
 
     public Vector3 FaceDirection => mainCameraTransform.forward;
@@ -27,6 +27,18 @@ public class Player : MonoBehaviour {
         playerStartRotation = t.rotation;
     }
 
+    private float throwStrength = 0;
+    private float ThrowStrength {
+        get {
+            return throwStrength;
+        }
+        set {
+            throwStrength = value;
+            playerUI.ShowThrowStrength(throwStrength);
+        }
+    }
+
+    private float lastThrowTime;
     private void Update() {
         if(InputUtil.GetKeyDown(Key.G)) {
             PaintGunEquipped = !PaintGunEquipped;
@@ -39,6 +51,21 @@ public class Player : MonoBehaviour {
                 paintGun.Hold();
             } else {
                 paintGun.EndHold();
+            }
+        }
+        if(currentDO != null) {
+            if (InputUtil.LeftMouseButtonIsPressed) {
+                ThrowStrength = Mathf.Min(1f, throwStrength + (Time.deltaTime * 0.5f));
+            }
+            if (InputUtil.LeftMouseButtonUp) {
+                if(throwStrength > 0.05f) {
+                    lastThrowTime = Time.time;
+                    currentDO.mainT.SetParent(null, true);
+                    currentDO.mainRigidbody.isKinematic = false;
+                    currentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1200 * throwStrength);
+                    currentDO = null;
+                }
+                ThrowStrength = 0;
             }
         }
     }
@@ -62,17 +89,20 @@ public class Player : MonoBehaviour {
         Cursor.visible = !isActive;
     }
 
-    private DeliveryObject currentDeliveryObject;
+    private DeliveryObject currentDO;
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("DeliveryObject")) {
-            currentDeliveryObject = other.gameObject.GetComponent<DeliveryObject>();
-            currentDeliveryObject.mainT.SetParent(mainCameraTransform, false);
-            currentDeliveryObject.mainT.localPosition = new Vector3(0, -0.55f, 2f);
+            if(Time.time - lastThrowTime > 0.5f) {
+                currentDO = other.gameObject.GetComponent<DeliveryObject>();
+                currentDO.mainRigidbody.isKinematic = true;
+                currentDO.mainT.SetParent(mainCameraTransform, false);
+                currentDO.mainT.localPosition = new Vector3(0, -0.55f, 2f);
+            }
         } else if (other.gameObject.CompareTag("Destination")) {
             Destination destination = other.gameObject.GetComponent<Destination>();
-            if(destination != null && currentDeliveryObject != null && currentDeliveryObject.destination == destination) {
-                Destroy(currentDeliveryObject.gameObject);
-                currentDeliveryObject = null;
+            if(destination != null && currentDO != null && currentDO.destination == destination) {
+                Destroy(currentDO.gameObject);
+                currentDO = null;
             }
         }
     }
