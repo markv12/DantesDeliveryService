@@ -21,7 +21,7 @@ public class DeliveryObject : MonoBehaviour {
     private void Update() {
         if(destination != null) {
             Vector3 posDiff = (mainT.position - destination.mainT.position).SetY(0);
-            float length = posDiff.magnitude/2f;
+            float length = (posDiff.magnitude/2f) - 1f;
             Vector3 midPoint = ((mainT.position + destination.mainT.position) / 2f).SetY(10);
             arrowT.position = midPoint;
 

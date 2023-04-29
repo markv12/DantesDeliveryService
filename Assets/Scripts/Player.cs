@@ -97,6 +97,12 @@ public class Player : MonoBehaviour {
         firstPersonController.enabled = isActive;
         Cursor.lockState = isActive ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !isActive;
+
+        if (isActive) {
+            PauseManager.ReleasePause(this);
+        } else {
+            PauseManager.RequestPause(this);
+        }
     }
 
     private DeliveryObject currentDO;

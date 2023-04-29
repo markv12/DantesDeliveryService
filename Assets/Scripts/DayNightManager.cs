@@ -75,8 +75,10 @@ public class DayNightManager : MonoBehaviour {
             yield return WaitUtil.GetWait(2);
             nightStartUI.Show(() => {
                 IsNight = true;
+                PauseManager.RequestPause(this);
                 Player.instance.SetFPSControllerActive(false);
             }, () => {
+                PauseManager.ReleasePause(this);
                 Player.instance.SetFPSControllerActive(true);
                 changing = false;
             });

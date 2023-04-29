@@ -30,7 +30,7 @@ public class PlayerUI : MonoBehaviour {
         pauseMapOpen = open;
         smallMap.SetActive(!open);
         pauseMapUI.SetActive(open);
-        Time.timeScale = open ? 0 : 1;
+ 
         minimapCamera.FollowPlayerMode = !open;
         if(Player.instance != null) {
             Player.instance.SetFPSControllerActive(!open);
