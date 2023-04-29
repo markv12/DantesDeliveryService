@@ -9,6 +9,8 @@ import adminRoutes from './routes/admin'
 
 export let serverRunningSince
 
+const appBase = `/ld53`
+
 declare global {
   namespace Express {
     export interface Request {
@@ -19,6 +21,10 @@ declare global {
 }
 
 const app = express()
+// app.use((req, res, next) => {
+//   c.log('gray', `${req.method} ${req.path}`)
+//   next()
+// })
 app.use(cors())
 app.use(
   helmet({
@@ -32,21 +38,21 @@ app.use(
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-  res.json({ ok: true })
+app.get(appBase + '/', (req, res) => {
+  res.json({ ok: true, serverRunningSince })
 })
-app.get('/api', (req, res) => {
-  res.json({ ok: true })
+app.get(appBase + '/api', (req, res) => {
+  res.json({ ok: true, serverRunningSince })
 })
 
-const apiPrefix = `/api`
+const apiPrefix = appBase + `/api`
 app.use(apiPrefix + '/admin', adminRoutes)
 app.use(apiPrefix + '/score', scoresRoutes)
 
 export function init() {
   serverRunningSince = new Date()
-  const port = process.env.PORT || 3053
-  app.listen(port, () => {
-    c.log(`Server is running on port ${port}`)
+  const port = parseInt(process.env.PORT || '') || 5053
+  app.listen(port, '127.0.0.1', () => {
+    c.log(`Server is running on 127.0.0.1:${port}`)
   })
 }
