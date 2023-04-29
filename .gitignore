@@ -6,6 +6,8 @@ node_modules
 server/src/common/ld51/token.ts
 dbBackups
 
+.DS_Store
+
 
 
 # This .gitignore file should be placed at the root of your Unity project directory
