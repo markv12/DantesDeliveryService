@@ -21,10 +21,10 @@ declare global {
 }
 
 const app = express()
-app.use((req, res, next) => {
-  c.log('gray', `${req.method} ${req.path}`)
-  next()
-})
+// app.use((req, res, next) => {
+//   c.log('gray', `${req.method} ${req.path}`)
+//   next()
+// })
 app.use(cors())
 app.use(
   helmet({
