@@ -18,7 +18,7 @@ public class PaintGun : MonoBehaviour {
 
     private static int paintingLayer;
     private void Awake() {
-        paintingLayer = LayerMask.NameToLayer("PaintingCanvas");
+        paintingLayer = LayerMask.NameToLayer("Default");
     }
 
     private const float RAYCAST_DISTANCE = 50f;
