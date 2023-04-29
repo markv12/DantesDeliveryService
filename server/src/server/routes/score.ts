@@ -9,7 +9,15 @@ routes.use(async (req, res, next) => {
   req.parsedIp = Array.isArray(ip) ? ip[0] : ip
   const location = await c.getLocationFromIp(req.ip)
   c.log('gray', `${req.method} ${req.path} ${ip}`, location)
-  if (location.status === 'success') req.location = location
+  if (location.status === 'success') {
+    req.location = location
+    c.log(
+      'gray',
+      `score route location:`,
+      location.country,
+      location.regionName,
+    )
+  }
   next()
 })
 
