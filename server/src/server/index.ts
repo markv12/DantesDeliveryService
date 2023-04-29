@@ -9,6 +9,8 @@ import adminRoutes from './routes/admin'
 
 export let serverRunningSince
 
+const appBase = `/ld53`
+
 declare global {
   namespace Express {
     export interface Request {
@@ -36,14 +38,14 @@ app.use(
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
+app.get(appBase + '/', (req, res) => {
   res.json({ ok: true, serverRunningSince })
 })
-app.get('/api', (req, res) => {
+app.get(appBase + '/api', (req, res) => {
   res.json({ ok: true, serverRunningSince })
 })
 
-const apiPrefix = `/api`
+const apiPrefix = appBase + `/api`
 app.use(apiPrefix + '/admin', adminRoutes)
 app.use(apiPrefix + '/score', scoresRoutes)
 
