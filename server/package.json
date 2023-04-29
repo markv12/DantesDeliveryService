@@ -5,8 +5,8 @@
     "bo": "tsc",
     "dev": "nodemon ./dist/index.js",
     "pm2": "pm2 start ./dist/index.js --name \"ld53api\" --watch",
-    "golive": "git push && ssh root@p.jasperstephenson.com 'cd ~/LD53/server && git pull && npm run bo && source ~/.profile && pm2 restart 2 && pm2 logs'",
-    "logs": "ssh root@p.jasperstephenson.com 'source ~/.profile && pm2 logs'"
+    "golive": "git push && ssh root@p.jasperstephenson.com '. /etc/profile; cd ~/LD53/server && git pull && source ~/.bashrc && npm run bo && pm2 restart 2 && pm2 logs'",
+    "logs": "ssh root@p.jasperstephenson.com 'source ~/.bashrc && pm2 logs'"
   },
   "dependencies": {
     "axios": "^0.26.1",

@@ -12,7 +12,7 @@ export let serverRunningSince
 declare global {
   namespace Express {
     export interface Request {
-      ip?: string
+      parsedIp?: string
       location?: LocationData
     }
   }

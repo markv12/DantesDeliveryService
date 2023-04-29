@@ -6,14 +6,14 @@ const routes = Router()
 
 routes.use(async (req, res, next) => {
   const ip = req.headers['x-forwarded-for'] || req.ip
-  req.ip = Array.isArray(ip) ? ip[0] : ip
+  req.parsedIp = Array.isArray(ip) ? ip[0] : ip
   const location = await c.getLocationFromIp(req.ip)
   c.log('gray', `${req.method} ${req.path} ${ip}`, location)
   if (location.status === 'success') req.location = location
   next()
 })
 
-routes.post('/', async (req, res) => {
+routes.post('/add', async (req, res) => {
   const { score } = req.body
   let scoreAsNumber: number
   try {
@@ -35,7 +35,7 @@ routes.post('/', async (req, res) => {
 
   c.log('gray', `new score:`, scoreAsNumber)
   const rankings = await db.addScore(
-    req.ip,
+    req.parsedIp,
     req.location,
     scoreAsNumber,
   )
