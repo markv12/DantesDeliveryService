@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6791844090980284437}
   - component: {fileID: 8722043653403012411}
   - component: {fileID: 45480036386788506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 5369045265034124891}
   - component: {fileID: 5467348480413042135}
   - component: {fileID: 8415052000101644600}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ Transform:
   - {fileID: 6816692030676450109}
   - {fileID: 9111844434260396780}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5467348480413042135
 MonoBehaviour:
@@ -248,7 +248,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6903850313824258416}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3511241252856625882}
   - component: {fileID: 5174378086794561086}
   - component: {fileID: 2992449928447850517}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Temp_brick (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4364461440938232459}
   - component: {fileID: 3026571401697656066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasicBuildingCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ Transform:
   - {fileID: 3660789208277635261}
   - {fileID: 177347971491455467}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3026571401697656066
 BoxCollider:
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 3660789208277635261}
   - component: {fileID: 6226665452511941212}
   - component: {fileID: 6082024973892460884}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TempBrickTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 5376982808601354867}
   - component: {fileID: 7715118445907594126}
   - component: {fileID: 5270590861752923482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Temp_brick (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 3866539456981739998}
   - component: {fileID: 2627455653201207582}
   - component: {fileID: 7482813878963669125}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Temp_brick (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 479718464102162764}
   - component: {fileID: 2201842163113835964}
   - component: {fileID: 1127586295146604836}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Temp_brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 177347971491455467}
   - component: {fileID: 45346328644833199}
   - component: {fileID: 8103279691209927097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TempBrickBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}

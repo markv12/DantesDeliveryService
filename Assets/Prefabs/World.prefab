@@ -3302,7 +3302,7 @@ GameObject:
   - component: {fileID: 6314798243850716703}
   - component: {fileID: 1543585904245148382}
   - component: {fileID: 6694904844548221568}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5944,7 +5944,7 @@ Transform:
   - {fileID: 8523159456872706496}
   - {fileID: 8371801035734441242}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &396399809104642143
 MonoBehaviour:
@@ -5975,7 +5975,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 50
-  m_NavMeshData: {fileID: 23800000, guid: 8e5ab63fedb4bc042ae183c165890a5b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 10683ede3eef4d142b57f1fc087b5407, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &8962495267741164550
 GameObject:
@@ -6143,7 +6143,7 @@ GameObject:
   - component: {fileID: 1533724460712536123}
   - component: {fileID: 5758892342379608215}
   - component: {fileID: 7653082259299976356}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4402504973416914800}
   - component: {fileID: 6540099702272716068}
   m_Layer: 0
-  m_Name: PaintGunCanvas
+  m_Name: GunCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,18 +58,11 @@ MonoBehaviour:
   raycastT: {fileID: 8513072604476314260}
   smokeImage: {fileID: 1707764679280231986}
   colorIndicator: {fileID: 5222424585016305385}
-  layerMask:
+  hitLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 192
   splatSprites:
-  - {fileID: 1177756204, guid: bbd05d06e00bbdf40abec3579aa51fbf, type: 3}
-  - {fileID: 2141056022, guid: bbd05d06e00bbdf40abec3579aa51fbf, type: 3}
-  - {fileID: 1090225003, guid: bbd05d06e00bbdf40abec3579aa51fbf, type: 3}
-  - {fileID: -1224004095, guid: bbd05d06e00bbdf40abec3579aa51fbf, type: 3}
-  - {fileID: 1261038319, guid: bbd05d06e00bbdf40abec3579aa51fbf, type: 3}
-  - {fileID: -1683844353, guid: bbd05d06e00bbdf40abec3579aa51fbf, type: 3}
-  - {fileID: 1935295993, guid: bbd05d06e00bbdf40abec3579aa51fbf, type: 3}
-  - {fileID: 115749478, guid: bbd05d06e00bbdf40abec3579aa51fbf, type: 3}
+  - {fileID: 21300000, guid: 11e6f279ade864c6d951e8db74c11b54, type: 3}
   shootSound: {fileID: 8300000, guid: fbe3f38e583367944bfa2aa06188433c, type: 3}
   equipSound: {fileID: 8300000, guid: 32e76e769ec709e4e882542587ba11cf, type: 3}
   unequipSound: {fileID: 8300000, guid: a6f39dcb55e55bf45845d05b5b6edf8d, type: 3}
@@ -745,7 +738,7 @@ GameObject:
   - component: {fileID: 468150722240617359}
   - component: {fileID: 551175886063747830}
   m_Layer: 0
-  m_Name: PaintGun
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1086,7 +1079,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1162,7 +1155,7 @@ MonoBehaviour:
   firstPersonController: {fileID: 8513072604465101654}
   playerUI: {fileID: 1262360970984567542}
   directionArrow: {fileID: 131186723733069784}
-  paintGun: {fileID: 8204239052779835821}
+  gun: {fileID: 8204239052779835821}
 --- !u!143 &8513072604464528246
 CharacterController:
   m_ObjectHideFlags: 0

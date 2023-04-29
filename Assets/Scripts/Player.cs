@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
 
     public PlayerUI playerUI;
     public Transform directionArrow;
-    public PaintGun paintGun;
+    public Gun gun;
 
     public Vector3 FaceDirection => mainCameraTransform.forward;
 
@@ -47,12 +47,12 @@ public class Player : MonoBehaviour {
         }
         if (PaintGunEquipped) {
             if (InputUtil.LeftMouseButtonDown) {
-                paintGun.Shoot();
+                gun.Shoot();
             }
             if(InputUtil.LeftMouseButtonIsPressed) {
-                paintGun.Hold();
+                gun.Hold();
             } else {
-                paintGun.EndHold();
+                gun.EndHold();
             }
         }
         if(currentDO != null) {
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour {
         set {
             if(paintGunEquipped != value) {
                 paintGunEquipped = value;
-                paintGun.SetEquipped(paintGunEquipped);
+                gun.SetEquipped(paintGunEquipped);
             }
         }
     }

@@ -862,10 +862,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 396399809104642143, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 10683ede3eef4d142b57f1fc087b5407, type: 2}
     - target: {fileID: 4413819325201380856, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
       propertyPath: m_RootOrder
       value: 1

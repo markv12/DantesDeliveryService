@@ -2,12 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PaintGun : MonoBehaviour {
+public class Gun : MonoBehaviour {
     public RectTransform rectT;
     public Transform raycastT;
     public Image smokeImage;
     public Image colorIndicator;
-    public LayerMask layerMask;
+    public LayerMask hitLayerMask;
     public Sprite[] splatSprites;
     public AudioClip shootSound;
     public AudioClip equipSound;
@@ -16,9 +16,11 @@ public class PaintGun : MonoBehaviour {
     private bool singleColorMode;
     private Color selectedColor;
 
-    private static int paintingLayer;
+    private static int defaultLayer;
+    private static int enemyLayer;
     private void Awake() {
-        paintingLayer = LayerMask.NameToLayer("Default");
+        defaultLayer = LayerMask.NameToLayer("Default");
+        enemyLayer = LayerMask.NameToLayer("Enemy");
     }
 
     private const float RAYCAST_DISTANCE = 50f;
@@ -26,8 +28,10 @@ public class PaintGun : MonoBehaviour {
         AudioManager.Instance.PlaySFX(shootSound, 1, Random.Range(0.90f, 1.1f));
 
         Kickback();
-        if (Physics.Raycast(raycastT.position, raycastT.forward, out RaycastHit hit, RAYCAST_DISTANCE, layerMask)) {
-            CreateSplat(hit);
+        if (Physics.Raycast(raycastT.position, raycastT.forward, out RaycastHit hit, RAYCAST_DISTANCE, hitLayerMask)) {
+            if (hit.transform.gameObject.layer != enemyLayer) {
+                CreateSplat(hit);
+            }
         }
     }
 
@@ -96,7 +100,8 @@ public class PaintGun : MonoBehaviour {
         SpriteRenderer splatRenderer = newSplat.AddComponent<SpriteRenderer>();
         splatRenderer.sprite = splatSprites[Random.Range(0, splatSprites.Length)];
         splatRenderer.sortingOrder = 1;
-        newSplat.layer = paintingLayer;
+        newSplat.layer = defaultLayer;
+        Destroy(newSplat, 5f);
     }
 
     private Coroutine equipRoutine;
