@@ -103,20 +103,20 @@ public class Player : MonoBehaviour {
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("DeliveryObject")) {
             if(Time.time - lastThrowTime > 0.5f) {
-                currentDO = other.gameObject.GetComponent<DeliveryObject>();
-                PickUpDeliveryObject();
-            }
-        } else if (currentDO != null && other.gameObject.CompareTag("Destination")) {
-            Destination destination = other.gameObject.GetComponent<Destination>();
-            if(destination != null && currentDO.destination == destination) {
-                Destroy(currentDO.gameObject);
-                currentDO = null;
-                directionArrow.gameObject.SetActive(false);
+                PickUpDeliveryObject(other.gameObject.GetComponent<DeliveryObject>());
             }
         }
     }
 
-    private void PickUpDeliveryObject() {
+    public void DOHitDestination(DeliveryObject deliveryObject) {
+        if(deliveryObject == currentDO) {
+            currentDO = null;
+            directionArrow.gameObject.SetActive(false);
+        }
+    }
+
+    private void PickUpDeliveryObject(DeliveryObject deliveryObject) {
+        currentDO = deliveryObject;
         currentDO.mainRigidbody.isKinematic = true;
         currentDO.mainT.SetParent(mainCameraTransform, false);
         currentDO.mainT.localPosition = new Vector3(0, -0.55f, 2f);

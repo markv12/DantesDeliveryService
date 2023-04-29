@@ -9,6 +9,7 @@ public class DeliveryObject : MonoBehaviour {
         if (other.gameObject.CompareTag("Destination")) {
             Destination hitDestination = other.gameObject.GetComponent<Destination>();
             if (hitDestination != null && destination == hitDestination) {
+                Player.instance.DOHitDestination(this);
                 Destroy(gameObject);
             }
         }
