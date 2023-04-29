@@ -1120,26 +1120,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsWalking: 0
-  m_WalkSpeed: 5
-  m_RunSpeed: 11
+  m_IsWalking: 1
+  m_WalkSpeed: 9
+  m_RunSpeed: 9
   m_RunstepLenghten: 0.7
-  m_JumpSpeed: 6
-  m_StickToGroundForce: 10
-  m_GravityMultiplier: 2
+  m_JumpSpeed: 15
+  m_StickToGroundForce: 15
+  m_GravityMultiplier: 5
   m_MouseLook:
-    XSensitivity: 0.4
-    YSensitivity: 0.4
+    XSensitivity: 0.3
+    YSensitivity: 0.3
     clampVerticalRotation: 1
     MinimumX: -90
     MaximumX: 90
-    smooth: 0
-    smoothTime: 5
+    smooth: 1
+    smoothTime: 25
     lockCursor: 1
   m_UseHeadBob: 1
   m_HeadBob:
-    HorizontalBobRange: 0.025
-    VerticalBobRange: 0.025
+    HorizontalBobRange: 0.05
+    VerticalBobRange: 0.05
     Bobcurve:
       serializedVersion: 2
       m_Curve:
@@ -1193,9 +1193,9 @@ MonoBehaviour:
       m_RotationOrder: 4
     VerticaltoHorizontalRatio: 2
   m_JumpBob:
-    BobDuration: 0.2
+    BobDuration: 0.05
     BobAmount: 0.1
-  m_StepInterval: 5
+  m_StepInterval: 7
   m_FootstepSounds:
   - {fileID: 8300000, guid: 6c0cfbb5f71cd48c08884423e82c73c5, type: 3}
   - {fileID: 8300000, guid: bc53401e8d9294f2492e9787b5bd6228, type: 3}
