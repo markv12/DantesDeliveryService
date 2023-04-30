@@ -123,6 +123,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         }
 
         private void Jump(float speed) {
+            Debug.Log("Jump Speed: " + speed);
             m_MoveDir.y = speed;
             PlayJumpSound();
             m_Jump = false;
@@ -137,7 +138,6 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         private void PlayJumpSound() {
             AudioManager.Instance.PlaySFX(m_JumpSound, 1);
         }
-
 
         private void ProgressStepCycle(float speed) {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0)) {
