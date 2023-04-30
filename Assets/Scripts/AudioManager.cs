@@ -46,8 +46,7 @@ public class AudioManager : MonoBehaviour {
 
     [Header("Sound Effects")]
     public AudioSource[] audioSources;
-
-    private int audioSourceIndex = 0;
+    public AudioSource[] pitchedAudioSources;
 
     public AudioClip uiClick;
     public AudioClip nightStart;
@@ -65,16 +64,30 @@ public class AudioManager : MonoBehaviour {
         PlaySFX(dayStart, 1f);
     }
 
-    public void PlaySFX(AudioClip clip, float volume, float pitch = 1) {
+    public void PlaySFX(AudioClip clip, float volume) {
         AudioSource source = GetNextAudioSource();
+        source.volume = volume * 1;
+        source.PlayOneShot(clip);
+    }
+
+    public void PlaySFXPitched(AudioClip clip, float volume, float pitch = 1) {
+        AudioSource source = GetNextPitchedAudioSource();
         source.volume = volume * 1;
         source.pitch = pitch;
         source.PlayOneShot(clip);
     }
 
+    private int audioSourceIndex = 0;
     private AudioSource GetNextAudioSource() {
         AudioSource result = audioSources[audioSourceIndex];
         audioSourceIndex = (audioSourceIndex + 1) % audioSources.Length;
+        return result;
+    }
+
+    private int pitchedAudioSourceIndex = 0;
+    private AudioSource GetNextPitchedAudioSource() {
+        AudioSource result = pitchedAudioSources[pitchedAudioSourceIndex];
+        pitchedAudioSourceIndex = (pitchedAudioSourceIndex + 1) % pitchedAudioSources.Length;
         return result;
     }
 }

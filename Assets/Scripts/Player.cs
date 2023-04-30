@@ -61,9 +61,10 @@ public class Player : MonoBehaviour {
         }
         set {
             throwStrength = value;
-            playerUI.ShowThrowStrength(throwStrength);
+            playerUI.ShowThrowStrength(EasedThrowStrength);
         }
     }
+    private float EasedThrowStrength => Easing.easeOutSine(0, 1, throwStrength);
 
     private float lastThrowTime;
     private void Update() {
@@ -95,7 +96,7 @@ public class Player : MonoBehaviour {
         lastThrowTime = Time.time;
         CurrentDO.mainT.SetParent(null, true);
         CurrentDO.mainRigidbody.isKinematic = false;
-        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1200 * throwStrength);
+        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1250 * EasedThrowStrength);
         CurrentDO = null;
         directionArrow.gameObject.SetActive(false);
     }

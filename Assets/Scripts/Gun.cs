@@ -6,8 +6,7 @@ public class Gun : MonoBehaviour {
     public int damage;
     public RectTransform rectT;
     public Transform raycastT;
-    public Image smokeImage;
-    public Image colorIndicator;
+    public Image[] smokeImages;
     public LayerMask hitLayerMask;
     public Sprite[] splatSprites;
     public AudioClip shootSound;
@@ -26,14 +25,13 @@ public class Gun : MonoBehaviour {
 
     private const float RAYCAST_DISTANCE = 50f;
     public void Shoot() {
-        AudioManager.Instance.PlaySFX(shootSound, 1, Random.Range(0.90f, 1.1f));
+        AudioManager.Instance.PlaySFXPitched(shootSound, 1, Random.Range(0.90f, 1.1f));
 
         Kickback();
         if (Physics.Raycast(raycastT.position, raycastT.forward, out RaycastHit hit, RAYCAST_DISTANCE, hitLayerMask)) {
             if (hit.transform.gameObject.layer == enemyLayer) {
-                GroundEnemy ge = hit.transform.parent.GetComponent<GroundEnemy>();
-                if(ge != null) {
-                    ge.Hurt(damage);
+                if(hit.transform.TryGetComponent<Enemy>(out var enemy)) {
+                    enemy.Hurt(damage);
                 }
             } else {
                 CreateSplat(hit);
@@ -43,7 +41,7 @@ public class Gun : MonoBehaviour {
 
     private const float AUTO_WAIT = 0.25f;
     private float lastShootTime;
-    private const float TIME_BETWEEN_SHOTS = 0.08f;
+    private const float TIME_BETWEEN_SHOTS = 0.09f;
     private float timeHeld = 0;
     public void Hold() {
         timeHeld += Time.deltaTime;
@@ -65,7 +63,9 @@ public class Gun : MonoBehaviour {
     private const float RETURN_TIME = 0.3f;
     private void Kickback() {
         StopKick();
-        smokeImage.gameObject.SetActive(false);
+        for (int i = 0; i < smokeImages.Length; i++) {
+            smokeImages[i].gameObject.SetActive(false);
+        }
         kickbackRoutine = StartCoroutine(KickbackRoutine());
 
         IEnumerator KickbackRoutine() {
@@ -76,6 +76,7 @@ public class Gun : MonoBehaviour {
             kickbackSubroutine = this.CreateAnimationRoutine(KICK_TIME, (float progress) => {
                 rectT.anchoredPosition = Vector2.Lerp(startPos, endPos, Easing.easeOutQuad(0, 1, progress));
             });
+            Image smokeImage = smokeImages[Random.Range(0, smokeImages.Length)];
             smokeImage.gameObject.SetActive(true);
             yield return null;
             yield return null;
@@ -119,10 +120,10 @@ public class Gun : MonoBehaviour {
     }
 
     private Coroutine equipRoutine;
-    private static readonly Vector2 equippedPos = new Vector2(300f, -277f);
-    private static readonly Vector2 unequippedPos = new Vector2(300f, -807);
+    private static readonly Vector2 equippedPos = new Vector2(575f, -320f);
+    private static readonly Vector2 unequippedPos = new Vector2(575f, -800f);
     private const float SHOOT_MAGNITUDE = 30;
-    private static readonly Vector2 shootVector = new Vector2(0.5f, -0.866f) * SHOOT_MAGNITUDE;
+    private static readonly Vector2 shootVector = new Vector2(0.766f, -0.6427876f) * SHOOT_MAGNITUDE;
     public void SetEquipped(bool equipped) {
         StopKick();
         if(equipped) {
