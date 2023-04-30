@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 3209940840712897252}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6884888973400674272
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedModifier: 2
-  duration: 1
+  duration: 0.5
 --- !u!65 &6779123613726468634
 BoxCollider:
   m_ObjectHideFlags: 0
