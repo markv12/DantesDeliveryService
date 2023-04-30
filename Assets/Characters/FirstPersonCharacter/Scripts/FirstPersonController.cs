@@ -26,6 +26,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
         private Camera m_Camera;
         private bool m_Jump;
+        private float superJumpSpeed = -1;
         private float m_YRotation;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
@@ -103,11 +104,10 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             if (m_CharacterController.isGrounded) {
                 m_MoveDir.y = -m_StickToGroundForce;
 
-                if (m_Jump) {
-                    m_MoveDir.y = m_JumpSpeed;
-                    PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
+                if(superJumpSpeed > 0) {
+                    Jump(superJumpSpeed);
+                } else if (m_Jump) {
+                    Jump(m_JumpSpeed);
                 }
             } else {
                 m_MoveDir += m_GravityMultiplier * Time.fixedDeltaTime * Physics.gravity;
@@ -122,6 +122,17 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             m_MouseLook.UpdateCursorLock();
         }
 
+        private void Jump(float speed) {
+            m_MoveDir.y = speed;
+            PlayJumpSound();
+            m_Jump = false;
+            superJumpSpeed = -1;
+            m_Jumping = true;
+        }
+
+        public void SuperJump(float speed) {
+            superJumpSpeed = speed;
+        }
 
         private void PlayJumpSound() {
             AudioManager.Instance.PlaySFX(m_JumpSound, 1);
