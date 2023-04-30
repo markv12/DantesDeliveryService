@@ -23,7 +23,7 @@ public class NightStartUI : MonoBehaviour {
     private void Continue() {
         StartCoroutine(ContinueRoutine());
         IEnumerator ContinueRoutine() {
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSecondsRealtime(1.4f);
             Vector2 startPos = bgTransform.anchoredPosition;
             this.CreateAnimationRoutine(1f, (float progress) => {
                 bgTransform.anchoredPosition = Vector2.Lerp(startPos, OFF_SCREEN_POS, Easing.easeInSine(0, 1, progress));
