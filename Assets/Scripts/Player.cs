@@ -27,6 +27,9 @@ public class Player : MonoBehaviour {
             if(currentDO != value) {
                 currentDO = value;
                 DeliveryManager.instance.SetActiveDO(currentDO);
+                if(currentDO == null && DayNightManager.instance.IsNight) {
+                    GunEquipped = true;
+                }
             }
 
         }
@@ -64,10 +67,7 @@ public class Player : MonoBehaviour {
 
     private float lastThrowTime;
     private void Update() {
-        if(CurrentDO == null && InputUtil.GetKeyDown(Key.G)) {
-            PaintGunEquipped = !PaintGunEquipped;
-        }
-        if (PaintGunEquipped) {
+        if (GunEquipped) {
             if (InputUtil.LeftMouseButtonDown) {
                 gun.Shoot();
             }
@@ -100,13 +100,13 @@ public class Player : MonoBehaviour {
         directionArrow.gameObject.SetActive(false);
     }
 
-    private bool paintGunEquipped = false;
-    private bool PaintGunEquipped {
-        get { return paintGunEquipped; }
+    private bool gunEquipped = false;
+    public bool GunEquipped {
+        get { return gunEquipped; }
         set {
-            if(paintGunEquipped != value) {
-                paintGunEquipped = value;
-                gun.SetEquipped(paintGunEquipped);
+            if(gunEquipped != value) {
+                gunEquipped = value;
+                gun.SetEquipped(gunEquipped);
             }
         }
     }
@@ -120,6 +120,9 @@ public class Player : MonoBehaviour {
 
         if (isActive) {
             PauseManager.ReleasePause(this);
+            if(CurrentDO == null && DayNightManager.instance.IsNight) {
+                GunEquipped = true;
+            }
         } else {
             PauseManager.RequestPause(this);
         }
@@ -142,7 +145,7 @@ public class Player : MonoBehaviour {
     }
 
     private void PickUpDeliveryObject(DeliveryObject deliveryObject) {
-        PaintGunEquipped = false;
+        GunEquipped = false;
         CurrentDO = deliveryObject;
         CurrentDO.mainRigidbody.isKinematic = true;
         CurrentDO.mainT.SetParent(mainCameraTransform, false);

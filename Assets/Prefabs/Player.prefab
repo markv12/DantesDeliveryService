@@ -64,9 +64,9 @@ MonoBehaviour:
     m_Bits: 192
   splatSprites:
   - {fileID: 21300000, guid: 11e6f279ade864c6d951e8db74c11b54, type: 3}
-  shootSound: {fileID: 8300000, guid: fbe3f38e583367944bfa2aa06188433c, type: 3}
-  equipSound: {fileID: 8300000, guid: 32e76e769ec709e4e882542587ba11cf, type: 3}
-  unequipSound: {fileID: 8300000, guid: a6f39dcb55e55bf45845d05b5b6edf8d, type: 3}
+  shootSound: {fileID: 8300000, guid: cbb094452806e48e488bb14194165d1f, type: 3}
+  equipSound: {fileID: 8300000, guid: dc0b0766eef104f6b8304f8ace4f9067, type: 3}
+  unequipSound: {fileID: 8300000, guid: f48482859c1404c60b59943a8f1f727f, type: 3}
 --- !u!223 &4402504973416914800
 Canvas:
   m_ObjectHideFlags: 0

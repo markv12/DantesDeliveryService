@@ -38,11 +38,11 @@ public class DayNightManager : MonoBehaviour {
     }
 
     private bool isNight = false;
-    private bool IsNight {
+    public bool IsNight {
         get {
             return isNight;
         }
-        set {
+        private set {
             isNight = value;
             SetSwapSprites(isNight);
         }
@@ -106,6 +106,7 @@ public class DayNightManager : MonoBehaviour {
             dayStartUI.Show(() => {
                 IsNight = false;
                 Player.instance.SetFPSControllerActive(false);
+                Player.instance.GunEquipped = false;
             }, () => {
                 Player.instance.SetFPSControllerActive(true);
                 changing = false;
