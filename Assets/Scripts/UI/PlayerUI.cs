@@ -9,6 +9,14 @@ public class PlayerUI : MonoBehaviour {
     [SerializeField] private GameObject healthUI;
     [SerializeField] private RectTransform healthBar;
 
+    private void Start() {
+        DayNightManager.instance.IsNightChanged += HandleIsNightChanged;
+    }
+
+    private void HandleIsNightChanged(bool isNight) {
+        healthUI.SetActive(isNight);
+    }
+
     public void ShowThrowStrength(float throwStrength) {
         throwMeter.sizeDelta = new Vector2(33, 236f * throwStrength);
     }

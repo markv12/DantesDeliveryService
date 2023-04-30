@@ -136,7 +136,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f6e8b666a984f25489bf1b6c6676afc7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,7 +217,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  spriteT: {fileID: 2076020871013952978}
   mainRenderer: {fileID: 5425991514901458729}
+  normalSprite: {fileID: 21300000, guid: 60a65535a7b6b0a4bb3a866062078262, type: 3}
+  attackSprite: {fileID: 21300000, guid: aa18af335c17dec448e0569a66c6db50, type: 3}
+  deathSprite: {fileID: 21300000, guid: d7a42cbbd7fc28345b2d2b53474b36b5, type: 3}
   navMeshAgent: {fileID: 8415052000101644600}
 --- !u!195 &8415052000101644600
 NavMeshAgent:

@@ -37,14 +37,18 @@ public class DayNightManager : MonoBehaviour {
         RenderSettings.skybox = new Material(RenderSettings.skybox);
     }
 
+    public event Action<bool> IsNightChanged;
     private bool isNight = false;
     public bool IsNight {
         get {
             return isNight;
         }
         private set {
-            isNight = value;
-            SetSwapSprites(isNight);
+            if(isNight != value) {
+                isNight = value;
+                IsNightChanged?.Invoke(isNight);
+                SetSwapSprites(isNight);
+            }
         }
     }
 
