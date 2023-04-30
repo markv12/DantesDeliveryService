@@ -1,26 +1,26 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopUI : MonoBehaviour {
+public class GameStartUI : MonoBehaviour {
     public RectTransform bgTransform;
-    public Button continueButton;
+    public Button startButton;
 
     private void Awake() {
-        continueButton.onClick.AddListener(Continue);
+        bgTransform.anchoredPosition = NightStartUI.ON_SCREEN_POS;
+        startButton.onClick.AddListener(StartGame);
     }
 
-    private Action onComplete;
-    public void Show(Action _onComplete) {
-        onComplete = _onComplete;
-        bgTransform.anchoredPosition = new Vector2(0, 0);
+    private void Start() {
+        Player.instance.SetFPSControllerActive(false);
     }
 
-    private void Continue() {
+    private void StartGame() {
         AudioManager.Instance.PlayUIClick();
         Vector2 startPos = bgTransform.anchoredPosition;
         this.CreateAnimationRoutine(1f, (float progress) => {
             bgTransform.anchoredPosition = Vector2.Lerp(startPos, NightStartUI.OFF_SCREEN_POS, Easing.easeInSine(0, 1, progress));
-        }, onComplete);
+        }, () => {
+            Player.instance.SetFPSControllerActive(true);
+        });
     }
 }

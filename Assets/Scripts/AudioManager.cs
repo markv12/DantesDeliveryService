@@ -1,76 +1,80 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
-{
-	private const string AUDIO_MANAGER_PATH = "AudioManager";
-	private static AudioManager instance;
-	public static AudioManager Instance
-	{
-		get
-		{
-			if (instance == null) {
-				GameObject audioManagerObject = (GameObject)Resources.Load(AUDIO_MANAGER_PATH);
-				GameObject instantiated = Instantiate(audioManagerObject);
-				DontDestroyOnLoad(instantiated);
-				instance = instantiated.GetComponent<AudioManager>();
-			}
-			return instance;
-		}
-	}
+public class AudioManager : MonoBehaviour {
+    private const string AUDIO_MANAGER_PATH = "AudioManager";
+    private static AudioManager instance;
+    public static AudioManager Instance {
+        get {
+            if (instance == null) {
+                GameObject audioManagerObject = (GameObject)Resources.Load(AUDIO_MANAGER_PATH);
+                GameObject instantiated = Instantiate(audioManagerObject);
+                DontDestroyOnLoad(instantiated);
+                instance = instantiated.GetComponent<AudioManager>();
+            }
+            return instance;
+        }
+    }
+
+    public AudioSource dayThemeSource;
+    public AudioSource nightThemeSource;
+
+    public void PlayDayTheme() {
+        dayThemeSource.volume = 1;
+        dayThemeSource.Play();
+    }
+    public void PlayNightTheme() {
+        nightThemeSource.volume = 1;
+        nightThemeSource.Play();
+    }
+    public void FadeOutBGM() {
+        if (dayThemeSource.isPlaying) {
+            FadeAudioSource(dayThemeSource);
+        }
+        if (nightThemeSource.isPlaying) {
+            FadeAudioSource(nightThemeSource);
+        }
+    }
+
+    private void FadeAudioSource(AudioSource audioSource) {
+        float startVolume = audioSource.volume;
+        this.CreateAnimationRoutine(1.5f, (float progress) => {
+            audioSource.volume = Mathf.Lerp(startVolume, 0, progress);
+        }, () => {
+            audioSource.Stop();
+        });
+    }
 
     [Header("Sound Effects")]
-	public AudioSource[] audioSources;
+    public AudioSource[] audioSources;
 
-	private int audioSourceIndex = 0;
+    private int audioSourceIndex = 0;
 
-	public AudioClip success;
-	public AudioClip failure;
-	public AudioClip startDrawing;
-	public AudioClip[] brushes;
-	public AudioClip talk;
-	public AudioClip paperFlip;
-	public AudioClip save;
+    public AudioClip uiClick;
+    public AudioClip nightStart;
+    public AudioClip dayStart;
 
-    public void PlaySuccessSound(float intensity) {
-		PlaySFX(success, 1.0f * intensity);
-	}
+    public void PlayUIClick() {
+        PlaySFX(uiClick, 1f);
+    }
 
-	public void PlayFailureSound(float intensity) {
-		PlaySFX(failure, 1.0f * intensity);
-	}
+    public void PlayNightStart() {
+        PlaySFX(nightStart, 1f);
+    }
 
-	public void PlaySaveSound(float intensity) {
-		PlaySFX(save, 1.0f * intensity);
-	}
+    public void PlayDayStart() {
+        PlaySFX(dayStart, 1f);
+    }
 
-	public void PlayPaperFlip(float intensity) {
-		PlaySFX(paperFlip, 1.4f * intensity);
-	}
+    public void PlaySFX(AudioClip clip, float volume, float pitch = 1) {
+        AudioSource source = GetNextAudioSource();
+        source.volume = volume * 1;
+        source.pitch = pitch;
+        source.PlayOneShot(clip);
+    }
 
-	public void PlayStartDrawingSound(float intensity) {
-		PlaySFX(startDrawing, 1.4f * intensity);
-	}
-
-	public void PlayBrushSound(float intensity) {
-		AudioClip sound = brushes[Random.Range(0, brushes.Length)];
-		PlaySFX(sound, 1.0f * intensity);
-	}
-
-	public void PlayTalkSound(float intensity, float pitchCenter) {
-		PlaySFX(talk, 1.0f * Random.Range(0.5f, 1.5f) * intensity, Random.Range(0.6f, 1.4f) * pitchCenter);
-	}
-
-	public void PlaySFX(AudioClip clip, float volume, float pitch = 1) {
-		AudioSource source = GetNextAudioSource();
-		source.volume = volume * 1;
-		source.pitch = pitch;
-		source.PlayOneShot(clip);
-	}
-
-	private AudioSource GetNextAudioSource()
-	{
-		AudioSource result = audioSources[audioSourceIndex];
-		audioSourceIndex = (audioSourceIndex + 1) % audioSources.Length;
-		return result;
-	}
+    private AudioSource GetNextAudioSource() {
+        AudioSource result = audioSources[audioSourceIndex];
+        audioSourceIndex = (audioSourceIndex + 1) % audioSources.Length;
+        return result;
+    }
 }

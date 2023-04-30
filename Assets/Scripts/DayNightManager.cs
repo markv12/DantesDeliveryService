@@ -72,6 +72,9 @@ public class DayNightManager : MonoBehaviour {
 
         IEnumerator ChangeRoutine() {
             changing = true;
+            AudioManager.Instance.FadeOutBGM();
+            AudioManager.Instance.PlayNightStart();
+
             FadeSkyboxColor(nightSkyboxColor);
             currentTime = 0;
 
@@ -81,6 +84,7 @@ public class DayNightManager : MonoBehaviour {
                 PauseManager.RequestPause(this);
                 Player.instance.SetFPSControllerActive(false);
             }, () => {
+                AudioManager.Instance.PlayNightTheme();
                 PauseManager.ReleasePause(this);
                 Player.instance.SetFPSControllerActive(true);
                 changing = false;
@@ -93,6 +97,8 @@ public class DayNightManager : MonoBehaviour {
 
         IEnumerator DayChangeRoutine() {
             changing = true;
+            AudioManager.Instance.FadeOutBGM();
+            AudioManager.Instance.PlayDayStart();
             FadeSkyboxColor(daySkyboxColor);
             currentTime = 0;
 
