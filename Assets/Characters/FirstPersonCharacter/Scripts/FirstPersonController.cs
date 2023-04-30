@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityStandardAssets.Utility;
@@ -27,9 +28,11 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         private Camera m_Camera;
         private bool m_Jump;
         private float superJumpSpeed = -1;
+        private float speedUpMultiplier = 1;
         private float m_YRotation;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
+        public Vector3 CurrentDirection => m_MoveDir;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded = true;
@@ -123,7 +126,6 @@ namespace UnityStandardAssets.Characters.FirstPerson {
         }
 
         private void Jump(float speed) {
-            Debug.Log("Jump Speed: " + speed);
             m_MoveDir.y = speed;
             PlayJumpSound();
             m_Jump = false;
@@ -133,6 +135,16 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
         public void SuperJump(float speed) {
             superJumpSpeed = speed;
+        }
+
+        public void SpeedUp(float multiplier, float time) {
+            StartCoroutine(SpeedUpRoutine());
+
+            IEnumerator SpeedUpRoutine() {
+                speedUpMultiplier = multiplier;
+                yield return WaitUtil.GetWait(time);
+                speedUpMultiplier = 1;
+            }
         }
 
         private void PlayJumpSound() {
@@ -202,6 +214,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            speed *= speedUpMultiplier;
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:

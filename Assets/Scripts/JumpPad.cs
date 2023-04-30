@@ -7,7 +7,9 @@ public class JumpPad : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             FirstPersonController fps = other.gameObject.GetComponent<FirstPersonController>();
-            fps.SuperJump(jumpStrength);
+            if(fps != null) {
+                fps.SuperJump(jumpStrength);
+            }
         }
     }
 }
