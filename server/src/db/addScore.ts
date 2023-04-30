@@ -56,7 +56,7 @@ export default async function (
   if (!scoreFile) {
     c.log(
       'creating new score file',
-      `${scoreRoundedToThousands} - 1.json`,
+      dbPath + '/' + `${scoreRoundedToThousands} - 1.json`,
     )
     scoreFile = `${scoreRoundedToThousands} - 1.json`
     await fs.promises
@@ -68,9 +68,12 @@ export default async function (
         c.log(err)
       })
   } else {
-    c.log('adding score to existing file', scoreFile)
+    c.log(
+      'adding score to existing file',
+      dbPath + '/' + scoreFile,
+    )
     const scoreFileData = JSON.parse(
-      await fs.promises
+      (await fs.promises
         .readFile(
           path.join('./', 'data', dbPath, scoreFile),
           'utf8',
@@ -78,7 +81,7 @@ export default async function (
         .catch((err) => {
           c.log(err)
           return '[]'
-        }),
+        })) || '[]',
     )
     let scoresAboveInFile = scoreFileData.findIndex(
       (scoreData: Score) => scoreData.score < score,
