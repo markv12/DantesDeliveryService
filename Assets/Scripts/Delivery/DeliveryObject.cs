@@ -5,12 +5,14 @@ public class DeliveryObject : MonoBehaviour {
     public Transform mainT;
     public Rigidbody mainRigidbody;
     public Transform arrowT;
+    public Transform minimapIconT;
     public SpriteRenderer arrowRenderer;
 
     [NonSerialized] public DOSpawnLocation spawnLocation;
     [NonSerialized] public Destination destination;
 
     private void Awake() {
+        minimapIconT.eulerAngles = new Vector3(270, 180, 0);
         arrowT.SetParent(null, true);
     }
 

@@ -105,12 +105,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c8ef65a4424bf4b8493afd7150214d57, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 148cc3a0feff742eb87029c8a721557f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.72, y: 2.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -170,6 +170,7 @@ MonoBehaviour:
   mainT: {fileID: 8592765740493752810}
   mainRigidbody: {fileID: 6534751634171839725}
   arrowT: {fileID: 5209532257688010008}
+  minimapIconT: {fileID: 5392051175927735847}
   arrowRenderer: {fileID: 2545648342575605009}
 --- !u!33 &2269540111643860668
 MeshFilter:

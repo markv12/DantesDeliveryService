@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainT: {fileID: 1884169478248188732}
+  minimapIconT: {fileID: 1281903274495267055}
 --- !u!33 &4000033264003360728
 MeshFilter:
   m_ObjectHideFlags: 0
