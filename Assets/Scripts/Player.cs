@@ -15,6 +15,22 @@ public class Player : MonoBehaviour {
     public PlayerUI playerUI;
     public Transform directionArrow;
     public Gun gun;
+    public float maxHealth;
+    private float health;
+
+    private DeliveryObject currentDO;
+    private DeliveryObject CurrentDO {
+        get {
+            return currentDO;
+        }
+        set {
+            if(currentDO != value) {
+                currentDO = value;
+                DeliveryManager.instance.SetActiveDO(currentDO);
+            }
+
+        }
+    }
 
     public Vector3 FaceDirection => mainCameraTransform.forward;
 
@@ -27,6 +43,12 @@ public class Player : MonoBehaviour {
         playerStartPos = t.position;
         playerStartRotation = t.rotation;
         directionArrow.gameObject.SetActive(false);
+        health = maxHealth;
+    }
+
+    public void Hurt(int damage) {
+        health = Mathf.Max(0, health - damage);
+        playerUI.ShowHealthFraction(health / (float)maxHealth);
     }
 
     private float throwStrength = 0;
@@ -42,7 +64,7 @@ public class Player : MonoBehaviour {
 
     private float lastThrowTime;
     private void Update() {
-        if(currentDO == null && InputUtil.GetKeyDown(Key.G)) {
+        if(CurrentDO == null && InputUtil.GetKeyDown(Key.G)) {
             PaintGunEquipped = !PaintGunEquipped;
         }
         if (PaintGunEquipped) {
@@ -55,12 +77,12 @@ public class Player : MonoBehaviour {
                 gun.EndHold();
             }
         }
-        if(currentDO != null) {
-            Vector3 lookDir = currentDO.destination.transform.position - directionArrow.position;
+        if(CurrentDO != null) {
+            Vector3 lookDir = CurrentDO.destination.transform.position - directionArrow.position;
             directionArrow.rotation = Quaternion.LookRotation(lookDir);
 
             if (InputUtil.LeftMouseButtonIsPressed) {
-                ThrowStrength = Mathf.Min(1f, throwStrength + (Time.deltaTime * 0.6f));
+                ThrowStrength = Mathf.Min(1f, throwStrength + (Time.deltaTime * 0.8f));
             }
             if (InputUtil.LeftMouseButtonUp) {
                 ThrowDeliveryObject();
@@ -71,10 +93,10 @@ public class Player : MonoBehaviour {
 
     private void ThrowDeliveryObject() {
         lastThrowTime = Time.time;
-        currentDO.mainT.SetParent(null, true);
-        currentDO.mainRigidbody.isKinematic = false;
-        currentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1200 * throwStrength);
-        currentDO = null;
+        CurrentDO.mainT.SetParent(null, true);
+        CurrentDO.mainRigidbody.isKinematic = false;
+        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1200 * throwStrength);
+        CurrentDO = null;
         directionArrow.gameObject.SetActive(false);
     }
 
@@ -103,7 +125,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private DeliveryObject currentDO;
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("DeliveryObject")) {
             if(Time.time - lastThrowTime > 0.5f) {
@@ -113,20 +134,20 @@ public class Player : MonoBehaviour {
     }
 
     public void DOHitDestination(DeliveryObject deliveryObject) {
-        if(deliveryObject == currentDO) {
+        if(deliveryObject == CurrentDO) {
             ThrowStrength = 0;
-            currentDO = null;
+            CurrentDO = null;
             directionArrow.gameObject.SetActive(false);
         }
     }
 
     private void PickUpDeliveryObject(DeliveryObject deliveryObject) {
         PaintGunEquipped = false;
-        currentDO = deliveryObject;
-        currentDO.mainRigidbody.isKinematic = true;
-        currentDO.mainT.SetParent(mainCameraTransform, false);
-        currentDO.mainT.localPosition = new Vector3(0, -0.55f, 2f);
-        currentDO.RemoveFromSpawnLocation();
+        CurrentDO = deliveryObject;
+        CurrentDO.mainRigidbody.isKinematic = true;
+        CurrentDO.mainT.SetParent(mainCameraTransform, false);
+        CurrentDO.mainT.localPosition = new Vector3(0, -0.55f, 2f);
+        CurrentDO.RemoveFromSpawnLocation();
         directionArrow.gameObject.SetActive(true);
     }
 }

@@ -51,4 +51,18 @@ public class DeliveryManager : MonoBehaviour {
             }
         }
     }
+
+    public void SetActiveDO(DeliveryObject currentDO) {
+        if(currentDO == null) {
+            for (int i = 0; i < destinations.Count; i++) {
+                Destination destination = destinations[i];
+                destination.SetDestinationSelected(true);
+            }
+        } else {
+            for (int i = 0; i < destinations.Count; i++) {
+                Destination destination = destinations[i];
+                destination.SetDestinationSelected(currentDO.destination == destination);
+            }
+        }
+    }
 }

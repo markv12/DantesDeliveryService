@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,9 +6,15 @@ public class PlayerUI : MonoBehaviour {
     [SerializeField] private MinimapCamera minimapCamera;
     [SerializeField] private GameObject smallMap;
     [SerializeField] private GameObject pauseMapUI;
+    [SerializeField] private GameObject healthUI;
+    [SerializeField] private RectTransform healthBar;
 
     public void ShowThrowStrength(float throwStrength) {
-        throwMeter.sizeDelta = new Vector2(60, 300f * throwStrength);
+        throwMeter.sizeDelta = new Vector2(33, 236f * throwStrength);
+    }
+
+    public void ShowHealthFraction(float healthFraction) {
+        healthBar.sizeDelta = healthBar.sizeDelta.SetX(Mathf.Lerp(0, 366f, healthFraction));
     }
 
     private void Update() {
