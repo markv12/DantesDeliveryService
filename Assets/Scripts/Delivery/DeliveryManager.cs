@@ -17,10 +17,16 @@ public class DeliveryManager : MonoBehaviour {
         yield return null;
         for (int i = 0; i < spawnLocations.Count; i++) {
             DOSpawnLocation sl = spawnLocations[i];
-            DeliveryObject newDO = Instantiate(deliveryObjects[Random.Range(0, deliveryObjects.Length)]);
-            newDO.mainT.position = sl.mainT.position;
-            newDO.destination = destinations[Random.Range(0, destinations.Count)];
+            SpawnDOAtLocation(sl);
         }
+    }
+
+    private void SpawnDOAtLocation(DOSpawnLocation sl) {
+        DeliveryObject newDO = Instantiate(deliveryObjects[Random.Range(0, deliveryObjects.Length)]);
+        newDO.mainT.position = sl.mainT.position;
+        newDO.destination = destinations[Random.Range(0, destinations.Count)];
+        sl.currentDO = newDO;
+        newDO.spawnLocation = sl;
     }
 
     public void RegisterDestination(Destination destination) {
@@ -35,5 +41,14 @@ public class DeliveryManager : MonoBehaviour {
     }
     public void UnregisterSpawnLocation(DOSpawnLocation spawnLocation) {
         spawnLocations.Remove(spawnLocation);
+    }
+
+    public void SpawnNewDelivery() {
+        for (int i = 0; i < spawnLocations.Count; i++) {
+            DOSpawnLocation sl = spawnLocations[i];
+            if(sl != null && sl.currentDO == null) {
+                SpawnDOAtLocation(sl);
+            }
+        }
     }
 }

@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
 
     private float lastThrowTime;
     private void Update() {
-        if(InputUtil.GetKeyDown(Key.G)) {
+        if(currentDO == null && InputUtil.GetKeyDown(Key.G)) {
             PaintGunEquipped = !PaintGunEquipped;
         }
         if (PaintGunEquipped) {
@@ -60,12 +60,10 @@ public class Player : MonoBehaviour {
             directionArrow.rotation = Quaternion.LookRotation(lookDir);
 
             if (InputUtil.LeftMouseButtonIsPressed) {
-                ThrowStrength = Mathf.Min(1f, throwStrength + (Time.deltaTime * 0.5f));
+                ThrowStrength = Mathf.Min(1f, throwStrength + (Time.deltaTime * 0.6f));
             }
             if (InputUtil.LeftMouseButtonUp) {
-                if(throwStrength > 0.05f) {
-                    ThrowDeliveryObject();
-                }
+                ThrowDeliveryObject();
                 ThrowStrength = 0;
             }
         }
@@ -123,10 +121,12 @@ public class Player : MonoBehaviour {
     }
 
     private void PickUpDeliveryObject(DeliveryObject deliveryObject) {
+        PaintGunEquipped = false;
         currentDO = deliveryObject;
         currentDO.mainRigidbody.isKinematic = true;
         currentDO.mainT.SetParent(mainCameraTransform, false);
         currentDO.mainT.localPosition = new Vector3(0, -0.55f, 2f);
+        currentDO.RemoveFromSpawnLocation();
         directionArrow.gameObject.SetActive(true);
     }
 }

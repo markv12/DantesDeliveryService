@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DeliveryObject : MonoBehaviour {
@@ -6,7 +7,12 @@ public class DeliveryObject : MonoBehaviour {
     public Transform arrowT;
     public SpriteRenderer arrowRenderer;
 
-    public Destination destination;
+    [NonSerialized] public DOSpawnLocation spawnLocation;
+    [NonSerialized] public Destination destination;
+
+    private void Awake() {
+        arrowT.SetParent(null, true);
+    }
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Destination")) {
@@ -14,6 +20,7 @@ public class DeliveryObject : MonoBehaviour {
             if (hitDestination != null && destination == hitDestination) {
                 Player.instance.DOHitDestination(this);
                 Destroy(gameObject);
+                DeliveryManager.instance.SpawnNewDelivery();
             }
         }
     }
@@ -28,6 +35,19 @@ public class DeliveryObject : MonoBehaviour {
             float angle = -AngleUtil.CartesianToAngle(new Vector2(posDiff.x, posDiff.z));
             arrowT.eulerAngles = new Vector3(0, angle, 0);
             arrowRenderer.size = new Vector2(length, 4);
+        }
+    }
+
+    public void RemoveFromSpawnLocation() {
+        if (spawnLocation != null) {
+            spawnLocation.currentDO = null;
+            spawnLocation = null;
+        }
+    }
+
+    private void OnDestroy() {
+        if(arrowT != null) {
+            Destroy(arrowT.gameObject);
         }
     }
 }
