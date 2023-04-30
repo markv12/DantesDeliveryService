@@ -28,13 +28,13 @@ public class DeliveryObject : MonoBehaviour {
     private void Update() {
         if(destination != null) {
             Vector3 posDiff = (mainT.position - destination.mainT.position).SetY(0);
-            float length = (posDiff.magnitude/2f) - 1f;
+            float length = posDiff.magnitude - 1.5f;
             Vector3 midPoint = ((mainT.position + destination.mainT.position) / 2f).SetY(100);
             arrowT.position = midPoint;
 
             float angle = -AngleUtil.CartesianToAngle(new Vector2(posDiff.x, posDiff.z));
             arrowT.eulerAngles = new Vector3(0, angle, 0);
-            arrowRenderer.size = new Vector2(length, 4);
+            arrowRenderer.size = new Vector2(5f, length);
         }
     }
 
