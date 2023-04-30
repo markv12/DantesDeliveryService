@@ -27,9 +27,12 @@ export default async function (
   }
   // get files in world directory
   const files = (
-    await fs.promises.readdir(
-      path.join('./', 'data', dbPath),
-    )
+    await fs.promises
+      .readdir(path.join('./', 'data', dbPath))
+      .catch((err) => {
+        c.log(err)
+        return []
+      })
   ).sort(
     // low to high
     (a, b) =>
@@ -51,17 +54,34 @@ export default async function (
       scoreRoundedToThousands,
   )
   if (!scoreFile) {
-    scoreFile = `${scoreRoundedToThousands} - 1.json`
-    await fs.promises.writeFile(
-      path.join('./', 'data', dbPath, scoreFile),
-      JSON.stringify([scoreDataToSave]),
+    c.log(
+      'creating new score file',
+      dbPath + '/' + `${scoreRoundedToThousands} - 1.json`,
     )
+    scoreFile = `${scoreRoundedToThousands} - 1.json`
+    await fs.promises
+      .writeFile(
+        path.join('./', 'data', dbPath, scoreFile),
+        JSON.stringify([scoreDataToSave]),
+      )
+      .catch((err) => {
+        c.log(err)
+      })
   } else {
+    c.log(
+      'adding score to existing file',
+      dbPath + '/' + scoreFile,
+    )
     const scoreFileData = JSON.parse(
-      await fs.promises.readFile(
-        path.join('./', 'data', 'world', scoreFile),
-        'utf8',
-      ),
+      (await fs.promises
+        .readFile(
+          path.join('./', 'data', dbPath, scoreFile),
+          'utf8',
+        )
+        .catch((err) => {
+          c.log(err)
+          return '[]'
+        })) || '[]',
     )
     let scoresAboveInFile = scoreFileData.findIndex(
       (scoreData: Score) => scoreData.score < score,
@@ -73,18 +93,24 @@ export default async function (
       0,
       scoreDataToSave,
     )
-    await fs.promises.writeFile(
-      path.join(
-        './',
-        'data',
-        'world',
-        `${scoreRoundedToThousands} - ${scoreFileData.length}.json`,
-      ),
-      JSON.stringify(scoreFileData),
-    )
-    await fs.promises.unlink(
-      path.join('./', 'data', 'world', scoreFile),
-    )
+    await fs.promises
+      .writeFile(
+        path.join(
+          './',
+          'data',
+          dbPath,
+          `${scoreRoundedToThousands} - ${scoreFileData.length}.json`,
+        ),
+        JSON.stringify(scoreFileData),
+      )
+      .catch((err) => {
+        c.log(err)
+      })
+    await fs.promises
+      .unlink(path.join('./', 'data', dbPath, scoreFile))
+      .catch((err) => {
+        c.log(err)
+      })
   }
 
   const scoresInPreviousFiles = filesBelowScore.reduce(

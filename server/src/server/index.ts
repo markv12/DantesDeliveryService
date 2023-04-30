@@ -41,13 +41,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get(appBase + '/', (req, res) => {
   res.json({ ok: true, serverRunningSince })
 })
-app.get(appBase + '/api', (req, res) => {
-  res.json({ ok: true, serverRunningSince })
-})
 
-const apiPrefix = appBase + `/api`
-app.use(apiPrefix + '/admin', adminRoutes)
-app.use(apiPrefix + '/score', scoresRoutes)
+app.use(appBase + '/admin', adminRoutes)
+app.use(appBase + '/score', scoresRoutes)
 
 export function init() {
   serverRunningSince = new Date()

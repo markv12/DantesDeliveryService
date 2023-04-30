@@ -8,16 +8,12 @@ routes.use(async (req, res, next) => {
   const ip = req.headers['x-forwarded-for'] || req.ip
   req.parsedIp = Array.isArray(ip) ? ip[0] : ip
   const location = await c.getLocationFromIp(req.parsedIp)
-  c.log(
-    'gray',
-    `${req.method} ${req.path} ${req.parsedIp}`,
-    location,
-  )
+  // c.log('gray', `${req.method} ${req.path} ${req.parsedIp}`)
   if (location.status === 'success') {
     req.location = location
     c.log(
       'gray',
-      `score route location:`,
+      `${req.method} ${req.path} ${req.parsedIp}`,
       location.country,
       location.regionName,
     )
