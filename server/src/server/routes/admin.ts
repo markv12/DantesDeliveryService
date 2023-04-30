@@ -6,7 +6,7 @@ import db from '../../db'
 const routes = Router()
 
 routes.use((req, res, next) => {
-  if (req.headers['adminpassword'] !== process.env.PW) {
+  if (req.query['pw'] !== process.env.PW) {
     res.status(401).end()
     return
   }
