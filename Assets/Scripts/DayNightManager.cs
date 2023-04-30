@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DayNightManager : MonoBehaviour {
-    public RectTransform nightBoundaryIndicator;
+    public RectTransform dayBar;
+    public RectTransform nightBar;
     public RectTransform currentTimeIndicator;
     public RectTransform timeBar;
     private float timeBarWidth;
@@ -30,7 +31,9 @@ public class DayNightManager : MonoBehaviour {
         totalLength = dayLength + nightLength;
         timeBarWidth = timeBar.sizeDelta.x;
         float nightX = (dayLength / totalLength) * timeBarWidth;
-        nightBoundaryIndicator.anchoredPosition = new Vector2(nightX, 0);
+        dayBar.sizeDelta = new Vector2(nightX + 5, 30);
+        nightBar.anchoredPosition = new Vector2(nightX, 0);
+        nightBar.sizeDelta = new Vector2(timeBarWidth - nightX, 30);
         RenderSettings.skybox = new Material(RenderSettings.skybox);
     }
 
@@ -50,7 +53,7 @@ public class DayNightManager : MonoBehaviour {
             currentTime += Time.deltaTime;
             float totalTime = isNight ? dayLength + currentTime : currentTime;
             float currTimeX = (totalTime / totalLength) * timeBarWidth;
-            currentTimeIndicator.anchoredPosition = new Vector2(currTimeX, 0);
+            currentTimeIndicator.anchoredPosition = new Vector2(currTimeX, -10);
 
             if (isNight) {
                 if (currentTime >= nightLength) {
