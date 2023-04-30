@@ -54,6 +54,10 @@ export default async function (
       scoreRoundedToThousands,
   )
   if (!scoreFile) {
+    c.log(
+      'creating new score file',
+      `${scoreRoundedToThousands} - 1.json`,
+    )
     scoreFile = `${scoreRoundedToThousands} - 1.json`
     await fs.promises
       .writeFile(
@@ -64,10 +68,11 @@ export default async function (
         c.log(err)
       })
   } else {
+    c.log('adding score to existing file', scoreFile)
     const scoreFileData = JSON.parse(
       await fs.promises
         .readFile(
-          path.join('./', 'data', 'world', scoreFile),
+          path.join('./', 'data', dbPath, scoreFile),
           'utf8',
         )
         .catch((err) => {
@@ -90,7 +95,7 @@ export default async function (
         path.join(
           './',
           'data',
-          'world',
+          dbPath,
           `${scoreRoundedToThousands} - ${scoreFileData.length}.json`,
         ),
         JSON.stringify(scoreFileData),
@@ -99,7 +104,7 @@ export default async function (
         c.log(err)
       })
     await fs.promises
-      .unlink(path.join('./', 'data', 'world', scoreFile))
+      .unlink(path.join('./', 'data', dbPath, scoreFile))
       .catch((err) => {
         c.log(err)
       })
