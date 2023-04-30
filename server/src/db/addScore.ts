@@ -25,6 +25,82 @@ export default async function (
     ip,
     score,
   }
+
+  return useIndividualFiles(dbPath, scoreDataToSave)
+}
+
+async function useIndividualFiles(
+  dbPath: string,
+  scoreData: Score,
+): Promise<number> {
+  const existingData = await fs.promises
+    .readFile(
+      path.join('./', 'data', dbPath + '.json'),
+      'utf8',
+    )
+    .catch((err) => {
+      c.log(err)
+      return null
+    })
+
+  let scoresAboveInFile = 0
+  if (existingData) {
+    let existingDataParsed = JSON.parse(existingData)
+    const existingRecord = existingDataParsed.find(
+      (score: Score) => score.ip === scoreData.ip,
+    )
+    if (existingRecord) {
+      if (existingRecord.score < scoreData.score) {
+        existingRecord.score = scoreData.score
+        existingDataParsed = existingDataParsed.sort(
+          (a: Score, b: Score) => b.score - a.score,
+        )
+        fs.promises.writeFile(
+          path.join('./', 'data', dbPath + '.json'),
+          JSON.stringify(existingDataParsed),
+        )
+      }
+
+      scoresAboveInFile = existingDataParsed.filter(
+        (score: Score) => score.score > scoreData.score,
+      ).length
+      return scoresAboveInFile + 1
+    }
+
+    scoresAboveInFile = existingDataParsed.filter(
+      (score: Score) => score.score > scoreData.score,
+    ).length
+    existingDataParsed.splice(
+      scoresAboveInFile,
+      0,
+      scoreData,
+    )
+    fs.promises
+      .writeFile(
+        path.join('./', 'data', dbPath + '.json'),
+        JSON.stringify(existingDataParsed),
+      )
+      .catch((err) => {
+        c.log(err)
+      })
+  } else {
+    fs.promises
+      .writeFile(
+        path.join('./', 'data', dbPath + '.json'),
+        JSON.stringify([scoreData]),
+      )
+      .catch((err) => {
+        c.log(err)
+      })
+  }
+
+  return scoresAboveInFile + 1
+}
+
+async function useSplitFiles(
+  dbPath: string,
+  scoreData: Score,
+): Promise<number> {
   // get files in world directory
   const files = (
     await fs.promises
@@ -40,7 +116,7 @@ export default async function (
       parseInt(b.split(' - ')[0]),
   )
   const scoreRoundedToThousands =
-    Math.floor(score / 1000) * 1000
+    Math.floor(scoreData.score / 1000) * 1000
   const filesBelowScore = files.filter(
     (file) =>
       parseInt(file.split(' - ')[0]) <
@@ -62,7 +138,7 @@ export default async function (
     await fs.promises
       .writeFile(
         path.join('./', 'data', dbPath, scoreFile),
-        JSON.stringify([scoreDataToSave]),
+        JSON.stringify([scoreData]),
       )
       .catch((err) => {
         c.log(err)
@@ -84,15 +160,11 @@ export default async function (
         })) || '[]',
     )
     let scoresAboveInFile = scoreFileData.findIndex(
-      (scoreData: Score) => scoreData.score < score,
+      (sd: Score) => sd.score < scoreData.score,
     )
     if (scoresAboveInFile === -1)
       scoresAboveInFile = scoreFileData.length
-    scoreFileData.splice(
-      scoresAboveInFile,
-      0,
-      scoreDataToSave,
-    )
+    scoreFileData.splice(scoresAboveInFile, 0, scoreData)
     await fs.promises
       .writeFile(
         path.join(

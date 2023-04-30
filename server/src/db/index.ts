@@ -50,7 +50,7 @@ const db = {
   },
 
   async wipe(): Promise<void> {
-    await fs.promises.rmdir(dataDirectoryPath, {
+    await fs.promises.rm(dataDirectoryPath, {
       recursive: true,
     })
     fs.mkdirSync(dataDirectoryPath)
