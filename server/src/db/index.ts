@@ -16,11 +16,15 @@ const db = {
     location?: LocationData,
     score?: number,
   ): Promise<{
+    region?: string
+    country?: string
     regionRank: number
     countryRank: number
     worldRank: number
   }> {
     const ranks = {
+      region: location?.regionName,
+      country: location?.country,
       regionRank: 0,
       countryRank: 0,
       worldRank: 0,
@@ -35,7 +39,7 @@ const db = {
       score,
     )
     const regionRank = addScore(
-      `region/${location?.regionName}`,
+      `region/${location?.country}-${location?.regionName}`,
       ip,
       score,
     )
