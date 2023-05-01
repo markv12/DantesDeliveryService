@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Gun : MonoBehaviour {
-    public int damage;
     public RectTransform rectT;
     public Transform raycastT;
     public Image[] smokeImages;
@@ -12,9 +11,6 @@ public class Gun : MonoBehaviour {
     public AudioClip shootSound;
     public AudioClip equipSound;
     public AudioClip unequipSound;
-
-    private bool singleColorMode;
-    private Color selectedColor;
 
     private static int defaultLayer;
     private static int enemyLayer;
@@ -31,9 +27,9 @@ public class Gun : MonoBehaviour {
         if (Physics.Raycast(raycastT.position, raycastT.forward, out RaycastHit hit, RAYCAST_DISTANCE, hitLayerMask)) {
             if (hit.transform.gameObject.layer == enemyLayer) {
                 if(hit.transform.TryGetComponent(out Enemy enemy)) {
-                    enemy.Hurt(damage);
+                    enemy.Hurt(StatsManager.instance.PistolDamage);
                 } else if (hit.transform.TryGetComponent(out ExplodingEnemy explodingEnemy)) {
-                    explodingEnemy.Hurt(damage);
+                    explodingEnemy.Hurt(StatsManager.instance.PistolDamage);
                 }
             } else {
                 CreateSplat(hit);
@@ -43,12 +39,11 @@ public class Gun : MonoBehaviour {
 
     private const float AUTO_WAIT = 0.25f;
     private float lastShootTime;
-    private const float TIME_BETWEEN_SHOTS = 0.09f;
     private float timeHeld = 0;
     public void Hold() {
         timeHeld += Time.deltaTime;
         if(timeHeld > AUTO_WAIT) {
-            if(Time.time - lastShootTime > TIME_BETWEEN_SHOTS) {
+            if(Time.time - lastShootTime > StatsManager.instance.PistolShotTime) {
                 lastShootTime = Time.time;
                 Shoot();
             }
