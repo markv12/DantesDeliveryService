@@ -38,8 +38,10 @@ public class HeavyGun : MonoBehaviour {
         for (int i = 0; i < hitCount; i++) {
             RaycastHit hit = hits[i];
             if (hit.transform.gameObject.layer == enemyLayer) {
-                if (hit.transform.TryGetComponent<Enemy>(out var enemy)) {
+                if (hit.transform.TryGetComponent(out Enemy enemy)) {
                     enemy.Hurt(damage);
+                } else if (hit.transform.TryGetComponent(out ExplodingEnemy explodingEnemy)) {
+                    explodingEnemy.Hurt(damage);
                 }
             } else {
                 CreateSplat(hit);

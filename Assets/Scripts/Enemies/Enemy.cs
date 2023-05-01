@@ -5,6 +5,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour {
     [Min(0)]
     public int maxHealth;
+    public int touchDamage;
+    public float projectileRange;
     public Transform spriteT;
     public SpriteRenderer mainRenderer;
 
@@ -18,10 +20,12 @@ public class Enemy : MonoBehaviour {
     public float timeBetweenProjectiles;
 
     public NavMeshAgent navMeshAgent;
+    private Vector3 startScale;
 
     private int health;
     private void Awake() {
         health = maxHealth;
+        startScale = spriteT.localScale;
     }
 
     bool isDestroyed = false;
@@ -32,11 +36,11 @@ public class Enemy : MonoBehaviour {
                 navMeshAgent.destination = playerPos;
                 Vector3 playerDiff = playerPos - spriteT.position;
                 float playerSqrDist = playerDiff.sqrMagnitude;
-                if (playerSqrDist < 2f) {
-                    Player.instance.Hurt(33);
+                if (playerSqrDist < 3f) {
+                    Player.instance.Hurt(touchDamage);
                     Destroy(gameObject);
                     isDestroyed = true;
-                } else if (playerSqrDist < 225) {
+                } else if (playerSqrDist < (projectileRange * projectileRange)) {
                     if (Time.time - lastProjectileTime > timeBetweenProjectiles) {
                         lastProjectileTime = Time.time;
                         FireProjectile();
@@ -105,7 +109,6 @@ public class Enemy : MonoBehaviour {
         this.EnsureCoroutineStopped(ref flashRoutine);
         flashRoutine = StartCoroutine(FlashRoutine());
         IEnumerator FlashRoutine() {
-            Vector3 startScale = spriteT.localScale;
             Vector3 flashScale = startScale *= 0.92f;
             mainRenderer.color = color;
             spriteT.localScale = flashScale;

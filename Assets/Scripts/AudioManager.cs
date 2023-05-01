@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlayShopTheme() {
-        shopThemeSource.volume = 0.35f;
+        shopThemeSource.volume = 0.3f;
         shopThemeSource.Play();
     }
 

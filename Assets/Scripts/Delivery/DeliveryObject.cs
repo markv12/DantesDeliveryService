@@ -24,7 +24,7 @@ public class DeliveryObject : MonoBehaviour {
                 hitDestination.SetDestinationSelected(false);
                 Player.instance.DOHitDestination(this);
                 Destroy(gameObject);
-                DeliveryManager.instance.SpawnNewDelivery();
+                DeliveryManager.instance.OnDeliveryCompleted();
             }
         }
     }

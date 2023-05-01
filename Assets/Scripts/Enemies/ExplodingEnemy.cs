@@ -20,11 +20,13 @@ public class ExplodingEnemy : MonoBehaviour {
     public AudioSource loopSound;
 
     public NavMeshAgent navMeshAgent;
+    private Vector3 startScale;
 
     private int health;
     private void Awake() {
         health = maxHealth;
         loopSound.Play();
+        startScale = spriteT.localScale;
     }
 
     bool isDestroyed = false;
@@ -57,6 +59,8 @@ public class ExplodingEnemy : MonoBehaviour {
     }
 
     private void Explode() {
+        loopSound.Stop();
+        mainRenderer.sprite = explodeSprite;
         Player.instance.Hurt(explodeDamage);
     }
 
@@ -92,7 +96,6 @@ public class ExplodingEnemy : MonoBehaviour {
         this.EnsureCoroutineStopped(ref flashRoutine);
         flashRoutine = StartCoroutine(FlashRoutine());
         IEnumerator FlashRoutine() {
-            Vector3 startScale = spriteT.localScale;
             Vector3 flashScale = startScale *= 0.92f;
             mainRenderer.color = color;
             spriteT.localScale = flashScale;
