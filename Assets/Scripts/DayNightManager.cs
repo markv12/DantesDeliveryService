@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DayNightManager : MonoBehaviour {
@@ -9,6 +10,9 @@ public class DayNightManager : MonoBehaviour {
     public RectTransform currentTimeIndicator;
     public RectTransform timeBar;
     private float timeBarWidth;
+
+    public TMP_Text dayNightLabel;
+    public TMP_Text dayCountLabel;
 
     public Color daySkyboxColor;
     public Color nightSkyboxColor;
@@ -37,6 +41,17 @@ public class DayNightManager : MonoBehaviour {
         RenderSettings.skybox = new Material(RenderSettings.skybox);
     }
 
+    private int currentDay = 1;
+    private int CurrentDay {
+        get {
+            return currentDay;
+        }
+        set {
+            currentDay = value;
+            dayCountLabel.text = currentDay.ToString();
+        }
+    }
+
     public event Action<bool> IsNightChanged;
     private bool isNight = false;
     public bool IsNight {
@@ -48,6 +63,7 @@ public class DayNightManager : MonoBehaviour {
                 isNight = value;
                 IsNightChanged?.Invoke(isNight);
                 SetSwapSprites(isNight);
+                dayNightLabel.text = isNight ? "Night" : "Day";
             }
         }
     }
@@ -109,6 +125,7 @@ public class DayNightManager : MonoBehaviour {
             yield return WaitUtil.GetWait(2);
             dayStartUI.Show(() => {
                 IsNight = false;
+                CurrentDay++;
                 Player.instance.SetFPSControllerActive(false);
                 Player.instance.GunEquipped = false;
             }, () => {
