@@ -27,12 +27,13 @@ public class HeavyGun : MonoBehaviour {
 
     private const float RAYCAST_DISTANCE = 50f;
     private int reloadFrameIndex = 0;
-    private readonly RaycastHit[] hits = new RaycastHit[10];
+    private readonly RaycastHit[] hits = new RaycastHit[15];
     public void Shoot() {
         AudioManager.Instance.PlaySFXPitched(shootSound, 1, Random.Range(0.90f, 1.1f));
 
         Kickback();
-        int hitCount = Physics.RaycastNonAlloc(new Ray(raycastT.position, raycastT.forward), hits, RAYCAST_DISTANCE, hitLayerMask);
+        
+        int hitCount = Physics.SphereCastNonAlloc(new Ray(raycastT.position, raycastT.forward), 2, hits, RAYCAST_DISTANCE, hitLayerMask);
         for (int i = 0; i < hitCount; i++) {
             RaycastHit hit = hits[i];
             if (hit.transform.gameObject.layer == enemyLayer) {
@@ -43,7 +44,6 @@ public class HeavyGun : MonoBehaviour {
                 }
             } else {
                 CreateSplat(hit);
-                break;
             }
         }
 
