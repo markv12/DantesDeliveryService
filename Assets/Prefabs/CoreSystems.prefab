@@ -1110,11 +1110,13 @@ MonoBehaviour:
   timeBar: {fileID: 7001793375638074032}
   dayNightLabel: {fileID: 1901503284212664016}
   dayCountLabel: {fileID: 6352656574335778135}
-  daySkyboxColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+  daySkyboxColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   nightSkyboxColor: {r: 0.35, g: 0, b: 0, a: 1}
+  daySkyboxTexture: {fileID: 2800000, guid: 35e0dba084779664fb2cac495a33092f, type: 3}
+  nightSkyboxTexture: {fileID: 2800000, guid: 726b8d0c56d2f174e873053efcab29dc, type: 3}
   nightStartUI: {fileID: 552395666182983432}
   dayStartUI: {fileID: 5524837611459101481}
-  dayLength: 3
+  dayLength: 15
   nightLength: 15
 --- !u!223 &2606293541469204502
 Canvas:
@@ -1803,6 +1805,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deliveryObjects:
   - {fileID: 5250268457804792271, guid: 4c5312f7c8da3924d902341364cda763, type: 3}
+  - {fileID: 362893910917904184, guid: 46c73e0c0e85ad3418e432bfd2b23ecb, type: 3}
+  - {fileID: 3692929240191155548, guid: 0469c1f867677f34b80eaaed4c49b9ce, type: 3}
+  - {fileID: 8177146578440318085, guid: ba73257b0479c2f4881a240b37bbb8e6, type: 3}
+  - {fileID: 4061173780408772641, guid: 8004fefaa77768e42994e465a75d53dd, type: 3}
+  - {fileID: 8259946607270846751, guid: 25d57feea1b02b04e90a9ecbac7fec0c, type: 3}
+  - {fileID: 207478770644057617, guid: 88d82f2a6b7b9464f993134ac58080aa, type: 3}
 --- !u!114 &4706471626692269877
 MonoBehaviour:
   m_ObjectHideFlags: 0

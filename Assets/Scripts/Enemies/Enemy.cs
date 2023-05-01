@@ -42,15 +42,19 @@ public class Enemy : MonoBehaviour {
 
     }
 
+    private bool died = false;
     public void Hurt(int amount) {
-        health -= amount;
-        FlashColor(Color.red);
-        if (health <= 0) {
-            Die();
+        if (!died) {
+            health -= amount;
+            FlashColor(Color.red);
+            if (health <= 0) {
+                Die();
+            }
         }
     }
 
     private void Die() {
+        died = true;
         navMeshAgent.enabled = false;
         mainRenderer.sprite = deathSprite;
         AudioManager.Instance.PlaySFX(deathSound, 1f);

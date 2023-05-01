@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 5904420938383252820}
   - component: {fileID: 6274658028600035213}
   m_Layer: 0
-  m_Name: MainBox
+  m_Name: PizzaBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,8 +417,8 @@ Transform:
   m_Children:
   - {fileID: 5392051175927735847}
   - {fileID: 5209532257688010008}
-  - {fileID: 2976979626224145737}
   - {fileID: 6019346758876769825}
+  - {fileID: 2976979626224145737}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

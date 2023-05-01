@@ -16,6 +16,9 @@ public class DayNightManager : MonoBehaviour {
 
     public Color daySkyboxColor;
     public Color nightSkyboxColor;
+    public Texture2D daySkyboxTexture;
+    public Texture2D nightSkyboxTexture;
+
     public NightStartUI nightStartUI;
     public DayStartUI dayStartUI;
 
@@ -64,6 +67,9 @@ public class DayNightManager : MonoBehaviour {
                 IsNightChanged?.Invoke(isNight);
                 SetSwapSprites(isNight);
                 dayNightLabel.text = isNight ? "Night" : "Day";
+                Material skyboxMat = RenderSettings.skybox;
+                skyboxMat.SetColor("_Tint", daySkyboxColor);
+                skyboxMat.SetTexture("_MainTex", isNight ? nightSkyboxTexture : daySkyboxTexture);
             }
         }
     }
