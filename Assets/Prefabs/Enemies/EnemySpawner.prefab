@@ -48,3 +48,4 @@ MonoBehaviour:
   timeBetweenSpawns: 2
   enemyPrefabs:
   - {fileID: 6903850313824258416, guid: d4eb6427cfd424141843ba7cb56d80b5, type: 3}
+  - {fileID: 6903850313824258416, guid: 765f2f664fe96074bbaadb402124ed72, type: 3}
