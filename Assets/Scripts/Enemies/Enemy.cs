@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour {
     public Sprite deathSprite;
 
     public AudioClip deathSound;
+    public AudioClip chargeSound;
+    public AudioClip fireSound;
     public Projectile projectile;
     private float lastProjectileTime;
     public float timeBetweenProjectiles;
@@ -61,8 +63,10 @@ public class Enemy : MonoBehaviour {
 
         IEnumerator FireProjectileRoutine() {
             mainRenderer.sprite = attackSprite;
+            AudioManager.Instance.PlaySFX(chargeSound, 1f);
             yield return WaitUtil.GetWait(0.4f);
             mainRenderer.sprite = normalSprite;
+            AudioManager.Instance.PlaySFX(fireSound, 1f);
             if (Player.instance != null && navMeshAgent.enabled) {
                 Vector3 playerPos = Player.instance.transform.position.AddY(1f);
                 Vector3 playerDiff = playerPos - spriteT.position;
