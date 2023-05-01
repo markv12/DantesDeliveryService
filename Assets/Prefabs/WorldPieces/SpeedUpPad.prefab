@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b9392295b313be24b84a0d05017f4990, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2ccfb66b6e18ff45903ae3169dfc6c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 3209940840712897252}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6884888973400674272
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedModifier: 2
-  duration: 0.5
+  duration: 0.7
   speedUpSound: {fileID: 8300000, guid: 3da07198f356446cf94defcdf2d1f614, type: 3}
 --- !u!65 &6779123613726468634
 BoxCollider:
@@ -153,8 +153,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.8765945, y: 0.2, z: 2.040873}
+  m_Center: {x: 0.0314579, y: 0, z: -0.035346508}
 --- !u!54 &7110576806610364122
 Rigidbody:
   m_ObjectHideFlags: 0
