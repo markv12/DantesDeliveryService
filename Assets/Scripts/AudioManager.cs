@@ -67,6 +67,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip success;
     public AudioClip[] playerHurtSounds;
     public AudioClip playerDie;
+    public AudioClip outOfAmmoSound;
 
     public void PlayUIClick() {
         PlaySFX(uiClick, 1f);
@@ -90,6 +91,10 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayPlayerDie() {
         PlaySFX(playerDie, 1f);
+    }
+
+    public void PlayOutOfAmmoSound() {
+        PlaySFX(outOfAmmoSound, 1f);
     }
 
     public void PlaySFX(AudioClip clip, float volume) {

@@ -101,7 +101,11 @@ public class Player : MonoBehaviour {
             }
         } else if (HeavyGunEquipped) {
             if (InputUtil.LeftMouseButtonDown && heavyGun.CanShoot) {
-                heavyGun.Shoot();
+                if (heavyGun.CanShoot) {
+                    heavyGun.Shoot();
+                } else {
+                    AudioManager.Instance.PlayOutOfAmmoSound();
+                }
             }
         }
 
