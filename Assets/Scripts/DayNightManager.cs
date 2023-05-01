@@ -45,11 +45,11 @@ public class DayNightManager : MonoBehaviour {
     }
 
     private int currentDay = 1;
-    private int CurrentDay {
+    public int CurrentDay {
         get {
             return currentDay;
         }
-        set {
+        private set {
             currentDay = value;
             dayCountLabel.text = currentDay.ToString();
         }

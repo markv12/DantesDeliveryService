@@ -1,23 +1,41 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
     public Transform[] spawnPoints;
-    public float timeBetweenSpawns;
+    public float startTimeBetweenSpawns;
+    public float timeMultiplyPerDay;
     public GameObject eyeballEnemy;
-    public GameObject goatEnemy;
     public GameObject jellyfishEnemy;
+    public GameObject goatEnemy;
+
+    public int jellyFishStartDay;
+    public int goatStartDay;
+
+
+    private float TimeBetweenSpawns {
+        get {
+            float result = startTimeBetweenSpawns;
+            int day = DayNightManager.instance.CurrentDay;
+            for (int i = 0; i < day; i++) {
+                result *= timeMultiplyPerDay;
+            }
+            return result;
+        }
+    }
 
     private float timeSinceLastSpawn = 0;
     void Update() {
         if (DayNightManager.instance.IsNight) {
             timeSinceLastSpawn += Time.deltaTime;
-            if(timeSinceLastSpawn > timeBetweenSpawns) {
+            if(timeSinceLastSpawn > TimeBetweenSpawns) {
                 Spawn();
-                timeSinceLastSpawn -= timeBetweenSpawns;
+                timeSinceLastSpawn -= TimeBetweenSpawns;
             }
         }
     }
 
+    private readonly List<GameObject> validPrefabs = new List<GameObject>(4);
     private void Spawn() {
         if(Player.instance != null) {
             Vector3 playerPos = Player.instance.transform.position;
@@ -32,7 +50,15 @@ public class EnemySpawner : MonoBehaviour {
                 }
             }
 
-            GameObject toSpawn = Random.Range(0, 3) == 0 ? eyeballEnemy : goatEnemy;
+            validPrefabs.Clear();
+            validPrefabs.Add(eyeballEnemy);
+            if(DayNightManager.instance.CurrentDay >= jellyFishStartDay) {
+                validPrefabs.Add(jellyfishEnemy);
+            }
+            if (DayNightManager.instance.CurrentDay >= goatStartDay) {
+                validPrefabs.Add(goatEnemy);
+            }
+            GameObject toSpawn = validPrefabs[Random.Range(0, validPrefabs.Count)];
             GameObject newEnemy = Instantiate(toSpawn);
             newEnemy.transform.position = farthestPoint.position;
         }
