@@ -225,7 +225,9 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: 3519765c030fbca42bc13510600681c9, type: 3}
   attackSprite: {fileID: 21300000, guid: d69330850c58ed849a9083da33a36be1, type: 3}
   deathSprite: {fileID: 21300000, guid: ec65491b34d0b504bbcffd6926a57767, type: 3}
-  deathSound: {fileID: 8300000, guid: a38142b0da99947c8840749468caa075, type: 3}
+  deathSound: {fileID: 8300000, guid: 7d1965aaea4eb4dc184e837e7d1469f4, type: 3}
+  chargeSound: {fileID: 8300000, guid: fc3545496fdb8413985212358ce34481, type: 3}
+  fireSound: {fileID: 8300000, guid: 8ec15490647d44432a4b1ce0215bc7c0, type: 3}
   projectile: {fileID: 7929835210424106562, guid: 00a3516c7cda4b04791c218532785c55, type: 3}
   timeBetweenProjectiles: 4
   navMeshAgent: {fileID: 8415052000101644600}
