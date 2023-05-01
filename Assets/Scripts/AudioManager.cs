@@ -17,30 +17,42 @@ public class AudioManager : MonoBehaviour {
 
     public AudioSource dayThemeSource;
     public AudioSource nightThemeSource;
+    public AudioSource shopThemeSource;
 
     public void PlayDayTheme() {
-        dayThemeSource.volume = 1;
+        dayThemeSource.volume = 0.8f;
         dayThemeSource.Play();
     }
     public void PlayNightTheme() {
         nightThemeSource.volume = 1;
         nightThemeSource.Play();
     }
+
+    public void PlayShopTheme() {
+        shopThemeSource.volume = 0.7f;
+        shopThemeSource.Play();
+    }
+
     public void FadeOutBGM() {
         if (dayThemeSource.isPlaying) {
-            FadeAudioSource(dayThemeSource);
+            FadeAudioSource(dayThemeSource, 0);
         }
         if (nightThemeSource.isPlaying) {
-            FadeAudioSource(nightThemeSource);
+            FadeAudioSource(nightThemeSource, 0);
+        }
+        if (shopThemeSource.isPlaying) {
+            FadeAudioSource(shopThemeSource, 0);
         }
     }
 
-    private void FadeAudioSource(AudioSource audioSource) {
+    private void FadeAudioSource(AudioSource audioSource, float endVolume) {
         float startVolume = audioSource.volume;
         this.CreateAnimationRoutine(1.5f, (float progress) => {
-            audioSource.volume = Mathf.Lerp(startVolume, 0, progress);
+            audioSource.volume = Mathf.Lerp(startVolume, endVolume, progress);
         }, () => {
-            audioSource.Stop();
+            if(endVolume <= 0) {
+                audioSource.Stop();
+            }
         });
     }
 

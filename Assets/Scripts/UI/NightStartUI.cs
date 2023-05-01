@@ -24,6 +24,7 @@ public class NightStartUI : MonoBehaviour {
         StartCoroutine(ContinueRoutine());
         IEnumerator ContinueRoutine() {
             yield return new WaitForSecondsRealtime(1.4f);
+            AudioManager.Instance.PlayShopTheme();
             Vector2 startPos = bgTransform.anchoredPosition;
             this.CreateAnimationRoutine(1f, (float progress) => {
                 bgTransform.anchoredPosition = Vector2.Lerp(startPos, OFF_SCREEN_POS, Easing.easeInSine(0, 1, progress));

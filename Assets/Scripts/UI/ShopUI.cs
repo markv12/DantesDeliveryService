@@ -18,6 +18,7 @@ public class ShopUI : MonoBehaviour {
 
     private void Continue() {
         AudioManager.Instance.PlayUIClick();
+        AudioManager.Instance.FadeOutBGM();
         Vector2 startPos = bgTransform.anchoredPosition;
         this.CreateAnimationRoutine(1f, (float progress) => {
             bgTransform.anchoredPosition = Vector2.Lerp(startPos, NightStartUI.OFF_SCREEN_POS, Easing.easeInSine(0, 1, progress));
