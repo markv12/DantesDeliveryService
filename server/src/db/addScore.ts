@@ -71,7 +71,12 @@ async function useIndividualFiles(
       (score: Score) => score.ip === scoreData.ip,
     )
     if (existingRecord) {
+      c.log(
+        'gray',
+        `Found existing record for ${scoreData.ip}`,
+      )
       if (existingRecord.score < scoreData.score) {
+        c.log('gray', `Existing record is lower, updating`)
         existingRecord.score = scoreData.score
         existingDataParsed = existingDataParsed.sort(
           (a: Score, b: Score) => b.score - a.score,
@@ -80,6 +85,8 @@ async function useIndividualFiles(
           path.join('./', 'data', dbPath + '.json'),
           JSON.stringify(existingDataParsed),
         )
+      } else {
+        c.log('gray', `Existing record is higher`)
       }
 
       scoresAboveInFile = existingDataParsed.filter(
@@ -87,6 +94,11 @@ async function useIndividualFiles(
       ).length
       return scoresAboveInFile + 1
     }
+
+    c.log(
+      'gray',
+      `No existing record for ${scoreData.ip}, creating`,
+    )
 
     scoresAboveInFile = existingDataParsed.filter(
       (score: Score) => score.score > scoreData.score,
