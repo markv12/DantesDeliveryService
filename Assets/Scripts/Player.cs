@@ -135,7 +135,7 @@ public class Player : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("DeliveryObject")) {
-            if(Time.time - lastThrowTime > 0.5f) {
+            if(CurrentDO == null &&  Time.time - lastThrowTime > 0.5f) {
                 PickUpDeliveryObject(other.gameObject.GetComponent<DeliveryObject>());
             }
         }
