@@ -1247,6 +1247,7 @@ GameObject:
   - component: {fileID: 5122053265560447068}
   - component: {fileID: 3756845090165436068}
   - component: {fileID: 7728812853696510452}
+  - component: {fileID: 2037437616260258988}
   m_Layer: 0
   m_Name: MoneyManager
   m_TagString: Untagged
@@ -1321,6 +1322,19 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &2037437616260258988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2465930868341502523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da93e196c78729a45b41381298848a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyLabel: {fileID: 5960347139507496645}
 --- !u!1 &2798985966138184799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,7 +2272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $100
+  m_text: $0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 5ab621b4a3b5c4fd18aae5f5bcf83298, type: 2}

@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Destination : MonoBehaviour {
     public Transform mainT;
     public Transform minimapIconT;
     [SerializeField] private GameObject destinationSphere;
+    [NonSerialized] public DeliveryObject currentDO;
 
     private void Start() {
         minimapIconT.eulerAngles = new Vector3(270, 180, 0);

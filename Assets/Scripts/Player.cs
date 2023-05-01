@@ -99,7 +99,7 @@ public class Player : MonoBehaviour {
         lastThrowTime = Time.time;
         CurrentDO.mainT.SetParent(null, true);
         CurrentDO.mainRigidbody.isKinematic = false;
-        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1250 * EasedThrowStrength);
+        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1500 * EasedThrowStrength);
         CurrentDO = null;
         AudioManager.Instance.PlaySFX(throwSound, 1f);
         directionArrow.gameObject.SetActive(false);
@@ -142,6 +142,7 @@ public class Player : MonoBehaviour {
     }
 
     public void DOHitDestination(DeliveryObject deliveryObject) {
+        MoneyManager.instance.CurrentMoney += 10;
         if(deliveryObject == CurrentDO) {
             ThrowStrength = 0;
             CurrentDO = null;

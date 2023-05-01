@@ -112,6 +112,7 @@ public class DayNightManager : MonoBehaviour {
                 Player.instance.SetFPSControllerActive(false);
                 Player.instance.GunEquipped = false;
             }, () => {
+                AudioManager.Instance.PlayDayTheme();
                 Player.instance.SetFPSControllerActive(true);
                 changing = false;
             });

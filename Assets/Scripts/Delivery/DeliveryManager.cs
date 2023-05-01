@@ -18,13 +18,16 @@ public class DeliveryManager : MonoBehaviour {
         for (int i = 0; i < spawnLocations.Count; i++) {
             DOSpawnLocation sl = spawnLocations[i];
             SpawnDOAtLocation(sl);
+            SelectDestinationsWithADO();
         }
     }
 
     private void SpawnDOAtLocation(DOSpawnLocation sl) {
         DeliveryObject newDO = Instantiate(deliveryObjects[Random.Range(0, deliveryObjects.Length)]);
         newDO.mainT.position = sl.mainT.position;
-        newDO.destination = destinations[Random.Range(0, destinations.Count)];
+        Destination destination = destinations[Random.Range(0, destinations.Count)];
+        newDO.destination = destination;
+        destination.currentDO = newDO;
         sl.currentDO = newDO;
         newDO.spawnLocation = sl;
     }
@@ -54,15 +57,19 @@ public class DeliveryManager : MonoBehaviour {
 
     public void SetActiveDO(DeliveryObject currentDO) {
         if(currentDO == null) {
-            for (int i = 0; i < destinations.Count; i++) {
-                Destination destination = destinations[i];
-                destination.SetDestinationSelected(true);
-            }
+            SelectDestinationsWithADO();
         } else {
             for (int i = 0; i < destinations.Count; i++) {
                 Destination destination = destinations[i];
                 destination.SetDestinationSelected(currentDO.destination == destination);
             }
+        }
+    }
+
+    private void SelectDestinationsWithADO() {
+        for (int i = 0; i < destinations.Count; i++) {
+            Destination destination = destinations[i];
+            destination.SetDestinationSelected(destination.currentDO != null);
         }
     }
 }

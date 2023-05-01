@@ -12,6 +12,7 @@ public class GameStartUI : MonoBehaviour {
 
     private void Start() {
         Player.instance.SetFPSControllerActive(false);
+        AudioManager.Instance.PlayDayTheme();
     }
 
     private void StartGame() {
