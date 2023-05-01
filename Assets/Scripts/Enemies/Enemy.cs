@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour {
     public Sprite deathSprite;
 
     public AudioClip deathSound;
+    public Projectile projectile;
+    private float lastProjectileTime;
+    public float timeBetweenProjectiles;
 
     public NavMeshAgent navMeshAgent;
 
@@ -28,10 +31,19 @@ public class Enemy : MonoBehaviour {
             if (Player.instance != null && navMeshAgent.enabled) {
                 Vector3 playerPos = Player.instance.transform.position;
                 navMeshAgent.destination = playerPos;
-                if ((spriteT.position - playerPos).sqrMagnitude < 2f) {
+                float playerSqrDist = (spriteT.position - playerPos).sqrMagnitude;
+                if (playerSqrDist < 2f) {
                     Player.instance.Hurt(33);
                     Destroy(gameObject);
                     isDestroyed = true;
+                } else if (playerSqrDist < 121) {
+                    if(Time.time - lastProjectileTime > timeBetweenProjectiles) {
+                        lastProjectileTime = Time.time;
+                        Projectile newProjectile = Instantiate(projectile);
+                        Vector3 startPos = spriteT.position;
+                        newProjectile.mainT.position = startPos;
+                        newProjectile.Execute(startPos, playerPos);
+                    }
                 }
             }
             if (!DayNightManager.instance.IsNight) {
@@ -39,7 +51,6 @@ public class Enemy : MonoBehaviour {
                 isDestroyed = true;
             }
         }
-
     }
 
     private bool died = false;

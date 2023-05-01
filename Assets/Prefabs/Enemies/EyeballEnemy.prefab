@@ -223,6 +223,8 @@ MonoBehaviour:
   attackSprite: {fileID: 21300000, guid: aa18af335c17dec448e0569a66c6db50, type: 3}
   deathSprite: {fileID: 21300000, guid: d7a42cbbd7fc28345b2d2b53474b36b5, type: 3}
   deathSound: {fileID: 8300000, guid: a38142b0da99947c8840749468caa075, type: 3}
+  projectile: {fileID: 7046128194748456101, guid: f2d5b381dddef134c955acf92ba0481e, type: 3}
+  timeBetweenProjectiles: 4
   navMeshAgent: {fileID: 8415052000101644600}
 --- !u!195 &8415052000101644600
 NavMeshAgent:
