@@ -128,7 +128,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (DayNightManager.instance.IsNight && CurrentDO == null && StatsManager.instance.shotgunUnlocked && InputUtil.GetKeyDown(Key.G)) {
+        if (DayNightManager.instance.IsNight && CurrentDO == null && StatsManager.instance.shotgunUnlocked && InputUtil.GetKeyDown(Key.Q)) {
             SwitchGuns();
         }
     }
