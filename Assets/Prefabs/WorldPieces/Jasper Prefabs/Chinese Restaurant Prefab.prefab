@@ -400,7 +400,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fa6d9747cddb77740be604f324f7235b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4de1b1da87076448936003ed527bc82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -424,8 +424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainRenderer: {fileID: 135193437974368326}
-  daySprite: {fileID: 21300000, guid: fa6d9747cddb77740be604f324f7235b, type: 3}
-  nightSprite: {fileID: 21300000, guid: e4de1b1da87076448936003ed527bc82, type: 3}
+  daySprite: {fileID: 21300000, guid: e4de1b1da87076448936003ed527bc82, type: 3}
+  nightSprite: {fileID: 21300000, guid: fa6d9747cddb77740be604f324f7235b, type: 3}
 --- !u!1 &8463428742994098926
 GameObject:
   m_ObjectHideFlags: 0
