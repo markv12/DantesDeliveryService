@@ -268,6 +268,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35dde42c9781b0540a3512d169fbc588, type: 3}
+--- !u!114 &687813432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5052974004258265352, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+  m_PrefabInstance: {fileID: 7230718027423080875}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1370561091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -618,6 +629,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2037437616260258988, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: shopMoneyLabel
+      value: 
+      objectReference: {fileID: 687813432}
     - target: {fileID: 3687695685780379516, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
       propertyPath: m_Name
       value: CoreSystems

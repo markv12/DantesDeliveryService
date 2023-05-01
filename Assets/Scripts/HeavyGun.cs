@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HeavyGun : MonoBehaviour {
-    public int damage;
-    public int reloadTime;
     public RectTransform rectT;
     public Transform raycastT;
     public Image gunBodyImage;
@@ -39,9 +37,9 @@ public class HeavyGun : MonoBehaviour {
             RaycastHit hit = hits[i];
             if (hit.transform.gameObject.layer == enemyLayer) {
                 if (hit.transform.TryGetComponent(out Enemy enemy)) {
-                    enemy.Hurt(damage);
+                    enemy.Hurt(3000);
                 } else if (hit.transform.TryGetComponent(out ExplodingEnemy explodingEnemy)) {
-                    explodingEnemy.Hurt(damage);
+                    explodingEnemy.Hurt(3000);
                 }
             } else {
                 CreateSplat(hit);
@@ -53,7 +51,7 @@ public class HeavyGun : MonoBehaviour {
 
         IEnumerator ReloadRoutine() {
             CanShoot = false;
-            yield return WaitUtil.GetWait(reloadTime);
+            yield return WaitUtil.GetWait(StatsManager.instance.ShotgunReloadTime);
             if (DayNightManager.instance.IsNight) {
                 AudioManager.Instance.PlaySFX(reloadFinishSound, 1);
             }
@@ -126,8 +124,8 @@ public class HeavyGun : MonoBehaviour {
     }
 
     private Coroutine equipRoutine;
-    private static readonly Vector2 equippedPos = new Vector2(560f, -310f);
-    private static readonly Vector2 unequippedPos = new Vector2(560f, -800f);
+    private static readonly Vector2 equippedPos = new Vector2(577f, -308f);
+    private static readonly Vector2 unequippedPos = new Vector2(577f, -800f);
     private const float SHOOT_MAGNITUDE = 40;
     private static readonly Vector2 shootVector = new Vector2(0.766f, -0.6427876f) * SHOOT_MAGNITUDE;
 

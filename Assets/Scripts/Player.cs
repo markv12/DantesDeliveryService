@@ -17,8 +17,9 @@ public class Player : MonoBehaviour {
     public Transform directionArrow;
     public Gun gun;
     public HeavyGun heavyGun;
-    public float maxHealth;
-    private float health;
+    public int maxHealth;
+    private int health;
+    public int CurrentHealth => health; 
 
     public AudioClip pickUpSound;
     public AudioClip throwSound;
@@ -65,6 +66,11 @@ public class Player : MonoBehaviour {
                 Die();
             }
         }
+    }
+
+    public void FullHeal() {
+        health = maxHealth;
+        playerUI.ShowHealthFraction(health / (float)maxHealth);
     }
 
     private bool died = false;
@@ -122,7 +128,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (DayNightManager.instance.IsNight && CurrentDO == null && InputUtil.GetKeyDown(Key.G)) {
+        if (DayNightManager.instance.IsNight && CurrentDO == null && StatsManager.instance.shotgunUnlocked && InputUtil.GetKeyDown(Key.G)) {
             SwitchGuns();
         }
     }
@@ -131,7 +137,7 @@ public class Player : MonoBehaviour {
         lastThrowTime = Time.time;
         CurrentDO.mainT.SetParent(null, true);
         CurrentDO.mainRigidbody.isKinematic = false;
-        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1500 * EasedThrowStrength);
+        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * StatsManager.instance.ThrowPower * EasedThrowStrength);
         CurrentDO = null;
         AudioManager.Instance.PlaySFX(throwSound, 1f);
         directionArrow.gameObject.SetActive(false);
@@ -192,7 +198,7 @@ public class Player : MonoBehaviour {
 
     public void DOHitDestination(DeliveryObject deliveryObject) {
         AudioManager.Instance.PlaySuccess();
-        StatsManager.instance.AddMoney(10);
+        StatsManager.instance.AddMoney(StatsManager.instance.DelveryMoney);
         if (deliveryObject == CurrentDO) {
             ThrowStrength = 0;
             CurrentDO = null;
@@ -253,5 +259,9 @@ public class Player : MonoBehaviour {
         } else {
             GunEquipped = true;
         }
+    }
+
+    public void SetMoveSpeed(float moveSpeed) {
+        firstPersonController.SetMoveSpeed(moveSpeed);
     }
 }
