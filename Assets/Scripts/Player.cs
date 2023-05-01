@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour {
@@ -14,6 +16,7 @@ public class Player : MonoBehaviour {
     public PlayerUI playerUI;
     public Transform directionArrow;
     public Gun gun;
+    public HeavyGun heavyGun;
     public float maxHealth;
     private float health;
 
@@ -31,7 +34,7 @@ public class Player : MonoBehaviour {
                 currentDO = value;
                 DeliveryManager.instance.SetActiveDO(currentDO);
                 if(currentDO == null && DayNightManager.instance.IsNight) {
-                    GunEquipped = true;
+                    TakeGunsOut();
                 }
             }
 
@@ -97,8 +100,13 @@ public class Player : MonoBehaviour {
             } else {
                 gun.EndHold();
             }
+        } else if (HeavyGunEquipped) {
+            if (InputUtil.LeftMouseButtonDown && heavyGun.CanShoot) {
+                heavyGun.Shoot();
+            }
         }
-        if(CurrentDO != null) {
+
+        if (CurrentDO != null) {
             Vector3 lookDir = CurrentDO.destination.transform.position - directionArrow.position;
             directionArrow.rotation = Quaternion.LookRotation(lookDir);
 
@@ -109,6 +117,10 @@ public class Player : MonoBehaviour {
                 ThrowDeliveryObject();
                 ThrowStrength = 0;
             }
+        }
+
+        if (DayNightManager.instance.IsNight && CurrentDO == null && InputUtil.GetKeyDown(Key.G)) {
+            SwitchGuns();
         }
     }
 
@@ -123,12 +135,23 @@ public class Player : MonoBehaviour {
     }
 
     private bool gunEquipped = false;
-    public bool GunEquipped {
+    private bool GunEquipped {
         get { return gunEquipped; }
         set {
             if(gunEquipped != value) {
                 gunEquipped = value;
                 gun.SetEquipped(gunEquipped);
+            }
+        }
+    }
+
+    private bool heavyGunEquipped = false;
+    private bool HeavyGunEquipped {
+        get { return heavyGunEquipped; }
+        set {
+            if (heavyGunEquipped != value) {
+                heavyGunEquipped = value;
+                heavyGun.SetEquipped(heavyGunEquipped);
             }
         }
     }
@@ -143,7 +166,7 @@ public class Player : MonoBehaviour {
         if (isActive) {
             PauseManager.ReleasePause(this);
             if(CurrentDO == null && DayNightManager.instance.IsNight) {
-                GunEquipped = true;
+                TakeGunsOut();
             }
         } else {
             PauseManager.RequestPause(this);
@@ -169,7 +192,7 @@ public class Player : MonoBehaviour {
     }
 
     private void PickUpDeliveryObject(DeliveryObject deliveryObject) {
-        GunEquipped = false;
+        PutGunsAway();
         CurrentDO = deliveryObject;
         CurrentDO.mainRigidbody.isKinematic = true;
         CurrentDO.mainT.SetParent(mainCameraTransform, false);
@@ -178,5 +201,42 @@ public class Player : MonoBehaviour {
         CurrentDO.RemoveFromSpawnLocation();
         AudioManager.Instance.PlaySFX(pickUpSound, 1f);
         directionArrow.gameObject.SetActive(true);
+    }
+
+    private bool heavyGunSelected = false;
+    private Coroutine switchRoutine;
+    private void SwitchGuns() {
+        this.EnsureCoroutineStopped(ref switchRoutine);
+        switchRoutine = StartCoroutine(SwitchRoutine());
+
+        IEnumerator SwitchRoutine() {
+            heavyGunSelected = !heavyGunSelected;
+            if(heavyGunSelected && GunEquipped) {
+                GunEquipped = false;
+            }
+            if (!heavyGunSelected && HeavyGunEquipped) {
+                HeavyGunEquipped = false;
+            }
+            yield return WaitUtil.GetWait(0.75f);
+            if (heavyGunSelected && !HeavyGunEquipped) {
+                HeavyGunEquipped = true;
+            }
+            if (!heavyGunSelected && !GunEquipped) {
+                GunEquipped = true;
+            }
+        }
+    }
+
+    public void PutGunsAway() {
+        GunEquipped = false;
+        HeavyGunEquipped = false;
+    }
+
+    private void TakeGunsOut() {
+        if (heavyGunSelected) {
+            HeavyGunEquipped = true;
+        } else {
+            GunEquipped = true;
+        }
     }
 }
