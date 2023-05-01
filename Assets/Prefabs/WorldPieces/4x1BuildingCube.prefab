@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3511241252856625882}
   - component: {fileID: 5174378086794561086}
-  m_Layer: 0
+  - component: {fileID: 5759924910361728113}
+  m_Layer: 6
   m_Name: Temp_brick (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8ca709ca18de74047afb6ccfd8baa8b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,6 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5759924910361728113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418528731700146311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137b6f84b94a5e14b9b4aa29b3755747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 5174378086794561086}
+  daySprite: {fileID: 21300000, guid: 54a2c0629d8aedb4397387070fd703b6, type: 3}
+  nightSprite: {fileID: 21300000, guid: be70aa4f6d7eff744b989eab42829ab0, type: 3}
 --- !u!1 &5681854417375713966
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +169,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3660789208277635261}
   - component: {fileID: 6226665452511941212}
-  m_Layer: 0
+  - component: {fileID: 5199554880170444404}
+  m_Layer: 6
   m_Name: TempBrickTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +212,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8ca709ca18de74047afb6ccfd8baa8b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,6 +244,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5199554880170444404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310857160286139927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137b6f84b94a5e14b9b4aa29b3755747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 6226665452511941212}
+  daySprite: {fileID: 21300000, guid: 54a2c0629d8aedb4397387070fd703b6, type: 3}
+  nightSprite: {fileID: 21300000, guid: be70aa4f6d7eff744b989eab42829ab0, type: 3}
 --- !u!1 &7078069467488392472
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +269,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5376982808601354867}
   - component: {fileID: 7715118445907594126}
-  m_Layer: 0
+  - component: {fileID: 564503896334137299}
+  m_Layer: 6
   m_Name: Temp_brick (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +312,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8ca709ca18de74047afb6ccfd8baa8b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -311,6 +344,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &564503896334137299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078069467488392472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137b6f84b94a5e14b9b4aa29b3755747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 7715118445907594126}
+  daySprite: {fileID: 21300000, guid: 54a2c0629d8aedb4397387070fd703b6, type: 3}
+  nightSprite: {fileID: 21300000, guid: be70aa4f6d7eff744b989eab42829ab0, type: 3}
 --- !u!1 &7817757692570538483
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +369,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3866539456981739998}
   - component: {fileID: 2627455653201207582}
-  m_Layer: 0
+  - component: {fileID: 5640825575107674903}
+  m_Layer: 6
   m_Name: Temp_brick (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +412,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8ca709ca18de74047afb6ccfd8baa8b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -395,6 +444,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5640825575107674903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817757692570538483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137b6f84b94a5e14b9b4aa29b3755747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 2627455653201207582}
+  daySprite: {fileID: 21300000, guid: 54a2c0629d8aedb4397387070fd703b6, type: 3}
+  nightSprite: {fileID: 21300000, guid: be70aa4f6d7eff744b989eab42829ab0, type: 3}
 --- !u!1 &8571644094667587310
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +469,8 @@ GameObject:
   m_Component:
   - component: {fileID: 479718464102162764}
   - component: {fileID: 2201842163113835964}
-  m_Layer: 0
+  - component: {fileID: 8947722039754888473}
+  m_Layer: 6
   m_Name: Temp_brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +512,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8ca709ca18de74047afb6ccfd8baa8b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -479,6 +544,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8947722039754888473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8571644094667587310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137b6f84b94a5e14b9b4aa29b3755747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 2201842163113835964}
+  daySprite: {fileID: 21300000, guid: 54a2c0629d8aedb4397387070fd703b6, type: 3}
+  nightSprite: {fileID: 21300000, guid: be70aa4f6d7eff744b989eab42829ab0, type: 3}
 --- !u!1 &8956309550354438931
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +569,8 @@ GameObject:
   m_Component:
   - component: {fileID: 177347971491455467}
   - component: {fileID: 45346328644833199}
-  m_Layer: 0
+  - component: {fileID: 4865738416042306578}
+  m_Layer: 6
   m_Name: TempBrickBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +612,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8ca709ca18de74047afb6ccfd8baa8b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -563,3 +644,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4865738416042306578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956309550354438931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137b6f84b94a5e14b9b4aa29b3755747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainRenderer: {fileID: 45346328644833199}
+  daySprite: {fileID: 21300000, guid: 54a2c0629d8aedb4397387070fd703b6, type: 3}
+  nightSprite: {fileID: 21300000, guid: be70aa4f6d7eff744b989eab42829ab0, type: 3}
