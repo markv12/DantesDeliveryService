@@ -72,9 +72,8 @@ public class Player : MonoBehaviour {
         died = true;
         AudioManager.Instance.PlayPlayerDie();
         AudioManager.Instance.FadeOutBGM();
-        gameOverUI.Show(() => {
-            SetFPSControllerActive(false);
-        });
+        SetFPSControllerActive(false);
+        gameOverUI.Show();
     }
 
     private float throwStrength = 0;

@@ -31,24 +31,42 @@ public class Enemy : MonoBehaviour {
             if (Player.instance != null && navMeshAgent.enabled) {
                 Vector3 playerPos = Player.instance.transform.position;
                 navMeshAgent.destination = playerPos;
-                float playerSqrDist = (spriteT.position - playerPos).sqrMagnitude;
+                Vector3 playerDiff = playerPos - spriteT.position;
+                float playerSqrDist = playerDiff.sqrMagnitude;
                 if (playerSqrDist < 2f) {
                     Player.instance.Hurt(33);
                     Destroy(gameObject);
                     isDestroyed = true;
-                } else if (playerSqrDist < 121) {
-                    if(Time.time - lastProjectileTime > timeBetweenProjectiles) {
+                } else if (playerSqrDist < 225) {
+                    if (Time.time - lastProjectileTime > timeBetweenProjectiles) {
                         lastProjectileTime = Time.time;
-                        Projectile newProjectile = Instantiate(projectile);
-                        Vector3 startPos = spriteT.position;
-                        newProjectile.mainT.position = startPos;
-                        newProjectile.Execute(startPos, playerPos);
+                        FireProjectile();
                     }
                 }
             }
             if (!DayNightManager.instance.IsNight) {
                 Destroy(gameObject);
                 isDestroyed = true;
+            }
+        }
+    }
+
+    private void FireProjectile() {
+        StartCoroutine(FireProjectileRoutine());
+
+        IEnumerator FireProjectileRoutine() {
+            mainRenderer.sprite = attackSprite;
+            yield return WaitUtil.GetWait(0.4f);
+            mainRenderer.sprite = normalSprite;
+            if (Player.instance != null && navMeshAgent.enabled) {
+                Vector3 playerPos = Player.instance.transform.position.AddY(1f);
+                Vector3 playerDiff = playerPos - spriteT.position;
+                Projectile newProjectile = Instantiate(projectile);
+                Vector3 startPos = spriteT.position;
+                newProjectile.mainT.SetPositionAndRotation(startPos, spriteT.rotation);
+                Vector3 playerDir = playerDiff.normalized;
+                Vector3 endPos = startPos + playerDir * 50;
+                newProjectile.Execute(startPos, endPos);
             }
         }
     }

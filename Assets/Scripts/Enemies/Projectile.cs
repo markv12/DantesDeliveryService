@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour {
     public void Execute(Vector3 startPos, Vector3 endPos) {
         StartCoroutine(SpriteAnimUtil.SpriteLoopRoutine(mainRenderer, loopSprites, 12));
 
-        this.CreateAnimationRoutine(3f, (float progress) => {
+        this.CreatePausableAnimationRoutine(3f, (float progress) => {
             if (!isDestroyed && Player.instance != null) {
                 Vector3 pos = Vector3.Lerp(startPos, endPos, progress);
                 mainT.position = pos;

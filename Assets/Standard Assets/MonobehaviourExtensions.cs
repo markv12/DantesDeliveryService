@@ -32,6 +32,23 @@ public static class MonoBehaviourExtensions {
         onComplete?.Invoke();
     }
 
+    public static Coroutine CreatePausableAnimationRoutine(this MonoBehaviour value, float duration, Action<float> changeFunction, Action onComplete = null) {
+        return value.StartCoroutine(PausableAnimationRoutine(duration, changeFunction, onComplete));
+    }
+
+    private static IEnumerator PausableAnimationRoutine(float duration, Action<float> changeFunction, Action onComplete) {
+        float elapsedTime = 0;
+        float progress = 0;
+        while (progress <= 1) {
+            changeFunction(progress);
+            elapsedTime += Time.deltaTime;
+            progress = elapsedTime / duration;
+            yield return null;
+        }
+        changeFunction(1);
+        onComplete?.Invoke();
+    }
+
     public const float ANIM_DURATION = 0.8f;
     public static void AnimateTransform(this MonoBehaviour value, Transform t, Vector3 startPos, Quaternion startRotation, Vector3 endPos, Quaternion endRotation, Action onComplete) {
         value.CreateAnimationRoutine(ANIM_DURATION, (float progress) => {

@@ -12,12 +12,11 @@ public class GameOverUI : MonoBehaviour
         restartButton.onClick.AddListener(Restart);
     }
 
-    public void Show(Action onCoverScreen) {
+    public void Show() {
         Vector2 startPos = bgTransform.anchoredPosition;
         this.CreateAnimationRoutine(1.5f, (float progress) => {
             bgTransform.anchoredPosition = Vector2.Lerp(startPos, NightStartUI.ON_SCREEN_POS, Easing.easeInSine(0, 1, progress));
         }, () => {
-            onCoverScreen?.Invoke();
             AudioManager.Instance.PlayShopTheme();
         });
     }
