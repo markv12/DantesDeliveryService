@@ -14,8 +14,8 @@ public class MinimapCamera : MonoBehaviour {
             if (followPlayerMode) {
                 mainCamera.orthographicSize = 50;
             } else {
-                cameraT.position = new Vector3(0, 300, 0);
-                mainCamera.orthographicSize = 100;
+                cameraT.position = new Vector3(35, 300, 35);
+                mainCamera.orthographicSize = 72;
             }
         }
     }

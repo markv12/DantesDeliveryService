@@ -46,17 +46,25 @@ public class DeliveryManager : MonoBehaviour {
         spawnLocations.Remove(spawnLocation);
     }
 
-    public void SpawnNewDelivery() {
+    public void OnDeliveryCompleted() {
+        bool allStarted = true;
         for (int i = 0; i < spawnLocations.Count; i++) {
-            DOSpawnLocation sl = spawnLocations[i];
-            if(sl != null && sl.currentDO == null) {
-                SpawnDOAtLocation(sl);
+            if (spawnLocations[i].currentDO != null) {
+                allStarted = false;
+            }
+        }
+        if (allStarted) {
+            for (int i = 0; i < spawnLocations.Count; i++) {
+                DOSpawnLocation sl = spawnLocations[i];
+                if (sl != null && sl.currentDO == null) {
+                    SpawnDOAtLocation(sl);
+                }
             }
         }
     }
 
     public void SetActiveDO(DeliveryObject currentDO) {
-        if(currentDO == null) {
+        if (currentDO == null) {
             SelectDestinationsWithADO();
         } else {
             for (int i = 0; i < destinations.Count; i++) {

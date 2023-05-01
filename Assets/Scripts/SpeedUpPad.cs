@@ -14,7 +14,7 @@ public class SpeedUpPad : MonoBehaviour {
             FirstPersonController fps = other.gameObject.GetComponent<FirstPersonController>();
             if(fps != null && Time.time - lastSpeedUpTime > 0.2f && Vector3.Dot(fps.CurrentDirection.normalized, transform.forward) > 0.1f) {
                 lastSpeedUpTime = Time.time;
-                AudioManager.Instance.PlaySFX(speedUpSound, 1f);
+                AudioManager.Instance.PlaySFX(speedUpSound, 0.75f);
                 fps.SpeedUp(speedModifier, duration);
             }
         }

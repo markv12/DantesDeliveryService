@@ -30,8 +30,10 @@ public class Gun : MonoBehaviour {
         Kickback();
         if (Physics.Raycast(raycastT.position, raycastT.forward, out RaycastHit hit, RAYCAST_DISTANCE, hitLayerMask)) {
             if (hit.transform.gameObject.layer == enemyLayer) {
-                if(hit.transform.TryGetComponent<Enemy>(out var enemy)) {
+                if(hit.transform.TryGetComponent(out Enemy enemy)) {
                     enemy.Hurt(damage);
+                } else if (hit.transform.TryGetComponent(out ExplodingEnemy explodingEnemy)) {
+                    explodingEnemy.Hurt(damage);
                 }
             } else {
                 CreateSplat(hit);

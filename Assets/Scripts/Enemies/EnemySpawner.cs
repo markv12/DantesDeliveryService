@@ -1,9 +1,11 @@
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
-    public Transform spawnT;
+    public Transform[] spawnPoints;
     public float timeBetweenSpawns;
-    public GameObject[] enemyPrefabs;
+    public GameObject eyeballEnemy;
+    public GameObject goatEnemy;
+    public GameObject jellyfishEnemy;
 
     private float timeSinceLastSpawn = 0;
     void Update() {
@@ -17,6 +19,22 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private void Spawn() {
-        GameObject newEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)]);
+        if(Player.instance != null) {
+            Vector3 playerPos = Player.instance.transform.position;
+            Transform farthestPoint = spawnPoints[0];
+            float farthestSqrDist = float.MinValue;
+            for (int i = 0; i < spawnPoints.Length; i++) {
+                Transform point = spawnPoints[i];
+                float distSqr = (playerPos - point.position).sqrMagnitude;
+                if(distSqr > farthestSqrDist) {
+                    farthestSqrDist = distSqr;
+                    farthestPoint = point;
+                }
+            }
+
+            GameObject toSpawn = Random.Range(0, 3) == 0 ? eyeballEnemy : goatEnemy;
+            GameObject newEnemy = Instantiate(toSpawn);
+            newEnemy.transform.position = farthestPoint.position;
+        }
     }
 }
