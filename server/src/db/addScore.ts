@@ -14,13 +14,6 @@ export default async function (
   if (!ip || !score || dbPath.includes('undefined'))
     return 0
 
-  if (!fs.existsSync(path.join('./', 'data', dbPath))) {
-    fs.mkdirSync(path.join('./', 'data', dbPath), {
-      recursive: true,
-    })
-    c.log(`Created ./data/${dbPath} directory`)
-  }
-
   const scoreDataToSave: Score = {
     ip,
     score,
@@ -33,15 +26,43 @@ async function useIndividualFiles(
   dbPath: string,
   scoreData: Score,
 ): Promise<number> {
-  const existingData = await fs.promises
-    .readFile(
-      path.join('./', 'data', dbPath + '.json'),
-      'utf8',
+  if (
+    !fs.existsSync(
+      path.join('./', 'data', dbPath.split('/')[0]),
     )
-    .catch((err) => {
-      c.log(err)
-      return null
-    })
+  ) {
+    fs.mkdirSync(
+      path.join('./', 'data', dbPath.split('/')[0]),
+      {
+        recursive: true,
+      },
+    )
+    c.log(`Created ./data/${dbPath} directory`)
+  }
+
+  let existingData: string | null = null
+  if (
+    !fs.existsSync(
+      path.join('./', 'data', dbPath + '.json'),
+    )
+  ) {
+    fs.writeFileSync(
+      path.join('./', 'data', dbPath + '.json'),
+      JSON.stringify([scoreData]),
+    )
+    c.log(`Created ./data/${dbPath}.json file`)
+    existingData = '[]'
+  }
+  if (existingData === null)
+    existingData = await fs.promises
+      .readFile(
+        path.join('./', 'data', dbPath + '.json'),
+        'utf8',
+      )
+      .catch((err) => {
+        c.log(err)
+        return null
+      })
 
   let scoresAboveInFile = 0
   if (existingData) {
@@ -101,6 +122,13 @@ async function useSplitFiles(
   dbPath: string,
   scoreData: Score,
 ): Promise<number> {
+  if (!fs.existsSync(path.join('./', 'data', dbPath))) {
+    fs.mkdirSync(path.join('./', 'data', dbPath), {
+      recursive: true,
+    })
+    c.log(`Created ./data/${dbPath} directory`)
+  }
+
   // get files in world directory
   const files = (
     await fs.promises
