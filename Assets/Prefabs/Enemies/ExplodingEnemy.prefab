@@ -354,8 +354,8 @@ MonoBehaviour:
   lvl1Sprite: {fileID: 21300000, guid: 6ac1eae22b45cbe41bc5330f902410f2, type: 3}
   lvl2Sprite: {fileID: 21300000, guid: 12cb7253936d51a46ab1283d25f0c10b, type: 3}
   explodeSprite: {fileID: 21300000, guid: c5a458c9fbc35074a80588d1708a9e21, type: 3}
-  explodeSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  explodeSound: {fileID: 8300000, guid: dcba259174ff3479798d8862f529c8d0, type: 3}
+  deathSound: {fileID: 8300000, guid: 992649dfbdde944b4aefbbeacaa79abf, type: 3}
   loopSound: {fileID: 6169540692759618538}
   navMeshAgent: {fileID: 8415052000101644600}
 --- !u!195 &8415052000101644600
