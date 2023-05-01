@@ -18,6 +18,9 @@ public class Player : MonoBehaviour {
     public float maxHealth;
     private float health;
 
+    public AudioClip pickUpSound;
+    public AudioClip throwSound;
+
     private DeliveryObject currentDO;
     private DeliveryObject CurrentDO {
         get {
@@ -64,7 +67,7 @@ public class Player : MonoBehaviour {
             playerUI.ShowThrowStrength(EasedThrowStrength);
         }
     }
-    private float EasedThrowStrength => Easing.easeOutSine(0, 1, throwStrength);
+    private float EasedThrowStrength => Easing.easeOutQuad(0, 1, throwStrength);
 
     private float lastThrowTime;
     private void Update() {
@@ -98,6 +101,7 @@ public class Player : MonoBehaviour {
         CurrentDO.mainRigidbody.isKinematic = false;
         CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1250 * EasedThrowStrength);
         CurrentDO = null;
+        AudioManager.Instance.PlaySFX(throwSound, 1f);
         directionArrow.gameObject.SetActive(false);
     }
 
@@ -150,8 +154,10 @@ public class Player : MonoBehaviour {
         CurrentDO = deliveryObject;
         CurrentDO.mainRigidbody.isKinematic = true;
         CurrentDO.mainT.SetParent(mainCameraTransform, false);
-        CurrentDO.mainT.localPosition = new Vector3(0, -0.55f, 2f);
+        CurrentDO.mainT.localPosition = new Vector3(1.26f, -0.8f, 2.18f);
+        CurrentDO.mainT.localEulerAngles = new Vector3(20, 200, -3);
         CurrentDO.RemoveFromSpawnLocation();
+        AudioManager.Instance.PlaySFX(pickUpSound, 1f);
         directionArrow.gameObject.SetActive(true);
     }
 }

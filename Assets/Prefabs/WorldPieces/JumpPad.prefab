@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 3209940840712897252}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1926675118874093369
 MonoBehaviour:
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpStrength: 25
+  jumpSound: {fileID: 8300000, guid: 5a6637ab573d34dcaa7b57db33c6f064, type: 3}
 --- !u!65 &6779123613726468634
 BoxCollider:
   m_ObjectHideFlags: 0

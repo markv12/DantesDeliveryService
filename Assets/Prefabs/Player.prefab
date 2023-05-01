@@ -359,7 +359,7 @@ Transform:
   m_GameObject: {fileID: 1501940958660253650}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 131186723733069784}
@@ -385,7 +385,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7c5034f36a1459a4b981e917dd3b6bce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -894,7 +894,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3752739387883597387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.35, z: 3.84}
+  m_LocalPosition: {x: 0, y: -1.2, z: 3.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1733,7 +1733,7 @@ Transform:
   - {fileID: 7305642075507861140}
   - {fileID: 5678818521488412846}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6888867113807108806
 MonoBehaviour:
@@ -1755,6 +1755,8 @@ MonoBehaviour:
   directionArrow: {fileID: 131186723733069784}
   gun: {fileID: 8204239052779835821}
   maxHealth: 100
+  pickUpSound: {fileID: 8300000, guid: 0b573ba5322c246c7b4a8b820f858546, type: 3}
+  throwSound: {fileID: 8300000, guid: b7f67bde6914b4d8192a3ed543e40f80, type: 3}
 --- !u!143 &8513072604464528246
 CharacterController:
   m_ObjectHideFlags: 0

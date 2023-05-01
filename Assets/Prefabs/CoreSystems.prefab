@@ -1112,7 +1112,7 @@ MonoBehaviour:
   nightSkyboxColor: {r: 0.35, g: 0, b: 0, a: 1}
   nightStartUI: {fileID: 552395666182983432}
   dayStartUI: {fileID: 5524837611459101481}
-  dayLength: 5
+  dayLength: 15
   nightLength: 15
 --- !u!223 &2606293541469204502
 Canvas:

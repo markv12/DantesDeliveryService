@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedModifier: 2
   duration: 0.5
+  speedUpSound: {fileID: 8300000, guid: 3da07198f356446cf94defcdf2d1f614, type: 3}
 --- !u!65 &6779123613726468634
 BoxCollider:
   m_ObjectHideFlags: 0

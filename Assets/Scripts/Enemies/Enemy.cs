@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour {
     public Sprite attackSprite;
     public Sprite deathSprite;
 
+    public AudioClip deathSound;
+
     public NavMeshAgent navMeshAgent;
 
     private int health;
@@ -21,7 +23,7 @@ public class Enemy : MonoBehaviour {
 
     bool isDestroyed = false;
     private void Update() {
-        if (Player.instance != null) {
+        if (Player.instance != null && navMeshAgent.enabled) {
             navMeshAgent.destination = Player.instance.transform.position;
         }
         if (!DayNightManager.instance.IsNight && !isDestroyed) {
@@ -41,6 +43,7 @@ public class Enemy : MonoBehaviour {
     private void Die() {
         navMeshAgent.enabled = false;
         mainRenderer.sprite = deathSprite;
+        AudioManager.Instance.PlaySFX(deathSound, 1f);
         Vector3 startScale = spriteT.localScale;
         Vector3 endScale = Vector3.zero;
         this.CreateAnimationRoutine(0.8f, (float progress) => {
