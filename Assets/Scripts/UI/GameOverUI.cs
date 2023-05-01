@@ -1,11 +1,13 @@
 using System;
+using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOverUI : MonoBehaviour
-{
+public class GameOverUI : MonoBehaviour {
     public RectTransform bgTransform;
+    public TMP_Text highScoreLabel;
     public Button restartButton;
 
     private void Awake() {
@@ -19,6 +21,29 @@ public class GameOverUI : MonoBehaviour
         }, () => {
             AudioManager.Instance.PlayShopTheme();
         });
+        ValueTuple<string, string>[] bodyParams = new ValueTuple<string, string>[]{
+            ("score", "11"),
+        };
+        StartCoroutine(NetUtility.Post("https://p.jasperstephenson.com/ld53/score/add", bodyParams, (bool sadf, string result) => {
+            RecordData recordData = RecordData.CreateFromJsonString(result);
+            if(recordData != null) {
+                highScoreLabel.text = GetHighScoreText(recordData);
+            }
+        }));
+    }
+
+    private string GetHighScoreText(RecordData recordData) {
+        string result = "";
+        if(recordData.regionRank > 0) {
+            result += "Top " + recordData.regionRank + " in " + recordData.region + Environment.NewLine;
+        }
+        if(recordData.countryRank > 0) {
+            result += "Top " + recordData.countryRank + " in " + recordData.country + Environment.NewLine;
+        }
+        if (recordData.worldRank > 0) {
+            result += "Top " + recordData.worldRank + " Worldwide";
+        }
+        return result;
     }
 
     private void Restart() {
