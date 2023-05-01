@@ -331,6 +331,13 @@ MonoBehaviour:
   uiClick: {fileID: 8300000, guid: 1e23dc434e678ee4c8d0e0149d17dcd8, type: 3}
   nightStart: {fileID: 8300000, guid: 278d5f311c3dd4ce5a9aa2a240bd3d3e, type: 3}
   dayStart: {fileID: 8300000, guid: 432f1329c593d4eed86b5999bba1e5c1, type: 3}
+  success: {fileID: 8300000, guid: 1930f1d6fc0fd4ce9ae914668f053f33, type: 3}
+  playerHurtSounds:
+  - {fileID: 8300000, guid: c021a82105c61442382f5c287ebe8c33, type: 3}
+  - {fileID: 8300000, guid: a07ec4575a84b4a92b3a5c909178bc30, type: 3}
+  - {fileID: 8300000, guid: d13308ac9ec0a491aac0362ad7ff6add, type: 3}
+  - {fileID: 8300000, guid: 056060d2903fd49d19ae28a551dccff0, type: 3}
+  playerDie: {fileID: 8300000, guid: 3149fbbab88a74e49a9ee94d933adbe9, type: 3}
 --- !u!1 &2904702837911593048
 GameObject:
   m_ObjectHideFlags: 0

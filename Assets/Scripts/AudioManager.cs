@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -20,7 +21,7 @@ public class AudioManager : MonoBehaviour {
     public AudioSource shopThemeSource;
 
     public void PlayDayTheme() {
-        dayThemeSource.volume = 0.8f;
+        dayThemeSource.volume = 0.6f;
         dayThemeSource.Play();
     }
     public void PlayNightTheme() {
@@ -29,7 +30,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlayShopTheme() {
-        shopThemeSource.volume = 0.7f;
+        shopThemeSource.volume = 0.35f;
         shopThemeSource.Play();
     }
 
@@ -63,6 +64,9 @@ public class AudioManager : MonoBehaviour {
     public AudioClip uiClick;
     public AudioClip nightStart;
     public AudioClip dayStart;
+    public AudioClip success;
+    public AudioClip[] playerHurtSounds;
+    public AudioClip playerDie;
 
     public void PlayUIClick() {
         PlaySFX(uiClick, 1f);
@@ -74,6 +78,18 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayDayStart() {
         PlaySFX(dayStart, 1f);
+    }
+
+    public void PlaySuccess() {
+        PlaySFX(success, 1f);
+    }
+
+    public void PlayPlayerHurt() {
+        PlaySFX(playerHurtSounds[UnityEngine.Random.Range(0, playerHurtSounds.Length)], 1f);
+    }
+
+    public void PlayPlayerDie() {
+        PlaySFX(playerDie, 1f);
     }
 
     public void PlaySFX(AudioClip clip, float volume) {

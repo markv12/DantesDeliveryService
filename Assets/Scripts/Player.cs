@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour {
@@ -20,6 +19,7 @@ public class Player : MonoBehaviour {
 
     public AudioClip pickUpSound;
     public AudioClip throwSound;
+    public GameOverUI gameOverUI;
 
     private DeliveryObject currentDO;
     private DeliveryObject CurrentDO {
@@ -55,6 +55,23 @@ public class Player : MonoBehaviour {
     public void Hurt(int damage) {
         health = Mathf.Max(0, health - damage);
         playerUI.ShowHealthFraction(health / (float)maxHealth);
+        if(health > 0) {
+            AudioManager.Instance.PlayPlayerHurt();
+        } else {
+            if (!died) {
+                Die();
+            }
+        }
+    }
+
+    private bool died = false;
+    private void Die() {
+        died = true;
+        AudioManager.Instance.PlayPlayerDie();
+        AudioManager.Instance.FadeOutBGM();
+        gameOverUI.Show(() => {
+            SetFPSControllerActive(false);
+        });
     }
 
     private float throwStrength = 0;
@@ -142,6 +159,7 @@ public class Player : MonoBehaviour {
     }
 
     public void DOHitDestination(DeliveryObject deliveryObject) {
+        AudioManager.Instance.PlaySuccess();
         MoneyManager.instance.CurrentMoney += 10;
         if(deliveryObject == CurrentDO) {
             ThrowStrength = 0;

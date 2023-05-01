@@ -1114,7 +1114,7 @@ MonoBehaviour:
   nightSkyboxColor: {r: 0.35, g: 0, b: 0, a: 1}
   nightStartUI: {fileID: 552395666182983432}
   dayStartUI: {fileID: 5524837611459101481}
-  dayLength: 15
+  dayLength: 3
   nightLength: 15
 --- !u!223 &2606293541469204502
 Canvas:
@@ -3283,6 +3283,7 @@ GameObject:
   - component: {fileID: 599782225182585916}
   - component: {fileID: 7573740955834088518}
   - component: {fileID: 237347173924476350}
+  - component: {fileID: 6946758371107391990}
   m_Layer: 0
   m_Name: GameOverUI
   m_TagString: Untagged
@@ -3303,7 +3304,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4165664319740186818}
-  - {fileID: 929158231288433065}
   m_Father: {fileID: 3993294815815808362}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3333,7 +3333,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 8
   m_TargetDisplay: 0
 --- !u!114 &7573740955834088518
 MonoBehaviour:
@@ -3375,6 +3375,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6946758371107391990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5580795475335102733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a18d1cd3a46de4e85ab03a52a19205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgTransform: {fileID: 4165664319740186818}
+  restartButton: {fileID: 1885649997810036564}
 --- !u!1 &5757321124553763045
 GameObject:
   m_ObjectHideFlags: 0
@@ -4298,12 +4312,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 419302290793472663}
-  m_Father: {fileID: 6659515483416293009}
+  m_Father: {fileID: 4165664319740186818}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 351, y: 743.95166}
+  m_AnchoredPosition: {x: 351, y: -336.04834}
   m_SizeDelta: {x: 369.3638, y: 152.2603}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2293627130477014338
@@ -4555,6 +4569,7 @@ RectTransform:
   m_Children:
   - {fileID: 5570516402299488062}
   - {fileID: 5601411081097112249}
+  - {fileID: 929158231288433065}
   m_Father: {fileID: 6659515483416293009}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

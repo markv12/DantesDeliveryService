@@ -13,4 +13,9 @@ public static class PauseManager {
         requesters.Remove(requester);
         Time.timeScale = requesters.Count > 0 ? 0 : 1;
     }
+
+    public static void ReleaseAllPauses() {
+        requesters.Clear();
+        Time.timeScale = 1;
+    }
 }

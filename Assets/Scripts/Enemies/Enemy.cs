@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Enemy : MonoBehaviour {
     [Min(0)]
@@ -23,13 +24,22 @@ public class Enemy : MonoBehaviour {
 
     bool isDestroyed = false;
     private void Update() {
-        if (Player.instance != null && navMeshAgent.enabled) {
-            navMeshAgent.destination = Player.instance.transform.position;
+        if (!isDestroyed) {
+            if (Player.instance != null && navMeshAgent.enabled) {
+                Vector3 playerPos = Player.instance.transform.position;
+                navMeshAgent.destination = playerPos;
+                if ((spriteT.position - playerPos).sqrMagnitude < 2f) {
+                    Player.instance.Hurt(33);
+                    Destroy(gameObject);
+                    isDestroyed = true;
+                }
+            }
+            if (!DayNightManager.instance.IsNight) {
+                Destroy(gameObject);
+                isDestroyed = true;
+            }
         }
-        if (!DayNightManager.instance.IsNight && !isDestroyed) {
-            Destroy(gameObject);
-            isDestroyed = true;
-        }
+
     }
 
     public void Hurt(int amount) {
