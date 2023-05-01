@@ -22,7 +22,7 @@ public class GameOverUI : MonoBehaviour {
             AudioManager.Instance.PlayShopTheme();
         });
         ValueTuple<string, string>[] bodyParams = new ValueTuple<string, string>[]{
-            ("score", "11"),
+            ("score", StatsManager.instance.TotalMoney.ToString()),
         };
         StartCoroutine(NetUtility.Post("https://p.jasperstephenson.com/ld53/score/add", bodyParams, (bool sadf, string result) => {
             RecordData recordData = RecordData.CreateFromJsonString(result);

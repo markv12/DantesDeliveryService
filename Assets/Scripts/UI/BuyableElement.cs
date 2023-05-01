@@ -23,6 +23,7 @@ public class BuyableElement : MonoBehaviour {
     private void Buy() {
         if (info?.price <= StatsManager.instance.CurrentMoney) {
             info?.onBuy?.Invoke();
+            AudioManager.Instance.PlayBuySound();
             StatsManager.instance.SpendMoney(info.Value.price);
             Destroy(gameObject);
         } else {

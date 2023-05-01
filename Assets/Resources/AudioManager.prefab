@@ -340,6 +340,7 @@ MonoBehaviour:
   playerDie: {fileID: 8300000, guid: 3149fbbab88a74e49a9ee94d933adbe9, type: 3}
   outOfAmmoSound: {fileID: 8300000, guid: 56f8d11c2af6c45c38ce94106c5308a4, type: 3}
   errorSound: {fileID: 8300000, guid: 921683fb60d3f4aadb306e18fbc97887, type: 3}
+  buySound: {fileID: 8300000, guid: 9a6c461836a1f40ada5cc34c9bd25c76, type: 3}
 --- !u!1 &2904702837911593048
 GameObject:
   m_ObjectHideFlags: 0
