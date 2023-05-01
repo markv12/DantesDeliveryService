@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityStandardAssets.Characters.FirstPerson;
 
 public class Enemy : MonoBehaviour {
     [Min(0)]
@@ -51,8 +50,10 @@ public class Enemy : MonoBehaviour {
         }
     }
 
+    private Coroutine fireProjectileRoutine;
     private void FireProjectile() {
-        StartCoroutine(FireProjectileRoutine());
+        this.EnsureCoroutineStopped(ref fireProjectileRoutine);
+        fireProjectileRoutine = StartCoroutine(FireProjectileRoutine());
 
         IEnumerator FireProjectileRoutine() {
             mainRenderer.sprite = attackSprite;
@@ -84,6 +85,7 @@ public class Enemy : MonoBehaviour {
 
     private void Die() {
         died = true;
+        this.EnsureCoroutineStopped(ref fireProjectileRoutine);
         navMeshAgent.enabled = false;
         mainRenderer.sprite = deathSprite;
         AudioManager.Instance.PlaySFX(deathSound, 1f);

@@ -17,7 +17,11 @@ public class Projectile : MonoBehaviour {
                 mainT.position = pos;
 
                 Vector3 playerPos = Player.instance.transform.position;
-                if ((pos - playerPos).sqrMagnitude < 2f) {
+                Vector3 playerDiff = playerPos - pos;
+                Vector3 playerDir = playerDiff.normalized;
+                mainT.forward = playerDir;
+
+                if (playerDiff.sqrMagnitude < 2f) {
                     Player.instance.Hurt(damage);
                     Destroy(gameObject);
                     isDestroyed = true;
