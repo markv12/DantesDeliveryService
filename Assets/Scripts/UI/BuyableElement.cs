@@ -21,8 +21,13 @@ public class BuyableElement : MonoBehaviour {
     }
 
     private void Buy() {
-        info?.onBuy?.Invoke();
-        Destroy(gameObject);
+        if (info?.price <= StatsManager.instance.CurrentMoney) {
+            info?.onBuy?.Invoke();
+            StatsManager.instance.SpendMoney(info.Value.price);
+            Destroy(gameObject);
+        } else {
+            AudioManager.Instance.PlayErrorSound();
+        }
     }
 }
 

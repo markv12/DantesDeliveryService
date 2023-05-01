@@ -192,7 +192,7 @@ public class Player : MonoBehaviour {
 
     public void DOHitDestination(DeliveryObject deliveryObject) {
         AudioManager.Instance.PlaySuccess();
-        MoneyManager.instance.CurrentMoney += 10;
+        StatsManager.instance.AddMoney(10);
         if (deliveryObject == CurrentDO) {
             ThrowStrength = 0;
             CurrentDO = null;
@@ -227,7 +227,7 @@ public class Player : MonoBehaviour {
                 HeavyGunEquipped = false;
             }
             playerUI.SetThrowMeterVisible(false);
-            yield return WaitUtil.GetWait(0.75f);
+            yield return WaitUtil.GetWait(0.5f);
             if(CurrentDO == null) {
                 if (heavyGunSelected && !HeavyGunEquipped) {
                     HeavyGunEquipped = true;

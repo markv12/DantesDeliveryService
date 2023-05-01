@@ -136,7 +136,7 @@ public class Gun : MonoBehaviour {
         this.EnsureCoroutineStopped(ref equipRoutine);
         Vector2 startPos = rectT.anchoredPosition;
         Vector2 endPos = equipped ? equippedPos : unequippedPos; 
-        equipRoutine = this.CreateAnimationRoutine(1f, (float progress) => {
+        equipRoutine = this.CreateAnimationRoutine(0.7f, (float progress) => {
             rectT.anchoredPosition = Vector2.Lerp(startPos, endPos, Easing.easeInOutSine(0, 1, progress));
         }, () => {
             if(!equipped) {
