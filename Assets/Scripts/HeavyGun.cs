@@ -29,17 +29,21 @@ public class HeavyGun : MonoBehaviour {
 
     private const float RAYCAST_DISTANCE = 50f;
     private int reloadFrameIndex = 0;
+    private readonly RaycastHit[] hits = new RaycastHit[10];
     public void Shoot() {
         AudioManager.Instance.PlaySFXPitched(shootSound, 1, Random.Range(0.90f, 1.1f));
 
         Kickback();
-        if (Physics.Raycast(raycastT.position, raycastT.forward, out RaycastHit hit, RAYCAST_DISTANCE, hitLayerMask)) {
+        int hitCount = Physics.RaycastNonAlloc(new Ray(raycastT.position, raycastT.forward), hits, RAYCAST_DISTANCE, hitLayerMask);
+        for (int i = 0; i < hitCount; i++) {
+            RaycastHit hit = hits[i];
             if (hit.transform.gameObject.layer == enemyLayer) {
-                if(hit.transform.TryGetComponent<Enemy>(out var enemy)) {
+                if (hit.transform.TryGetComponent<Enemy>(out var enemy)) {
                     enemy.Hurt(damage);
                 }
             } else {
                 CreateSplat(hit);
+                break;
             }
         }
 
@@ -48,7 +52,9 @@ public class HeavyGun : MonoBehaviour {
         IEnumerator ReloadRoutine() {
             CanShoot = false;
             yield return WaitUtil.GetWait(reloadTime);
-            AudioManager.Instance.PlaySFX(reloadFinishSound, 1);
+            if (DayNightManager.instance.IsNight) {
+                AudioManager.Instance.PlaySFX(reloadFinishSound, 1);
+            }
             reloadFrameIndex = (reloadFrameIndex + 1) % reloadFrames.Length;
             gunBodyImage.sprite = reloadFrames[reloadFrameIndex];
             CanShoot = true;
@@ -118,8 +124,8 @@ public class HeavyGun : MonoBehaviour {
     }
 
     private Coroutine equipRoutine;
-    private static readonly Vector2 equippedPos = new Vector2(575f, -320f);
-    private static readonly Vector2 unequippedPos = new Vector2(575f, -800f);
+    private static readonly Vector2 equippedPos = new Vector2(560f, -310f);
+    private static readonly Vector2 unequippedPos = new Vector2(560f, -800f);
     private const float SHOOT_MAGNITUDE = 40;
     private static readonly Vector2 shootVector = new Vector2(0.766f, -0.6427876f) * SHOOT_MAGNITUDE;
 
