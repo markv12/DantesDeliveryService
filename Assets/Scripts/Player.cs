@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -30,10 +31,10 @@ public class Player : MonoBehaviour {
             return currentDO;
         }
         set {
-            if(currentDO != value) {
+            if (currentDO != value) {
                 currentDO = value;
                 DeliveryManager.instance.SetActiveDO(currentDO);
-                if(currentDO == null && DayNightManager.instance.IsNight) {
+                if (currentDO == null && DayNightManager.instance.IsNight) {
                     TakeGunsOut();
                 }
             }
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour {
     public void Hurt(int damage) {
         health = Mathf.Max(0, health - damage);
         playerUI.ShowHealthFraction(health / (float)maxHealth);
-        if(health > 0) {
+        if (health > 0) {
             AudioManager.Instance.PlayPlayerHurt();
         } else {
             if (!died) {
@@ -95,7 +96,7 @@ public class Player : MonoBehaviour {
             if (InputUtil.LeftMouseButtonDown) {
                 gun.Shoot();
             }
-            if(InputUtil.LeftMouseButtonIsPressed) {
+            if (InputUtil.LeftMouseButtonIsPressed) {
                 gun.Hold();
             } else {
                 gun.EndHold();
@@ -138,8 +139,9 @@ public class Player : MonoBehaviour {
     private bool GunEquipped {
         get { return gunEquipped; }
         set {
-            if(gunEquipped != value) {
+            if (gunEquipped != value) {
                 gunEquipped = value;
+                RefreshThrowMeterVisible();
                 gun.SetEquipped(gunEquipped);
             }
         }
@@ -151,9 +153,14 @@ public class Player : MonoBehaviour {
         set {
             if (heavyGunEquipped != value) {
                 heavyGunEquipped = value;
+                RefreshThrowMeterVisible();
                 heavyGun.SetEquipped(heavyGunEquipped);
             }
         }
+    }
+
+    private void RefreshThrowMeterVisible() {
+        playerUI.SetThrowMeterVisible(!GunEquipped && !HeavyGunEquipped);
     }
 
     public void SetFPSControllerActive(bool isActive) {
@@ -165,7 +172,7 @@ public class Player : MonoBehaviour {
 
         if (isActive) {
             PauseManager.ReleasePause(this);
-            if(CurrentDO == null && DayNightManager.instance.IsNight) {
+            if (CurrentDO == null && DayNightManager.instance.IsNight) {
                 TakeGunsOut();
             }
         } else {
@@ -175,7 +182,7 @@ public class Player : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("DeliveryObject")) {
-            if(CurrentDO == null &&  Time.time - lastThrowTime > 0.5f) {
+            if (CurrentDO == null && Time.time - lastThrowTime > 0.5f) {
                 PickUpDeliveryObject(other.gameObject.GetComponent<DeliveryObject>());
             }
         }
@@ -184,7 +191,7 @@ public class Player : MonoBehaviour {
     public void DOHitDestination(DeliveryObject deliveryObject) {
         AudioManager.Instance.PlaySuccess();
         MoneyManager.instance.CurrentMoney += 10;
-        if(deliveryObject == CurrentDO) {
+        if (deliveryObject == CurrentDO) {
             ThrowStrength = 0;
             CurrentDO = null;
             directionArrow.gameObject.SetActive(false);
@@ -196,7 +203,7 @@ public class Player : MonoBehaviour {
         CurrentDO = deliveryObject;
         CurrentDO.mainRigidbody.isKinematic = true;
         CurrentDO.mainT.SetParent(mainCameraTransform, false);
-        CurrentDO.mainT.localPosition = new Vector3(1.26f, -0.8f, 2.18f);
+        CurrentDO.mainT.localPosition = new Vector3(1f, -0.7f, 2.18f);
         CurrentDO.mainT.localEulerAngles = new Vector3(20, 200, -3);
         CurrentDO.RemoveFromSpawnLocation();
         AudioManager.Instance.PlaySFX(pickUpSound, 1f);
@@ -211,19 +218,25 @@ public class Player : MonoBehaviour {
 
         IEnumerator SwitchRoutine() {
             heavyGunSelected = !heavyGunSelected;
-            if(heavyGunSelected && GunEquipped) {
+            if (heavyGunSelected && GunEquipped) {
                 GunEquipped = false;
             }
             if (!heavyGunSelected && HeavyGunEquipped) {
                 HeavyGunEquipped = false;
             }
+            playerUI.SetThrowMeterVisible(false);
             yield return WaitUtil.GetWait(0.75f);
-            if (heavyGunSelected && !HeavyGunEquipped) {
-                HeavyGunEquipped = true;
+            if(CurrentDO == null) {
+                if (heavyGunSelected && !HeavyGunEquipped) {
+                    HeavyGunEquipped = true;
+                }
+                if (!heavyGunSelected && !GunEquipped) {
+                    GunEquipped = true;
+                }
+            } else {
+                playerUI.SetThrowMeterVisible(true);
             }
-            if (!heavyGunSelected && !GunEquipped) {
-                GunEquipped = true;
-            }
+
         }
     }
 

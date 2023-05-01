@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerUI : MonoBehaviour {
+    [SerializeField] private GameObject throwMeterContainer;
     [SerializeField] private RectTransform throwMeter;
     [SerializeField] private MinimapCamera minimapCamera;
     [SerializeField] private GameObject smallMap;
@@ -47,5 +48,9 @@ public class PlayerUI : MonoBehaviour {
         if(Player.instance != null) {
             Player.instance.SetFPSControllerActive(!open);
         }
+    }
+
+    public void SetThrowMeterVisible(bool visible) {
+        throwMeterContainer.SetActive(visible);
     }
 }
