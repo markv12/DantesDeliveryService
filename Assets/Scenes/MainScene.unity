@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16356003, g: 0.40649647, b: 0.48944375, a: 1}
+  m_IndirectSpecularColor: {r: 0.16363627, g: 0.40795258, b: 0.49127632, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -743,6 +743,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: goatStartDay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: startTimeBetweenSpawns
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3687695685780379516, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
       propertyPath: m_Name
       value: CoreSystems
@@ -790,6 +798,14 @@ PrefabInstance:
     - target: {fileID: 3993294815815808362, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336872679073614976, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: dayLength
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336872679073614976, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: nightLength
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
