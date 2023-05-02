@@ -81,11 +81,11 @@ const db = {
     }
   },
 
-  async get(dbPath: string): Promise<string> {
+  async get(dbPath: string): Promise<any[]> {
     dbPath = dbPath.replace(/..\//g, '')
 
     if (!fs.existsSync(path.join('./', 'data', dbPath))) {
-      return '[]'
+      return []
     }
 
     const data =
@@ -93,7 +93,13 @@ const db = {
         path.join('./', 'data', dbPath + '.json'),
         'utf8',
       )) || '[]'
-    return data
+    try {
+      const parsedData = JSON.parse(data)
+      return parsedData
+    } catch (err) {
+      c.log('red', err)
+      return []
+    }
   },
 }
 
