@@ -1264,6 +1264,142 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &1023384581385835071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172779421100186173}
+  - component: {fileID: 7666791981410537846}
+  - component: {fileID: 7984388802480247238}
+  m_Layer: 0
+  m_Name: Text (TMP) (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1172779421100186173
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023384581385835071}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7068317776233886149}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMax: {x: 0.9, y: 0.9}
+  m_AnchoredPosition: {x: 208.00002, y: -154.05365}
+  m_SizeDelta: {x: -446.96, y: -494.6924}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7666791981410537846
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023384581385835071}
+  m_CullTransparentMesh: 1
+--- !u!114 &7984388802480247238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023384581385835071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "WASD + Space \u2013 Move\nClick and Hold  - Charge package toss\nM - Open
+    map"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
+  m_sharedMaterial: {fileID: 3112718419162731054, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 1862270975
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.43137255}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 20
+  m_fontSizeBase: 20
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 2.66
+  m_wordSpacing: 0.95
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 52.8
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 188.51196, z: 0, w: 57.694084}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1232984866176624451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,8 +1466,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Exhausted from a hellish stint at a nightmare job, Dante has given up
-    the gun at last. \nInstead, he's started his very own neighborhood delivery service!"
+  m_text: 'Dante has opened his very own neighborhood delivery service.
+
+    He won''t
+    let anything stand in the way of people and their packages!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
   m_sharedMaterial: {fileID: 3112718419162731054, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
@@ -1358,8 +1496,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.15
-  m_fontSizeBase: 26.15
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2550,8 +2688,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
   m_AnchorMax: {x: 0.9, y: 0.9}
-  m_AnchoredPosition: {x: 208, y: -33}
-  m_SizeDelta: {x: -446.964, y: -105.3}
+  m_AnchoredPosition: {x: 208, y: -27.974998}
+  m_SizeDelta: {x: -446.964, y: -95.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2174862923975427037
 CanvasRenderer:
@@ -2581,7 +2719,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Finally!
+  m_text: Come Hell or High Water!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
   m_sharedMaterial: {fileID: 3112718419162731054, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
@@ -2608,8 +2746,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 53.08
+  m_fontSizeBase: 53.08
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2620,7 +2758,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 2.66
   m_wordSpacing: 0.95
-  m_lineSpacing: 19.96
+  m_lineSpacing: -24.4
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2716,12 +2854,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pick up packages and deliver them! (WASD + Space to move, Click and Hold
-    to charge package toss)
+  m_text: 'Pick up packages and deliver them!
 
     Buy upgrades!
 
-    Compete for the top score!'
+    Compete for
+    the top score!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
   m_sharedMaterial: {fileID: 3112718419162731054, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
@@ -2748,8 +2886,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2762,7 +2900,7 @@ MonoBehaviour:
   m_wordSpacing: 0.95
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 91
+  m_paragraphSpacing: 52.8
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -2784,7 +2922,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 188.51196, z: 0, w: 190.79318}
+  m_margin: {x: 0, y: -26.664608, z: 0, w: 246.25107}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4792,7 +4930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 208.00002, y: -25.399963}
+  m_AnchoredPosition: {x: 208.00002, y: -128}
   m_SizeDelta: {x: 150.5696, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5397064967511477621
@@ -6269,6 +6407,7 @@ RectTransform:
   - {fileID: 8016610834367955112}
   - {fileID: 288520509769635607}
   - {fileID: 4003254436826839532}
+  - {fileID: 1172779421100186173}
   m_Father: {fileID: 1465190487215171506}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
