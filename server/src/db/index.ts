@@ -59,6 +59,42 @@ const db = {
     })
     fs.mkdirSync(dataDirectoryPath)
   },
+
+  async getCount(dbPath: string): Promise<number> {
+    dbPath = dbPath.replace(/..\//g, '')
+
+    if (!fs.existsSync(path.join('./', 'data', dbPath))) {
+      return 0
+    }
+
+    const data =
+      (await fs.promises.readFile(
+        path.join('./', 'data', dbPath + '.json'),
+        'utf8',
+      )) || '[]'
+    try {
+      const parsedData = JSON.parse(data)
+      return parsedData.length
+    } catch (err) {
+      c.log('red', err)
+      return 0
+    }
+  },
+
+  async get(dbPath: string): Promise<string> {
+    dbPath = dbPath.replace(/..\//g, '')
+
+    if (!fs.existsSync(path.join('./', 'data', dbPath))) {
+      return '[]'
+    }
+
+    const data =
+      (await fs.promises.readFile(
+        path.join('./', 'data', dbPath + '.json'),
+        'utf8',
+      )) || '[]'
+    return data
+  },
 }
 
 export default db

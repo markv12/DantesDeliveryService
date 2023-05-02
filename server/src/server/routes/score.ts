@@ -51,4 +51,16 @@ routes.post('/add', async (req, res) => {
   c.log('gray', `rankings:`, rankings)
   res.json(rankings)
 })
+
+routes.get('/count/:path', async (req, res) => {
+  const { path } = req.params
+  const count = await db.getCount(path)
+  res.send(count)
+})
+routes.get('/rankings/:path', async (req, res) => {
+  const { path } = req.params
+  const data = await db.get(path)
+  res.send(data)
+})
+
 export default routes
