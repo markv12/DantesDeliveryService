@@ -233,7 +233,7 @@ public class Player : MonoBehaviour {
                 HeavyGunEquipped = false;
             }
             playerUI.SetThrowMeterVisible(false);
-            yield return WaitUtil.GetWait(0.5f);
+            yield return WaitUtil.GetWait(0.4f);
             if(CurrentDO == null) {
                 if (heavyGunSelected && !HeavyGunEquipped) {
                     HeavyGunEquipped = true;

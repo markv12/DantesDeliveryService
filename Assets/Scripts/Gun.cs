@@ -121,6 +121,7 @@ public class Gun : MonoBehaviour {
     private static readonly Vector2 unequippedPos = new Vector2(575f, -800f);
     private const float SHOOT_MAGNITUDE = 30;
     private static readonly Vector2 shootVector = new Vector2(0.766f, -0.6427876f) * SHOOT_MAGNITUDE;
+    public const float MOVE_ANIM_TIME = 0.5f;
     public void SetEquipped(bool equipped) {
         StopKick();
         if(equipped) {
@@ -131,7 +132,7 @@ public class Gun : MonoBehaviour {
         this.EnsureCoroutineStopped(ref equipRoutine);
         Vector2 startPos = rectT.anchoredPosition;
         Vector2 endPos = equipped ? equippedPos : unequippedPos; 
-        equipRoutine = this.CreateAnimationRoutine(0.7f, (float progress) => {
+        equipRoutine = this.CreateAnimationRoutine(MOVE_ANIM_TIME, (float progress) => {
             rectT.anchoredPosition = Vector2.Lerp(startPos, endPos, Easing.easeInOutSine(0, 1, progress));
         }, () => {
             if(!equipped) {
