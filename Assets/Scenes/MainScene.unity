@@ -455,6 +455,22 @@ PrefabInstance:
       propertyPath: shopMoneyLabel
       value: 
       objectReference: {fileID: 687813432}
+    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: goatStartDay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: jellyFishStartDay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: timeMultiplyPerDay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: startTimeBetweenSpawns
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3687695685780379516, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
       propertyPath: m_Name
       value: CoreSystems
@@ -506,6 +522,14 @@ PrefabInstance:
     - target: {fileID: 8244684827167251622, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336872679073614976, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: dayLength
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336872679073614976, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
+      propertyPath: nightLength
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
