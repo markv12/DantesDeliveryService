@@ -51,7 +51,7 @@ public class StatsManager : MonoBehaviour {
 
     public int DelveryMoney {
         get {
-            return 5 + (deliveryMoneyLvl * 2);
+            return 5 + (deliveryMoneyLvl + 5);
         }
     }
 

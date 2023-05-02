@@ -71,7 +71,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.PistolDmg:
                 return new BuyableItemInfo() {
                     title = "Increase Pistol Damage lvl " + (StatsManager.instance.pistolDmgLvl + 1),
-                    price = 50,
+                    price = 25 * (StatsManager.instance.pistolDmgLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.pistolDmgLvl++;
                     }
@@ -79,7 +79,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.PistolAutoRate:
                 return new BuyableItemInfo() {
                     title = "Increase Pistol Automatic Fire Rate lvl " + (StatsManager.instance.pistolAutoRateLvl + 1),
-                    price = 50,
+                    price = 25 * (StatsManager.instance.pistolAutoRateLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.pistolAutoRateLvl++;
                     }
@@ -87,7 +87,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.RunSpeed:
                 return new BuyableItemInfo() {
                     title = "Increase Run Speed Lvl " + (StatsManager.instance.runSpeedLvl + 1),
-                    price = 25,
+                    price = 25 * (StatsManager.instance.runSpeedLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.runSpeedLvl++;
                         Player.instance.SetMoveSpeed(StatsManager.instance.RunSpeed);
@@ -104,7 +104,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.ShotgunSpeed:
                 return new BuyableItemInfo() {
                     title = "Increase Shotgun Reload Speed lvl " + (StatsManager.instance.shotgunSpeedLvl + 1),
-                    price = 50,
+                    price = 25 * (StatsManager.instance.shotgunSpeedLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.shotgunSpeedLvl++;
                     }
@@ -112,7 +112,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.DeliveryMoney:
                 return new BuyableItemInfo() {
                     title = "Receive more money for deliveries lvl " + (StatsManager.instance.deliveryMoneyLvl + 1),
-                    price = 75,
+                    price = 25 * (StatsManager.instance.deliveryMoneyLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.deliveryMoneyLvl++;
                     }
@@ -120,7 +120,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.ThrowPower:
                 return new BuyableItemInfo() {
                     title = "Increase Throw Distance lvl " + (StatsManager.instance.throwPowerLvl + 1),
-                    price = 25,
+                    price = 25 * (StatsManager.instance.throwPowerLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.throwPowerLvl++;
                     }
