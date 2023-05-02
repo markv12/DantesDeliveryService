@@ -1295,7 +1295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
   m_AnchorMax: {x: 0.9, y: 0.9}
-  m_AnchoredPosition: {x: 205.99998, y: -49.3}
+  m_AnchoredPosition: {x: 208.00002, y: -25.29995}
   m_SizeDelta: {x: -446.964, y: -67.8999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8159356702898840363
@@ -2546,7 +2546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
   m_AnchorMax: {x: 0.9, y: 0.9}
-  m_AnchoredPosition: {x: 206, y: -57}
+  m_AnchoredPosition: {x: 208, y: -33}
   m_SizeDelta: {x: -446.964, y: -105.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2174862923975427037
@@ -2681,8 +2681,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
   m_AnchorMax: {x: 0.9, y: 0.9}
-  m_AnchoredPosition: {x: 205.99998, y: -180.68018}
-  m_SizeDelta: {x: -446.964, y: -464.2719}
+  m_AnchoredPosition: {x: 208.00002, y: -167.45374}
+  m_SizeDelta: {x: -446.96, y: -494.6924}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5026367881347174843
 CanvasRenderer:
@@ -2712,12 +2712,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Pick up packages and deliver them!
+  m_text: 'Pick up packages and deliver them! (WASD + Space to move, Click and Hold
+    to charge package toss)
 
-    - Buy upgrades!
+    Buy upgrades!
 
-    - Compete
-    for the top score!'
+    Compete for the top score!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
   m_sharedMaterial: {fileID: 3112718419162731054, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
@@ -2756,9 +2756,9 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 2.66
   m_wordSpacing: 0.95
-  m_lineSpacing: 91.17
+  m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 91
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -2780,7 +2780,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 303.86432, z: 0, w: 301.7091}
+  m_margin: {x: 0, y: 188.51196, z: 0, w: 190.79318}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4711,7 +4711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205.99998, y: -61.949955}
+  m_AnchoredPosition: {x: 208.00002, y: -25.399963}
   m_SizeDelta: {x: 150.5696, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5397064967511477621
