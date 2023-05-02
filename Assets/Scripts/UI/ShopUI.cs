@@ -24,7 +24,7 @@ public class ShopUI : MonoBehaviour {
 
     private void SetupItems() {
         SetupValidPowerups();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             if (i < validPowerups.Count) {
                 int x = i % 2;
                 int y = i / 2;
@@ -46,8 +46,8 @@ public class ShopUI : MonoBehaviour {
         } else {
             validPowerups.Add(PowerUpType.UnlockShotgun);
         }
-        if (StatsManager.instance.pistolAutoRateLvl < StatsManager.POWER_UP_MAX_LVL) {
-            validPowerups.Add(PowerUpType.PistolAutoRate);
+        if (!StatsManager.instance.pistolFullAuto) {
+            validPowerups.Add(PowerUpType.PistolFullAuto);
         }
         if (StatsManager.instance.throwPowerLvl < StatsManager.POWER_UP_MAX_LVL) {
             validPowerups.Add(PowerUpType.ThrowPower);
@@ -72,17 +72,17 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.PistolDmg:
                 return new BuyableItemInfo() {
                     title = "Increase Pistol Damage lvl " + (StatsManager.instance.pistolDmgLvl + 1),
-                    price = 25 * (StatsManager.instance.pistolDmgLvl + 1),
+                    price = 20 * (StatsManager.instance.pistolDmgLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.pistolDmgLvl++;
                     }
                 };
-            case PowerUpType.PistolAutoRate:
+            case PowerUpType.PistolFullAuto:
                 return new BuyableItemInfo() {
-                    title = "Increase Pistol Automatic Fire Rate lvl " + (StatsManager.instance.pistolAutoRateLvl + 1),
-                    price = 25 * (StatsManager.instance.pistolAutoRateLvl + 1),
+                    title = "Make Pistol Fully Automatic",
+                    price = 50,
                     onBuy = () => {
-                        StatsManager.instance.pistolAutoRateLvl++;
+                        StatsManager.instance.pistolFullAuto = true;
                     }
                 };
             case PowerUpType.RunSpeed:
@@ -105,7 +105,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.ShotgunSpeed:
                 return new BuyableItemInfo() {
                     title = "Increase Shotgun Reload Speed lvl " + (StatsManager.instance.shotgunSpeedLvl + 1),
-                    price = 25 * (StatsManager.instance.shotgunSpeedLvl + 1),
+                    price = 20 * (StatsManager.instance.shotgunSpeedLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.shotgunSpeedLvl++;
                     }
@@ -121,7 +121,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.ThrowPower:
                 return new BuyableItemInfo() {
                     title = "Increase Throw Distance lvl " + (StatsManager.instance.throwPowerLvl + 1),
-                    price = 25 * (StatsManager.instance.throwPowerLvl + 1),
+                    price = 20 * (StatsManager.instance.throwPowerLvl + 1),
                     onBuy = () => {
                         StatsManager.instance.throwPowerLvl++;
                     }
@@ -129,8 +129,8 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.Heal:
                 int healthDiff = Player.instance.maxHealth - Player.instance.CurrentHealth;
                 return new BuyableItemInfo() {
-                    title = "Full Heal",
-                    price = healthDiff * 2,
+                    title = "Full Heal (" + healthDiff + " HP)",
+                    price = healthDiff,
                     onBuy = () => {
                         Player.instance.FullHeal();
                     }
@@ -165,7 +165,7 @@ public class ShopUI : MonoBehaviour {
 
     private enum PowerUpType {
         PistolDmg,
-        PistolAutoRate,
+        PistolFullAuto,
         RunSpeed,
         UnlockShotgun,
         ShotgunSpeed,

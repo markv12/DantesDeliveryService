@@ -41,11 +41,13 @@ public class Gun : MonoBehaviour {
     private float lastShootTime;
     private float timeHeld = 0;
     public void Hold() {
-        timeHeld += Time.deltaTime;
-        if(timeHeld > AUTO_WAIT) {
-            if(Time.time - lastShootTime > StatsManager.instance.PistolShotTime) {
-                lastShootTime = Time.time;
-                Shoot();
+        if (StatsManager.instance.pistolFullAuto) {
+            timeHeld += Time.deltaTime;
+            if (timeHeld > AUTO_WAIT) {
+                if (Time.time - lastShootTime > 0.075f) {
+                    lastShootTime = Time.time;
+                    Shoot();
+                }
             }
         }
     }

@@ -14,7 +14,7 @@ public class StatsManager : MonoBehaviour {
 
     public const int POWER_UP_MAX_LVL = 3;
     [NonSerialized] public int pistolDmgLvl = 0;
-    [NonSerialized] public int pistolAutoRateLvl = 0;
+    [NonSerialized] public bool pistolFullAuto = false;
     [NonSerialized] public int runSpeedLvl = 0;
     [NonSerialized] public bool shotgunUnlocked = false;
     [NonSerialized] public int shotgunSpeedLvl = 0;
@@ -52,12 +52,6 @@ public class StatsManager : MonoBehaviour {
     public int DelveryMoney {
         get {
             return 10 + (deliveryMoneyLvl * 5);
-        }
-    }
-
-    public float PistolShotTime {
-        get {
-            return Mathf.Lerp(0.4f, 0.075f, pistolAutoRateLvl / (float)POWER_UP_MAX_LVL);
         }
     }
 

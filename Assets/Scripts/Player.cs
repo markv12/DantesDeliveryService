@@ -244,7 +244,6 @@ public class Player : MonoBehaviour {
             } else {
                 playerUI.SetThrowMeterVisible(true);
             }
-
         }
     }
 
