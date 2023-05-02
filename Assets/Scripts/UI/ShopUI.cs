@@ -29,7 +29,11 @@ public class ShopUI : MonoBehaviour {
             int y = i / 2;
             BuyableElement newElement = Instantiate(buyableElementPrefab, elementContainer);
             newElement.rectT.anchoredPosition = new Vector2(x * 350, y * -120);
-            if(i < validPowerups.Count) {
+
+            if(i == 0 && Player.instance.CurrentHealth < Player.instance.maxHealth) {
+                newElement.Setup(GetItem(PowerUpType.Heal));
+                currentElements.Add(newElement);
+            } else if (i < validPowerups.Count) {
                 PowerUpType powerUpType = validPowerups[i];
                 newElement.Setup(GetItem(powerUpType));
                 currentElements.Add(newElement);
@@ -40,9 +44,6 @@ public class ShopUI : MonoBehaviour {
     private readonly List<PowerUpType> validPowerups = new List<PowerUpType>(16);
     private void SetupValidPowerups() {
         validPowerups.Clear();
-        if(Player.instance.CurrentHealth < Player.instance.maxHealth) {
-            validPowerups.Add(PowerUpType.Heal);
-        }
         if (StatsManager.instance.shotgunUnlocked) {
             validPowerups.Add(PowerUpType.ShotgunSpeed);
         } else {
