@@ -1469,7 +1469,7 @@ MonoBehaviour:
   m_text: 'Dante has opened his very own neighborhood delivery service.
 
     He won''t
-    let anything stand in the way of people and their packages!'
+    let anything stand between people and their packages!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
   m_sharedMaterial: {fileID: 3112718419162731054, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 65.011444, z: 0, w: 341.76624}
+  m_margin: {x: 0, y: 65.011444, z: -11.09169, w: 341.76624}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
