@@ -53,7 +53,7 @@ public class DayStartUI : MonoBehaviour {
     }
 
     private void SetCharacterNightMode(bool isNight) {
-        characterT.sizeDelta = isNight ? new Vector2(610, 765) : new Vector2(425, 715);
+        characterT.sizeDelta = isNight ? NightStartUI.NIGHT_SPRITE_SIZE : NightStartUI.DAY_SPRITE_SIZE;
         characterImage.sprite = isNight ? nightCharacterSprite : dayCharacterSprite;
     }
 }

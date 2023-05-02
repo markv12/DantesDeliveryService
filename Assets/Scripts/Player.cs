@@ -137,7 +137,8 @@ public class Player : MonoBehaviour {
         lastThrowTime = Time.time;
         CurrentDO.mainT.SetParent(null, true);
         CurrentDO.mainRigidbody.isKinematic = false;
-        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * StatsManager.instance.ThrowPower * EasedThrowStrength);
+        float power = Mathf.Max(450, StatsManager.instance.ThrowPower * EasedThrowStrength);
+        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * power);
         CurrentDO = null;
         AudioManager.Instance.PlaySFX(throwSound, 1f);
         directionArrow.gameObject.SetActive(false);
