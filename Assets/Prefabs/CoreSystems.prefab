@@ -426,6 +426,82 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &212922676731638694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2487715213455695510}
+  - component: {fileID: 4695542171798506234}
+  - component: {fileID: 4206718683471267246}
+  m_Layer: 0
+  m_Name: CharacterImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2487715213455695510
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212922676731638694}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5392076195694494661}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 437.34, y: 0}
+  m_SizeDelta: {x: 610, y: 765}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4695542171798506234
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212922676731638694}
+  m_CullTransparentMesh: 1
+--- !u!114 &4206718683471267246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212922676731638694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 980ca2937d8f2564599a3bb92eccfe9b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &328828052658762883
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557391759848777560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.01, y: 0.7, z: 20.92}
+  m_LocalPosition: {x: -24.01, y: 0.7, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1704,8 +1780,8 @@ MonoBehaviour:
   nightSkyboxTexture: {fileID: 2800000, guid: 726b8d0c56d2f174e873053efcab29dc, type: 3}
   nightStartUI: {fileID: 552395666182983432}
   dayStartUI: {fileID: 5524837611459101481}
-  dayLength: 5
-  nightLength: 120
+  dayLength: 90
+  nightLength: 90
 --- !u!223 &2606293541469204502
 Canvas:
   m_ObjectHideFlags: 0
@@ -1927,7 +2003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyLabel: {fileID: 5960347139507496645}
-  shopMoneyLabel: {fileID: 0}
+  shopMoneyLabel: {fileID: 5052974004258265352}
 --- !u!1 &2474055692027437020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,7 +2028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2474055692027437020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25, y: 0.7, z: 61.8}
+  m_LocalPosition: {x: -25, y: 0.7, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2188,6 +2264,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 994454748894178613}
+  - {fileID: 2487715213455695510}
   m_Father: {fileID: 8079903158659353012}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2426,10 +2503,13 @@ MonoBehaviour:
   - {fileID: 1004612719000527684}
   - {fileID: 7696680249463296117}
   - {fileID: 2871609528872757456}
-  timeBetweenSpawns: 2
+  startTimeBetweenSpawns: 10
+  timeMultiplyPerDay: 0.8
   eyeballEnemy: {fileID: 6903850313824258416, guid: d4eb6427cfd424141843ba7cb56d80b5, type: 3}
-  goatEnemy: {fileID: 6903850313824258416, guid: 765f2f664fe96074bbaadb402124ed72, type: 3}
   jellyfishEnemy: {fileID: 6903850313824258416, guid: 2bffe8bbe7cd53b45be1c8205506985d, type: 3}
+  goatEnemy: {fileID: 6903850313824258416, guid: 765f2f664fe96074bbaadb402124ed72, type: 3}
+  jellyFishStartDay: 2
+  goatStartDay: 4
 --- !u!1 &3359514828857370887
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,6 +3904,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgTransform: {fileID: 5392076195694494661}
+  characterT: {fileID: 2487715213455695510}
+  characterImage: {fileID: 4206718683471267246}
+  dayCharacterSprite: {fileID: 21300000, guid: 5f0935d4646beee45a7f8911f2986ee9, type: 3}
+  nightCharacterSprite: {fileID: 21300000, guid: 980ca2937d8f2564599a3bb92eccfe9b, type: 3}
   shopUI: {fileID: 8751765892536867581}
 --- !u!223 &8358203443345735555
 Canvas:

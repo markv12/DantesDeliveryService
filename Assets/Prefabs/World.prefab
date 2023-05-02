@@ -881,7 +881,7 @@ Transform:
   - {fileID: 4400734588192543615}
   - {fileID: 2696299461372144370}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &396399809104642143
 MonoBehaviour:
@@ -2265,7 +2265,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 905520575340527282, guid: 2bf8d8370f4174ca0a07bb68208c5338, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bf8d8370f4174ca0a07bb68208c5338, type: 3}
