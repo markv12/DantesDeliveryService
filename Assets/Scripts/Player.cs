@@ -120,7 +120,7 @@ public class Player : MonoBehaviour {
             directionArrow.rotation = Quaternion.LookRotation(lookDir);
 
             if (InputUtil.LeftMouseButtonIsPressed) {
-                ThrowStrength = Mathf.Min(1f, throwStrength + (Time.deltaTime * 0.8f));
+                ThrowStrength = Mathf.Min(1f, throwStrength + Time.deltaTime);
             }
             if (InputUtil.LeftMouseButtonUp) {
                 ThrowDeliveryObject();
