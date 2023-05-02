@@ -6,6 +6,8 @@ public class ExplodingEnemy : MonoBehaviour {
     [Min(0)]
     public int maxHealth;
     public int explodeDamage;
+    [Min(0)]
+    public int moneyOnDeath;
     public Transform spriteT;
     public SpriteRenderer mainRenderer;
 
@@ -62,6 +64,7 @@ public class ExplodingEnemy : MonoBehaviour {
         loopSound.Stop();
         mainRenderer.sprite = explodeSprite;
         Player.instance.Hurt(explodeDamage);
+        Die();
     }
 
     private bool died = false;
@@ -77,6 +80,7 @@ public class ExplodingEnemy : MonoBehaviour {
 
     private void Die() {
         died = true;
+        StatsManager.instance.AddMoney(moneyOnDeath);
         navMeshAgent.enabled = false;
         mainRenderer.sprite = normalSprite;
         AudioManager.Instance.PlaySFX(deathSound, 1f);

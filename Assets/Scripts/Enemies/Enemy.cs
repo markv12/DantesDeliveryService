@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour {
     public int maxHealth;
     public int touchDamage;
     public float projectileRange;
+    [Min(0)]
+    public int moneyOnDeath;
     public Transform spriteT;
     public SpriteRenderer mainRenderer;
 
@@ -104,6 +106,7 @@ public class Enemy : MonoBehaviour {
         }, () => {
             Destroy(gameObject);
         });
+        StatsManager.instance.AddMoney(moneyOnDeath);
     }
 
     private const float FLASH_DURATION = 0.05f;
