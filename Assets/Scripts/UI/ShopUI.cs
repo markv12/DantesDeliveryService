@@ -25,15 +25,12 @@ public class ShopUI : MonoBehaviour {
     private void SetupItems() {
         SetupValidPowerups();
         for (int i = 0; i < 4; i++) {
-            int x = i % 2;
-            int y = i / 2;
-            BuyableElement newElement = Instantiate(buyableElementPrefab, elementContainer);
-            newElement.rectT.anchoredPosition = new Vector2(x * 350, y * -120);
+            if (i < validPowerups.Count) {
+                int x = i % 2;
+                int y = i / 2;
+                BuyableElement newElement = Instantiate(buyableElementPrefab, elementContainer);
+                newElement.rectT.anchoredPosition = new Vector2(x * 350, y * -120);
 
-            if(i == 0 && Player.instance.CurrentHealth < Player.instance.maxHealth) {
-                newElement.Setup(GetItem(PowerUpType.Heal));
-                currentElements.Add(newElement);
-            } else if (i < validPowerups.Count) {
                 PowerUpType powerUpType = validPowerups[i];
                 newElement.Setup(GetItem(powerUpType));
                 currentElements.Add(newElement);
@@ -56,15 +53,18 @@ public class ShopUI : MonoBehaviour {
             validPowerups.Add(PowerUpType.ThrowPower);
         }
         if (StatsManager.instance.pistolDmgLvl < StatsManager.POWER_UP_MAX_LVL) {
-        validPowerups.Add(PowerUpType.PistolDmg);
+            validPowerups.Add(PowerUpType.PistolDmg);
         }
         if (StatsManager.instance.deliveryMoneyLvl < StatsManager.POWER_UP_MAX_LVL) {
             validPowerups.Add(PowerUpType.DeliveryMoney);
         }
-        if(StatsManager.instance.runSpeedLvl < StatsManager.POWER_UP_MAX_LVL) {
+        if (StatsManager.instance.runSpeedLvl < StatsManager.POWER_UP_MAX_LVL) {
             validPowerups.Add(PowerUpType.RunSpeed);
         }
         RandomExtensions.Shuffle(validPowerups);
+        if (Player.instance.CurrentHealth < Player.instance.maxHealth) {
+            validPowerups.Insert(0, PowerUpType.Heal);
+        }
     }
 
     private BuyableItemInfo GetItem(PowerUpType powerUpType) {
@@ -139,7 +139,7 @@ public class ShopUI : MonoBehaviour {
                 return new BuyableItemInfo() {
                     title = "Unknown PowerUp Type",
                     price = 0,
-                    onBuy = () => {}
+                    onBuy = () => { }
                 };
         }
     }
@@ -147,7 +147,7 @@ public class ShopUI : MonoBehaviour {
     private void Clear() {
         for (int i = 0; i < currentElements.Count; i++) {
             BuyableElement ba = currentElements[i];
-            if(ba != null && ba.gameObject != null) {
+            if (ba != null && ba.gameObject != null) {
                 Destroy(ba.gameObject);
             }
         }

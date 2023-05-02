@@ -40,17 +40,17 @@ public class EnemySpawner : MonoBehaviour {
     private readonly List<GameObject> validPrefabs = new List<GameObject>(4);
     private void Spawn() {
         if(Player.instance != null) {
-            Vector3 playerPos = Player.instance.transform.position;
-            Transform farthestPoint = spawnPoints[0];
-            float farthestSqrDist = float.MinValue;
-            for (int i = 0; i < spawnPoints.Length; i++) {
-                Transform point = spawnPoints[i];
-                float distSqr = (playerPos - point.position).sqrMagnitude;
-                if(distSqr > farthestSqrDist) {
-                    farthestSqrDist = distSqr;
-                    farthestPoint = point;
-                }
-            }
+            //Vector3 playerPos = Player.instance.transform.position;
+            //Transform farthestPoint = spawnPoints[0];
+            //float farthestSqrDist = float.MinValue;
+            //for (int i = 0; i < spawnPoints.Length; i++) {
+            //    Transform point = spawnPoints[i];
+            //    float distSqr = (playerPos - point.position).sqrMagnitude;
+            //    if(distSqr > farthestSqrDist) {
+            //        farthestSqrDist = distSqr;
+            //        farthestPoint = point;
+            //    }
+            //}
 
             validPrefabs.Clear();
             validPrefabs.Add(eyeballEnemy);
@@ -64,7 +64,7 @@ public class EnemySpawner : MonoBehaviour {
             }
             GameObject toSpawn = validPrefabs[Random.Range(0, validPrefabs.Count)];
             GameObject newEnemy = Instantiate(toSpawn);
-            newEnemy.transform.position = farthestPoint.position;
+            newEnemy.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
         }
     }
 }

@@ -120,7 +120,7 @@ public class Player : MonoBehaviour {
             directionArrow.rotation = Quaternion.LookRotation(lookDir);
 
             if (InputUtil.LeftMouseButtonIsPressed) {
-                ThrowStrength = Mathf.Min(1f, throwStrength + (Time.deltaTime * 0.8f));
+                ThrowStrength = Mathf.Min(1f, throwStrength + Time.deltaTime);
             }
             if (InputUtil.LeftMouseButtonUp) {
                 ThrowDeliveryObject();
@@ -233,7 +233,7 @@ public class Player : MonoBehaviour {
                 HeavyGunEquipped = false;
             }
             playerUI.SetThrowMeterVisible(false);
-            yield return WaitUtil.GetWait(0.5f);
+            yield return WaitUtil.GetWait(0.4f);
             if(CurrentDO == null) {
                 if (heavyGunSelected && !HeavyGunEquipped) {
                     HeavyGunEquipped = true;
