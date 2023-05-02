@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameOverUI : MonoBehaviour {
     public RectTransform bgTransform;
     public TMP_Text highScoreLabel;
+    public TMP_Text totalEarnedLabel;
     public Button restartButton;
 
     private void Awake() {
@@ -30,6 +31,8 @@ public class GameOverUI : MonoBehaviour {
                 highScoreLabel.text = GetHighScoreText(recordData);
             }
         }));
+
+        totalEarnedLabel.text = "$" + StatsManager.instance.TotalMoney;
     }
 
     private string GetHighScoreText(RecordData recordData) {
