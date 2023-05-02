@@ -487,14 +487,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8336872679073614976, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: dayLength
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336872679073614976, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: nightLength
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

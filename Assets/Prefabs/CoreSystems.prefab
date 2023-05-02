@@ -1785,8 +1785,8 @@ MonoBehaviour:
   nightSkyboxTexture: {fileID: 2800000, guid: 726b8d0c56d2f174e873053efcab29dc, type: 3}
   nightStartUI: {fileID: 552395666182983432}
   dayStartUI: {fileID: 5524837611459101481}
-  dayLength: 5
-  nightLength: 5
+  dayLength: 90
+  nightLength: 90
 --- !u!223 &2606293541469204502
 Canvas:
   m_ObjectHideFlags: 0
