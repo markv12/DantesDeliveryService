@@ -20,7 +20,7 @@ public class DayStartUI : MonoBehaviour {
     public void Show(Action onCoverScreen, Action _onComplete) {
         onComplete = _onComplete;
         Vector2 startPos = bgTransform.anchoredPosition;
-        this.CreateAnimationRoutine(1f, (float progress) => {
+        Player.instance.CreateAnimationRoutine(1f, (float progress) => {
             bgTransform.anchoredPosition = Vector2.Lerp(startPos, NightStartUI.ON_SCREEN_POS, Easing.easeInSine(0, 1, progress));
         }, () => {
             onCoverScreen?.Invoke();
@@ -29,21 +29,21 @@ public class DayStartUI : MonoBehaviour {
     }
 
     private void Continue() {
-        StartCoroutine(ContinueRoutine());
+        Player.instance.StartCoroutine(ContinueRoutine());
         IEnumerator ContinueRoutine() {
             yield return new WaitForSecondsRealtime(0.3f);
-            yield return this.CreateAnimationRoutine(0.5f, (float progress) => {
+            yield return Player.instance.CreateAnimationRoutine(0.5f, (float progress) => {
                 characterT.localEulerAngles = new Vector3(0, Mathf.Lerp(0, 90, progress), 0);
             });
 
             SetCharacterNightMode(false);
 
-            yield return this.CreateAnimationRoutine(0.5f, (float progress) => {
+            yield return Player.instance.CreateAnimationRoutine(0.5f, (float progress) => {
                 characterT.localEulerAngles = new Vector3(0, Mathf.Lerp(90, 0, progress), 0);
             });
             yield return new WaitForSecondsRealtime(0.3f);
             Vector2 startPos = bgTransform.anchoredPosition;
-            this.CreateAnimationRoutine(1f, (float progress) => {
+            Player.instance.CreateAnimationRoutine(1f, (float progress) => {
                 bgTransform.anchoredPosition = Vector2.Lerp(startPos, NightStartUI.OFF_SCREEN_POS, Easing.easeInSine(0, 1, progress));
             }, () => {
                 onComplete?.Invoke();

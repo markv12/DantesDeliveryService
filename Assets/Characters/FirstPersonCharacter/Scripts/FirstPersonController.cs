@@ -142,8 +142,10 @@ namespace UnityStandardAssets.Characters.FirstPerson {
             superJumpSpeed = speed;
         }
 
+        private Coroutine speedUpRoutine = null;
         public void SpeedUp(float multiplier, float time) {
-            StartCoroutine(SpeedUpRoutine());
+            this.EnsureCoroutineStopped(ref speedUpRoutine);
+            speedUpRoutine = StartCoroutine(SpeedUpRoutine());
 
             IEnumerator SpeedUpRoutine() {
                 speedUpMultiplier = multiplier;
