@@ -62,7 +62,7 @@ public class StatsManager : MonoBehaviour {
     }
     public float ShotgunReloadTime {
         get {
-            return Mathf.Lerp(2.25f, 1.1f, shotgunSpeedLvl / (float)POWER_UP_MAX_LVL);
+            return Mathf.Lerp(2.5f, 1.1f, shotgunSpeedLvl / (float)POWER_UP_MAX_LVL);
         }
     }
 

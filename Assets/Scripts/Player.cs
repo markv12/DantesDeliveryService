@@ -53,12 +53,12 @@ public class Player : MonoBehaviour {
         playerStartPos = t.position;
         playerStartRotation = t.rotation;
         directionArrow.gameObject.SetActive(false);
-        health = maxHealth;
+        FullHeal();
     }
 
     public void Hurt(int damage) {
         health = Mathf.Max(0, health - damage);
-        playerUI.ShowHealthFraction(health / (float)maxHealth);
+        playerUI.ShowHealth(health, maxHealth);
         if (health > 0) {
             AudioManager.Instance.PlayPlayerHurt();
         } else {
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
 
     public void FullHeal() {
         health = maxHealth;
-        playerUI.ShowHealthFraction(health / (float)maxHealth);
+        playerUI.ShowHealth(health, maxHealth);
     }
 
     private bool died = false;

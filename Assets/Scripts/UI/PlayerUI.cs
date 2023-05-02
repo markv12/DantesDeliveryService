@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ public class PlayerUI : MonoBehaviour {
     [SerializeField] private GameObject pauseMapUI;
     [SerializeField] private GameObject healthUI;
     [SerializeField] private RectTransform healthBar;
+    [SerializeField] private TMP_Text healthText;
 
     private void Start() {
         DayNightManager.instance.IsNightChanged += HandleIsNightChanged;
@@ -22,8 +24,9 @@ public class PlayerUI : MonoBehaviour {
         throwMeter.sizeDelta = new Vector2(33, 236f * throwStrength);
     }
 
-    public void ShowHealthFraction(float healthFraction) {
-        healthBar.sizeDelta = healthBar.sizeDelta.SetX(Mathf.Lerp(0, 366f, healthFraction));
+    public void ShowHealth(int health, int maxHealth) {
+        healthText.text = health + "/" + maxHealth;
+        healthBar.sizeDelta = healthBar.sizeDelta.SetX(Mathf.Lerp(0, 366f, health / (float)maxHealth));
     }
 
     private void Update() {

@@ -97,7 +97,7 @@ public class ShopUI : MonoBehaviour {
             case PowerUpType.UnlockShotgun:
                 return new BuyableItemInfo() {
                     title = "Unlock Shotgun" + Environment.NewLine + "(Press Q)",
-                    price = 100,
+                    price = 75,
                     onBuy = () => {
                         StatsManager.instance.shotgunUnlocked = true;
                     }
