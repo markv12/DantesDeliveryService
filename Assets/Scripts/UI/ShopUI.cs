@@ -145,7 +145,10 @@ public class ShopUI : MonoBehaviour {
 
     private void Clear() {
         for (int i = 0; i < currentElements.Count; i++) {
-            Destroy(currentElements[i].gameObject);
+            BuyableElement ba = currentElements[i];
+            if(ba != null && ba.gameObject != null) {
+                Destroy(ba.gameObject);
+            }
         }
         currentElements.Clear();
     }
