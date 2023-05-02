@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608a7eebe061db448a04eb568e9fecaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 120
   touchDamage: 10
   projectileRange: 18
   spriteT: {fileID: 2076020871013952978}
