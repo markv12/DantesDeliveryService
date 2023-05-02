@@ -783,7 +783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557391759848777560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.01, y: 0.7, z: 20.92}
+  m_LocalPosition: {x: -24.01, y: 0.7, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1780,8 +1780,8 @@ MonoBehaviour:
   nightSkyboxTexture: {fileID: 2800000, guid: 726b8d0c56d2f174e873053efcab29dc, type: 3}
   nightStartUI: {fileID: 552395666182983432}
   dayStartUI: {fileID: 5524837611459101481}
-  dayLength: 2
-  nightLength: 120
+  dayLength: 90
+  nightLength: 90
 --- !u!223 &2606293541469204502
 Canvas:
   m_ObjectHideFlags: 0
@@ -2003,7 +2003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyLabel: {fileID: 5960347139507496645}
-  shopMoneyLabel: {fileID: 0}
+  shopMoneyLabel: {fileID: 5052974004258265352}
 --- !u!1 &2474055692027437020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,7 +2028,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2474055692027437020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25, y: 0.7, z: 61.8}
+  m_LocalPosition: {x: -25, y: 0.7, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2503,13 +2503,13 @@ MonoBehaviour:
   - {fileID: 1004612719000527684}
   - {fileID: 7696680249463296117}
   - {fileID: 2871609528872757456}
-  startTimeBetweenSpawns: 0
-  timeMultiplyPerDay: 0
+  startTimeBetweenSpawns: 10
+  timeMultiplyPerDay: 0.8
   eyeballEnemy: {fileID: 6903850313824258416, guid: d4eb6427cfd424141843ba7cb56d80b5, type: 3}
   jellyfishEnemy: {fileID: 6903850313824258416, guid: 2bffe8bbe7cd53b45be1c8205506985d, type: 3}
   goatEnemy: {fileID: 6903850313824258416, guid: 765f2f664fe96074bbaadb402124ed72, type: 3}
-  jellyFishStartDay: 0
-  goatStartDay: 0
+  jellyFishStartDay: 2
+  goatStartDay: 4
 --- !u!1 &3359514828857370887
 GameObject:
   m_ObjectHideFlags: 0

@@ -211,10 +211,6 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 431111251}
-    - target: {fileID: 8513072604465101654, guid: 35dde42c9781b0540a3512d169fbc588, type: 3}
-      propertyPath: m_WalkSpeed
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 8513072604476314262, guid: 35dde42c9781b0540a3512d169fbc588, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -268,17 +264,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35dde42c9781b0540a3512d169fbc588, type: 3}
---- !u!114 &687813432 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5052974004258265352, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-  m_PrefabInstance: {fileID: 7230718027423080875}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1711202017
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,8 +419,7 @@ PrefabInstance:
       value: World
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 162140805502180784, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16b248af088c1434bbafc218f28e96da, type: 3}
@@ -447,30 +431,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 430255931433645202, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 2037437616260258988, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: shopMoneyLabel
-      value: 
-      objectReference: {fileID: 687813432}
-    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: goatStartDay
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: jellyFishStartDay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: timeMultiplyPerDay
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2482972457009384834, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: startTimeBetweenSpawns
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3687695685780379516, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
       propertyPath: m_Name
       value: CoreSystems
@@ -518,18 +478,6 @@ PrefabInstance:
     - target: {fileID: 3993294815815808362, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8244684827167251622, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336872679073614976, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: dayLength
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8336872679073614976, guid: 9fd48234363b0d04dbb4b43a00fda921, type: 3}
-      propertyPath: nightLength
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

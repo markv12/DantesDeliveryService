@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
     public Transform[] spawnPoints;
+    [Min(0)]
     public float startTimeBetweenSpawns;
+    [Range(0f, 1f)]
     public float timeMultiplyPerDay;
     public GameObject eyeballEnemy;
     public GameObject jellyfishEnemy;
@@ -52,7 +54,9 @@ public class EnemySpawner : MonoBehaviour {
 
             validPrefabs.Clear();
             validPrefabs.Add(eyeballEnemy);
+            validPrefabs.Add(eyeballEnemy);
             if(DayNightManager.instance.CurrentDay >= jellyFishStartDay) {
+                validPrefabs.Add(jellyfishEnemy);
                 validPrefabs.Add(jellyfishEnemy);
             }
             if (DayNightManager.instance.CurrentDay >= goatStartDay) {
