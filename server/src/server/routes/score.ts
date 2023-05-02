@@ -32,7 +32,8 @@ routes.post('/add', async (req, res) => {
     return
   }
   if (
-    !scoreAsNumber ||
+    scoreAsNumber === undefined ||
+    typeof scoreAsNumber !== 'number' ||
     isNaN(scoreAsNumber) ||
     scoreAsNumber < 0
   ) {

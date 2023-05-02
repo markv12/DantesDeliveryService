@@ -45,13 +45,13 @@ public class StatsManager : MonoBehaviour {
 
     public int PistolDamage {
         get {
-            return 10 + (pistolDmgLvl * 5);
+            return 10 + (pistolDmgLvl * 2);
         }
     }
 
     public int DelveryMoney {
         get {
-            return 10 + (deliveryMoneyLvl * 3);
+            return 5 + (deliveryMoneyLvl * 2);
         }
     }
 
@@ -74,7 +74,7 @@ public class StatsManager : MonoBehaviour {
 
     public float RunSpeed {
         get {
-            return Mathf.Lerp(10, 32f, runSpeedLvl / (float)POWER_UP_MAX_LVL);
+            return Mathf.Lerp(10, 20f, runSpeedLvl / (float)POWER_UP_MAX_LVL);
         }
     }
 }
