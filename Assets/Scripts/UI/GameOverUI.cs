@@ -37,7 +37,7 @@ public class GameOverUI : MonoBehaviour {
 
     private string GetHighScoreText(RecordData recordData) {
         string result = "";
-        if(recordData.regionRank > 0) {
+        if(recordData.regionRank > 0 && recordData.region != recordData.country) {
             result += "Top " + recordData.regionRank + " in " + recordData.region + Environment.NewLine;
         }
         if(recordData.countryRank > 0) {

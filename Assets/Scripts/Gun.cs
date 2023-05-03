@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour {
     public AudioClip shootSound;
     public AudioClip equipSound;
     public AudioClip unequipSound;
+    public GameObject switchWeaponText;
 
     private static int defaultLayer;
     private static int enemyLayer;
@@ -44,7 +45,7 @@ public class Gun : MonoBehaviour {
         if (StatsManager.instance.pistolFullAuto) {
             timeHeld += Time.deltaTime;
             if (timeHeld > AUTO_WAIT) {
-                if (Time.time - lastShootTime > 0.075f) {
+                if (Time.time - lastShootTime > 0.08f) {
                     lastShootTime = Time.time;
                     Shoot();
                 }
@@ -141,5 +142,9 @@ public class Gun : MonoBehaviour {
                 gameObject.SetActive(false);
             }
         });
+    }
+
+    public void SetSwitchWeaponTextActive(bool active) {
+        switchWeaponText.SetActive(active);
     }
 }

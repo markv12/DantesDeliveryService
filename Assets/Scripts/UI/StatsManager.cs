@@ -45,7 +45,7 @@ public class StatsManager : MonoBehaviour {
 
     public int PistolDamage {
         get {
-            return 10 + (pistolDmgLvl * 2);
+            return 10 + (pistolDmgLvl * 5);
         }
     }
 

@@ -129,6 +129,7 @@ public class Player : MonoBehaviour {
         }
 
         if (DayNightManager.instance.IsNight && CurrentDO == null && StatsManager.instance.shotgunUnlocked && InputUtil.GetKeyDown(Key.Q)) {
+            gun.SetSwitchWeaponTextActive(false);
             SwitchGuns();
         }
     }
@@ -263,5 +264,9 @@ public class Player : MonoBehaviour {
 
     public void SetMoveSpeed(float moveSpeed) {
         firstPersonController.SetMoveSpeed(moveSpeed);
+    }
+
+    public void SetSwitchWeaponTextActive(bool active) {
+        gun.SetSwitchWeaponTextActive(active);
     }
 }

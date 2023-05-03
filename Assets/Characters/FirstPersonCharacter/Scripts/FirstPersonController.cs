@@ -88,7 +88,7 @@ namespace UnityStandardAssets.Characters.FirstPerson {
 
 
         private void PlayLandingSound() {
-            AudioManager.Instance.PlaySFX(m_LandSound, 1);
+            AudioManager.Instance.PlaySFX(m_LandSound, 0.75f);
             m_NextStep = m_StepCycle + .5f;
         }
 

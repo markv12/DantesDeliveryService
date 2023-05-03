@@ -99,6 +99,7 @@ public class ShopUI : MonoBehaviour {
                     title = "Unlock Shotgun" + Environment.NewLine + "(Press Q)",
                     price = 75,
                     onBuy = () => {
+                        Player.instance.SetSwitchWeaponTextActive(true);
                         StatsManager.instance.shotgunUnlocked = true;
                     }
                 };
