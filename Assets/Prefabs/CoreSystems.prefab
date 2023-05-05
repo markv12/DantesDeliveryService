@@ -2573,7 +2573,7 @@ MonoBehaviour:
   - {fileID: 1004612719000527684}
   - {fileID: 7696680249463296117}
   - {fileID: 2871609528872757456}
-  startTimeBetweenSpawns: 2.75
+  startTimeBetweenSpawns: 3
   timeMultiplyPerDay: 0.8
   eyeballEnemy: {fileID: 6903850313824258416, guid: d4eb6427cfd424141843ba7cb56d80b5, type: 3}
   jellyfishEnemy: {fileID: 6903850313824258416, guid: 2bffe8bbe7cd53b45be1c8205506985d, type: 3}

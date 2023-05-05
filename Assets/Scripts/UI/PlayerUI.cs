@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerUI : MonoBehaviour {
-    [SerializeField] private GameObject throwMeterContainer;
-    [SerializeField] private RectTransform throwMeter;
     [SerializeField] private MinimapCamera minimapCamera;
     [SerializeField] private GameObject smallMap;
     [SerializeField] private GameObject pauseMapUI;
@@ -19,11 +17,7 @@ public class PlayerUI : MonoBehaviour {
     private void HandleIsNightChanged(bool isNight) {
         healthUI.SetActive(isNight);
     }
-
-    public void ShowThrowStrength(float throwStrength) {
-        throwMeter.sizeDelta = new Vector2(33, 236f * throwStrength);
-    }
-
+    
     public void ShowHealth(int health, int maxHealth) {
         healthText.text = health + "/" + maxHealth;
         healthBar.sizeDelta = healthBar.sizeDelta.SetX(Mathf.Lerp(0, 366f, health / (float)maxHealth));
@@ -51,9 +45,5 @@ public class PlayerUI : MonoBehaviour {
         if(Player.instance != null) {
             Player.instance.SetFPSControllerActive(!open);
         }
-    }
-
-    public void SetThrowMeterVisible(bool visible) {
-        throwMeterContainer.SetActive(visible);
     }
 }

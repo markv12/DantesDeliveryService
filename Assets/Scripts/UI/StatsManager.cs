@@ -19,7 +19,6 @@ public class StatsManager : MonoBehaviour {
     [NonSerialized] public bool shotgunUnlocked = false;
     [NonSerialized] public int shotgunSpeedLvl = 0;
     [NonSerialized] public int deliveryMoneyLvl = 0;
-    [NonSerialized] public int throwPowerLvl = 0;
 
     public int TotalMoney { get; private set; }
     private int currentMoney = 0;
@@ -55,11 +54,6 @@ public class StatsManager : MonoBehaviour {
         }
     }
 
-    public float ThrowPower {
-        get {
-            return Mathf.Lerp(900f, 1700f, throwPowerLvl / (float)POWER_UP_MAX_LVL);
-        }
-    }
     public float ShotgunReloadTime {
         get {
             return Mathf.Lerp(2.5f, 1.1f, shotgunSpeedLvl / (float)POWER_UP_MAX_LVL);

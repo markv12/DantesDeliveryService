@@ -49,9 +49,6 @@ public class ShopUI : MonoBehaviour {
         if (!StatsManager.instance.pistolFullAuto) {
             validPowerups.Add(PowerUpType.PistolFullAuto);
         }
-        if (StatsManager.instance.throwPowerLvl < StatsManager.POWER_UP_MAX_LVL) {
-            validPowerups.Add(PowerUpType.ThrowPower);
-        }
         if (StatsManager.instance.pistolDmgLvl < StatsManager.POWER_UP_MAX_LVL) {
             validPowerups.Add(PowerUpType.PistolDmg);
         }
@@ -119,14 +116,6 @@ public class ShopUI : MonoBehaviour {
                         StatsManager.instance.deliveryMoneyLvl++;
                     }
                 };
-            case PowerUpType.ThrowPower:
-                return new BuyableItemInfo() {
-                    title = "Increase Throw Distance lvl " + (StatsManager.instance.throwPowerLvl + 1),
-                    price = 20 * (StatsManager.instance.throwPowerLvl + 1),
-                    onBuy = () => {
-                        StatsManager.instance.throwPowerLvl++;
-                    }
-                };
             case PowerUpType.Heal:
                 int healthDiff = Player.instance.maxHealth - Player.instance.CurrentHealth;
                 return new BuyableItemInfo() {
@@ -171,7 +160,6 @@ public class ShopUI : MonoBehaviour {
         UnlockShotgun,
         ShotgunSpeed,
         DeliveryMoney,
-        ThrowPower,
         Heal
     }
 }

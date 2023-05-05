@@ -56,14 +56,18 @@ public class Player : MonoBehaviour {
         FullHeal();
     }
 
+    private float lastHitTime;
     public void Hurt(int damage) {
-        health = Mathf.Max(0, health - damage);
-        playerUI.ShowHealth(health, maxHealth);
-        if (health > 0) {
-            AudioManager.Instance.PlayPlayerHurt();
-        } else {
-            if (!died) {
-                Die();
+        if(Time.time - lastHitTime > 1.2f) {
+            lastHitTime = Time.time;
+            health = Mathf.Max(0, health - damage);
+            playerUI.ShowHealth(health, maxHealth);
+            if (health > 0) {
+                AudioManager.Instance.PlayPlayerHurt();
+            } else {
+                if (!died) {
+                    Die();
+                }
             }
         }
     }
@@ -81,18 +85,6 @@ public class Player : MonoBehaviour {
         SetFPSControllerActive(false);
         gameOverUI.Show();
     }
-
-    private float throwStrength = 0;
-    private float ThrowStrength {
-        get {
-            return throwStrength;
-        }
-        set {
-            throwStrength = value;
-            playerUI.ShowThrowStrength(EasedThrowStrength);
-        }
-    }
-    private float EasedThrowStrength => Easing.easeOutQuad(0, 1, throwStrength);
 
     private float lastThrowTime;
     private void Update() {
@@ -118,13 +110,8 @@ public class Player : MonoBehaviour {
         if (CurrentDO != null) {
             Vector3 lookDir = CurrentDO.destination.transform.position - directionArrow.position;
             directionArrow.rotation = Quaternion.LookRotation(lookDir);
-
             if (InputUtil.LeftMouseButtonIsPressed) {
-                ThrowStrength = Mathf.Min(1f, throwStrength + Time.deltaTime);
-            }
-            if (InputUtil.LeftMouseButtonUp) {
                 ThrowDeliveryObject();
-                ThrowStrength = 0;
             }
         }
 
@@ -138,8 +125,7 @@ public class Player : MonoBehaviour {
         lastThrowTime = Time.time;
         CurrentDO.mainT.SetParent(null, true);
         CurrentDO.mainRigidbody.isKinematic = false;
-        float power = Mathf.Max(450, StatsManager.instance.ThrowPower * EasedThrowStrength);
-        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * power);
+        CurrentDO.mainRigidbody.AddForce(mainCameraTransform.forward * 1150);
         CurrentDO = null;
         AudioManager.Instance.PlaySFX(throwSound, 1f);
         directionArrow.gameObject.SetActive(false);
@@ -151,7 +137,6 @@ public class Player : MonoBehaviour {
         set {
             if (gunEquipped != value) {
                 gunEquipped = value;
-                RefreshThrowMeterVisible();
                 gun.SetEquipped(gunEquipped);
             }
         }
@@ -163,14 +148,9 @@ public class Player : MonoBehaviour {
         set {
             if (heavyGunEquipped != value) {
                 heavyGunEquipped = value;
-                RefreshThrowMeterVisible();
                 heavyGun.SetEquipped(heavyGunEquipped);
             }
         }
-    }
-
-    private void RefreshThrowMeterVisible() {
-        playerUI.SetThrowMeterVisible(!GunEquipped && !HeavyGunEquipped);
     }
 
     public void SetFPSControllerActive(bool isActive) {
@@ -202,7 +182,6 @@ public class Player : MonoBehaviour {
         AudioManager.Instance.PlaySuccess();
         StatsManager.instance.AddMoney(StatsManager.instance.DelveryMoney);
         if (deliveryObject == CurrentDO) {
-            ThrowStrength = 0;
             CurrentDO = null;
             directionArrow.gameObject.SetActive(false);
         }
@@ -234,7 +213,6 @@ public class Player : MonoBehaviour {
             if (!heavyGunSelected && HeavyGunEquipped) {
                 HeavyGunEquipped = false;
             }
-            playerUI.SetThrowMeterVisible(false);
             yield return WaitUtil.GetWait(0.4f);
             if(CurrentDO == null) {
                 if (heavyGunSelected && !HeavyGunEquipped) {
@@ -243,8 +221,6 @@ public class Player : MonoBehaviour {
                 if (!heavyGunSelected && !GunEquipped) {
                     GunEquipped = true;
                 }
-            } else {
-                playerUI.SetThrowMeterVisible(true);
             }
         }
     }

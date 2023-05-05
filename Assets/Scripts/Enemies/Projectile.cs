@@ -31,4 +31,11 @@ public class Projectile : MonoBehaviour {
             Destroy(gameObject);
         });
     }
+
+    private void Update() {
+        if (!DayNightManager.instance.IsNight && !isDestroyed) {
+            Destroy(gameObject);
+            isDestroyed = true;
+        }
+    }
 }
