@@ -172,8 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404ebead2643e63438248bd128c1a978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwMeterContainer: {fileID: 0}
-  throwMeter: {fileID: 0}
   minimapCamera: {fileID: 0}
   smallMap: {fileID: 5636393120746900849}
   pauseMapUI: {fileID: 5793154253230404649}
@@ -2880,7 +2878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8754324079260514424}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
