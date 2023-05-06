@@ -1393,10 +1393,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'WASD + Space - Move
 
-    Click and Hold - Charge package toss
+    Click - Throw Package
 
-    M -
-    Open Map'
+    M - Open Map (Pauses
+    Game)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
   m_sharedMaterial: {fileID: 3112718419162731054, guid: a030d8168c76bcf4d91d622f9cab8cf7, type: 2}
