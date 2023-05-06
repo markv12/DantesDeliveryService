@@ -10,10 +10,9 @@ public class NPC : MonoBehaviour {
         gameObject.SetActive(!isNight);
     }
 
-    // Update is called once per frame
     void Update() {
         if (Player.instance != null) {
-            Vector3 targetPos = Player.instance.transform.position.SetY(mainT.position.y);
+            Vector3 targetPos = Player.instance.t.position.SetY(mainT.position.y);
             mainT.LookAt(targetPos);
         }
     }

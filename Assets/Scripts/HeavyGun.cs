@@ -82,8 +82,7 @@ public class HeavyGun : MonoBehaviour {
             });
             Image smokeImage = smokeImages[Random.Range(0, smokeImages.Length)];
             smokeImage.gameObject.SetActive(true);
-            yield return null;
-            yield return null;
+            yield return WaitUtil.GetWait(0.075f);
             smokeImage.gameObject.SetActive(false);
             while (Time.time - startTime < KICK_TIME) {
                 yield return null;
@@ -126,7 +125,7 @@ public class HeavyGun : MonoBehaviour {
     private Coroutine equipRoutine;
     private static readonly Vector2 equippedPos = new Vector2(577f, -308f);
     private static readonly Vector2 unequippedPos = new Vector2(577f, -800f);
-    private const float SHOOT_MAGNITUDE = 40;
+    private const float SHOOT_MAGNITUDE = 50;
     private static readonly Vector2 shootVector = new Vector2(0.766f, -0.6427876f) * SHOOT_MAGNITUDE;
 
     private bool canShoot;

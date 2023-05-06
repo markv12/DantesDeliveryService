@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour {
                 Vector3 pos = Vector3.Lerp(startPos, endPos, progress);
                 mainT.position = pos;
 
-                Vector3 playerPos = Player.instance.transform.position;
+                Vector3 playerPos = Player.instance.t.position;
                 Vector3 playerDiff = playerPos - pos;
                 Vector3 playerDir = playerDiff.normalized;
                 mainT.forward = playerDir;

@@ -20,7 +20,7 @@ public class Gun : MonoBehaviour {
         enemyLayer = LayerMask.NameToLayer("Enemy");
     }
 
-    private const float RAYCAST_DISTANCE = 50f;
+    private const float RAYCAST_DISTANCE = 200f;
     public void Shoot() {
         AudioManager.Instance.PlaySFXPitched(shootSound, 1, Random.Range(0.90f, 1.1f));
 
@@ -78,8 +78,7 @@ public class Gun : MonoBehaviour {
             });
             Image smokeImage = smokeImages[Random.Range(0, smokeImages.Length)];
             smokeImage.gameObject.SetActive(true);
-            yield return null;
-            yield return null;
+            yield return WaitUtil.GetWait(0.05f);
             smokeImage.gameObject.SetActive(false);
             while (Time.time - startTime < KICK_TIME) {
                 yield return null;

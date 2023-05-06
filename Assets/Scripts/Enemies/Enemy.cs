@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour {
     private void Update() {
         if (!isDestroyed) {
             if (Player.instance != null && navMeshAgent.enabled) {
-                Vector3 playerPos = Player.instance.transform.position;
+                Vector3 playerPos = Player.instance.t.position;
                 navMeshAgent.destination = playerPos;
                 Vector3 playerDiff = playerPos - spriteT.position;
                 float playerSqrDist = playerDiff.sqrMagnitude;
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour {
             mainRenderer.sprite = normalSprite;
             AudioManager.Instance.PlaySFX(fireSound, 1f);
             if (Player.instance != null && navMeshAgent.enabled) {
-                Vector3 playerPos = Player.instance.transform.position.AddY(1f);
+                Vector3 playerPos = Player.instance.t.position.AddY(1f);
                 Vector3 playerDiff = playerPos - spriteT.position;
                 Projectile newProjectile = Instantiate(projectile);
                 Vector3 startPos = spriteT.position;

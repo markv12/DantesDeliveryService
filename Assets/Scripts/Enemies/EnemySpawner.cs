@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour {
     private readonly List<GameObject> validPrefabs = new List<GameObject>(4);
     private void Spawn() {
         if(Player.instance != null) {
-            //Vector3 playerPos = Player.instance.transform.position;
+            //Vector3 playerPos = Player.instance.t.position;
             //Transform farthestPoint = spawnPoints[0];
             //float farthestSqrDist = float.MinValue;
             //for (int i = 0; i < spawnPoints.Length; i++) {

@@ -21,7 +21,7 @@ public class MinimapCamera : MonoBehaviour {
     }
     private void Update() {
         if (followPlayerMode && Player.instance != null) {
-            Vector3 playerPos = Player.instance.transform.position;
+            Vector3 playerPos = Player.instance.t.position;
             cameraT.position = new Vector3(playerPos.x, cameraT.position.y, playerPos.z);
         }
     }

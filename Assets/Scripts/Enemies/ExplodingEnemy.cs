@@ -35,7 +35,7 @@ public class ExplodingEnemy : MonoBehaviour {
     private void Update() {
         if (!isDestroyed) {
             if (Player.instance != null && navMeshAgent.enabled) {
-                Vector3 playerPos = Player.instance.transform.position;
+                Vector3 playerPos = Player.instance.t.position;
                 navMeshAgent.destination = playerPos;
                 Vector3 playerDiff = playerPos - spriteT.position;
                 float playerSqrDist = playerDiff.sqrMagnitude;
