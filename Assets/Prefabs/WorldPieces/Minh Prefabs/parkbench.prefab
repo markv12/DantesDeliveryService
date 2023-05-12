@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137b6f84b94a5e14b9b4aa29b3755747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainRenderer: {fileID: 3497044668489982047}
+  mainRenderer: {fileID: 9175710456725593260}
   daySprite: {fileID: 21300000, guid: 255f5c6b30f170a468e8b21fab467154, type: 3}
   nightSprite: {fileID: 21300000, guid: 062548cc8cbd20148974c0f111d5a2e2, type: 3}
 --- !u!1 &6167857128016260977
